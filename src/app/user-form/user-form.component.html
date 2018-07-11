@@ -13,11 +13,30 @@ Nếu chỉ xuất ra $event thì console.log($event) ra sẽ có rất nhiều 
 
 
 <!-- Cách 4.2: cũng với two-way binding: dùng thuộc tính directive: https://angular.io/guide/architecture-components#data-binding
-Trong link có dòng: <input [(ngModel)]="hero.name">, giống với cấu trúc [(ng-model)] = "property" của cách 4.
+Trong link có dòng: <input [(ngModel)]="hero.name">, giống với cấu trúc [(ng-model)] = "property" của cách 4.1.
 
 -[(ngModel)]="name2": giúp gắn thuộc tính name2 của .ts vào ngModel, giúp name2 nhận đc sự thay đổi từ ngModel.
-Lúc này bên ts chỉ cần khai báo name2='' là đủ, ko cần phải tạo hàm. Việc gán các thay đổi name2 đã có ngModel.
+Lúc này bên ts chỉ cần khai báo name2='' là đủ, ko cần phải tạo hàm. Việc gán các thay đổi cho name2 đã có 
+ngModel làm bên file html.
+++-->
+<!-- Sử dụng kèm theo Template reference variables: https://angular.io/guide/template-syntax 
+
+-các Template reference variables: có thể tham chiếu đến các thể DOM element, hoặc tham chiếu tới component 
+hoặc Directive vừa học ở bài 12.
+-các Template reference variables: bắt đầu bằng dấu #
+
+vd: <input #phone placeholder="phone number">
+
+-Ở bài này #txtUsername tham chiếu đến ngModel, nhận các thay đổi từ ngModel.
+lúc gọi ra #txtUsername.value và theo định dạng json nên bọc ngoài sẽ có dấu ""
 -->
-<input placeholder="Enter username2" [(ngModel)]="name2">
+<input placeholder="Enter username2" [(ngModel)]="name2" #txtUsername>
 <h3>Your name is: {{ name2 }}</h3>
+<code>{{ txtUsername.value | json }}</code> 
+
+
+
+
+
+
 
