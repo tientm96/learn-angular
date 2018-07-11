@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class UserFormComponent implements OnInit {
 
   name = ''; //khai báo biến name rỗng
+  name2 = ''; //two-way binding, dùng cho cách 4 sử dụng ngModel.
   
   constructor() { }
 
@@ -19,9 +20,15 @@ export class UserFormComponent implements OnInit {
     //  nên sẽ gọi đến value để lấy value gán cho name. 
     // Khi đó sau mỗi lần nhập 1 ký tự thì name lại đc gán lại bởi 1 value dài hơn. 
     // console.log(event);
-
     this.name = event.target.value;
-
   }
+
+
+  /*cách 4.2: two-way binding bằng cách dùng thuộc tính directive: https://angular.io/guide/architecture-components#data-binding
+  Trong link có dòng: <input [(ngModel)]="hero.name">  dòng này để dùng trong file html.
+  
+  Ở file ts chỉ cần khai báo name2='', còn việc gán các giá trị thay đổi cho name2 đã có ngModel lo.
+  Chỉ cần qua html gắn name2 với ngModel là đc.
+  */
 
 }

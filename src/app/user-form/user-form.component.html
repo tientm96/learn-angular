@@ -1,4 +1,4 @@
-<!-- Cách 4: two-way data binding: [(ng-model)] = "property" : tương tác 2 chiều.-->
+<!-- Cách 4.1: two-way data binding: [(ng-model)] = "property" : tương tác 2 chiều.-->
 
 <!--keyup: khi nhấn 1 phím nào đó, vừa nhấc tay lên thì nó sẽ thực hiện sự kiện showEvent đc gọi, truyền dl vào hàm đó để set thêm cho name,.
 Lúc này sẽ truyền dữ liệu vào name thông qua hàm showEvent. Gọi thuộc tính name ở của component ra trong thẻ <h3>.
@@ -7,8 +7,17 @@ placeholder: là ô textbox để nhập.
 
 Biến $even: biến chứa thông tin những cái event mình vừa thực hiện, nó có rất nhiều thuộc tính.
 Nếu chỉ xuất ra $event thì console.log($event) ra sẽ có rất nhiều thuộc tính, kích vào mục target sẽ có value là giá trị nối, nên sẽ gọi đến value. 
-
 -->
-
 <input placeholder="Enter username" (keyup)="showEvent($event)">
 <h3>Your name is: {{ name }}</h3>
+
+
+<!-- Cách 4.2: cũng với two-way binding: dùng thuộc tính directive: https://angular.io/guide/architecture-components#data-binding
+Trong link có dòng: <input [(ngModel)]="hero.name">, giống với cấu trúc [(ng-model)] = "property" của cách 4.
+
+-[(ngModel)]="name2": giúp gắn thuộc tính name2 của .ts vào ngModel, giúp name2 nhận đc sự thay đổi từ ngModel.
+Lúc này bên ts chỉ cần khai báo name2='' là đủ, ko cần phải tạo hàm. Việc gán các thay đổi name2 đã có ngModel.
+-->
+<input placeholder="Enter username2" [(ngModel)]="name2">
+<h3>Your name is: {{ name2 }}</h3>
+
