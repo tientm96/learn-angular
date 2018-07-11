@@ -23,4 +23,8 @@ import { Component } from '@angular/core';
 export class WorldComponent {
     en: string = 'Hello'; //tạo biến, bên html gọi bằng cách {{en}}
     vn = 'Xin chào';    //type script tự hiểu kdl, có string hay ko đều đc.
+
+    imageUrl = 'https://angular.io/assets/images/logos/angular/logo-nav@2x.png'; //tạo biến imageUrl
+
+    forgot = false; //tạo biến forgot
 }  

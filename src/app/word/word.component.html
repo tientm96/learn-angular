@@ -1,3 +1,21 @@
 <h3>{{ en }}</h3>
-
 <p>{{ vn }}</p>
+
+<!-- Các cách gán dữ liệu từ ts sang html: Data Binding -->
+
+<!-- Cách 1 -->
+<!--<img src="{{ imageUrl }}" alt=""> -->
+
+<!-- Cách 2: [property] = "value"
+Nếu ko có [] thì nó hiểu "imageUrl: là 1 cái link hình ảnh"
+Còn nếu có [] thì nó hiểu "imageUrl" là 1 biến trong component -->
+<img [src]="imageUrl" alt="">
+
+<!--Cách 2: Thẻ hidden trong html default=true, nghĩa là đang ẩn. 
+Ở đây hidden=forgot=false nên sẽ Ko bị ẩn và sẽ hiện lên dòng của biến en-->
+<h2 [hidden]="forgot">{{ en }}</h2> 
+
+
+
+<!-- Cách 3: (event) = "handler"-->
+
