@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { WorldComponent } from './word/word.component';
 import { BookComponent } from './book/book.component';
+import { UserFormComponent } from './user-form/user-form.component';
 
 /*TẠO COMPONENT
 - app.module.ts : là file chạy đầu tiên.
@@ -15,11 +16,13 @@ và đc gọi vào bên trong declarations của file app.module.cs này.
 
 */
 
+//và gọi component vào đây
 @NgModule({
   declarations: [
     AppComponent,
-    WorldComponent, //và gọi component vào đây\
+    WorldComponent, 
     BookComponent,
+    UserFormComponent
   ],
   imports: [
     BrowserModule

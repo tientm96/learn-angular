@@ -1,0 +1,14 @@
+<!-- Cách 4: two-way data binding: [(ng-model)] = "property" : tương tác 2 chiều.-->
+
+<!--keyup: khi nhấn 1 phím nào đó, vừa nhấc tay lên thì nó sẽ thực hiện sự kiện showEvent đc gọi, truyền dl vào hàm đó để set thêm cho name,.
+Lúc này sẽ truyền dữ liệu vào name thông qua hàm showEvent. Gọi thuộc tính name ở của component ra trong thẻ <h3>.
+
+placeholder: là ô textbox để nhập.
+
+Biến $even: biến chứa thông tin những cái event mình vừa thực hiện, nó có rất nhiều thuộc tính.
+Nếu chỉ xuất ra $event thì console.log($event) ra sẽ có rất nhiều thuộc tính, kích vào mục target sẽ có value là giá trị nối, nên sẽ gọi đến value. 
+
+-->
+
+<input placeholder="Enter username" (keyup)="showEvent($event)">
+<h3>Your name is: {{ name }}</h3>
