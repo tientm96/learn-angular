@@ -27,4 +27,9 @@ export class WorldComponent {
     imageUrl = 'https://angular.io/assets/images/logos/angular/logo-nav@2x.png'; //tạo biến imageUrl
 
     forgot = false; //tạo biến forgot
+
+    //tạo function để gọi khi có event yêu cầu
+    toggleForgot(){
+        this.forgot = !this.forgot;
+    }
 }  

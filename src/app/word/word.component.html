@@ -16,6 +16,12 @@ Còn nếu có [] thì nó hiểu "imageUrl" là 1 biến trong component -->
 <h2 [hidden]="forgot">{{ en }}</h2> 
 
 
+<!-- Cách 3: (event) = "handler": DOM tương tác ngược lại Component thông qua các event.
+Button này sẽ chuyển đổi trạng thái của biến forgot luân phiên true/false.
 
-<!-- Cách 3: (event) = "handler"-->
+Khi bấm button này nó sẽ gửi yêu cầu đổi giá trị của forgot xuống component hoặc cách khác là gọi đến hàm toggleForgot() của component,
+comp đổi value of forgot thì dẫn đến Dòng dòng Hello ở dưới bị ẩn hiện theo-->
+<!-- <button (click)="forgot= !forgot ">Toggle forgot</button> -->
+<button (click)="toggleForgot()">Toggle forgot</button>
+
 
