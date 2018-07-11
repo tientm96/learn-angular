@@ -20,4 +20,7 @@ import { Component } from '@angular/core';
     styleUrls: ['./word.component.css'], //Dạng mảng. file Url thì gọi link, chứ ko chèn trực tiếp.
 })
 
-export class WorldComponent {}
+export class WorldComponent {
+    en: string = 'Hello'; //tạo biến, bên html gọi bằng cách {{en}}
+    vn = 'Xin chào';    //type script tự hiểu kdl, có string hay ko đều đc.
+}  
