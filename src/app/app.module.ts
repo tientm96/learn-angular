@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+//để dùng two-way binding phải import dòng này
+import { FormsModule } from '@angular/forms';
+
 import { AppComponent } from './app.component';
 import { WorldComponent } from './word/word.component';
 import { BookComponent } from './book/book.component';
@@ -25,7 +28,8 @@ và đc gọi vào bên trong declarations của file app.module.cs này.
     UserFormComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
