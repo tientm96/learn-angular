@@ -35,7 +35,7 @@ lúc gọi ra #txtUsername.value và theo định dạng json nên bọc ngoài 
 <code>{{ txtUsername.value | json }}</code> 
 
 
-<!-- Style binding -->
+<!-- Style binding : dùng để binding các tính chất thuộc về style như color, size...-->
 <br>
 <input placeholder="Enter username3" [(ngModel)]="name3">
 
@@ -46,7 +46,15 @@ lúc gọi ra #txtUsername.value và theo định dạng json nên bọc ngoài 
 <!-- <h3 [style.color]="name3.length % 2 === 0 ? 'red' : 'black'">Your name is: {{ name3 }}</h3> -->
 
 <!-- Trường hợp ko gán cứng, ta gọi đến biến style trong comp -->
-<h3 [style.color]="isHighLight ? 'red' : 'black'">Your name is: {{ name3 }}</h3>
+<!-- +Cách ko sử dụng Directive ngStyle -->
+<!-- <h3 [style.color]="isHighLight ? 'red' : 'black'"   [style.fontSize]="isHighLight ? '40px' : '20px'">Your name is: {{ name3 }}</h3> -->
+
+<!-- +Cách CÓ sử dụng Directive ngStyle : dùng để gọi các tính chất thuộc về style như color, size...-->
+<!-- <h3 [ngStyle]="{ color: 'blue', fontSize: '30px'}">Your name is: {{ name3 }}</h3> -->
+<h3 [ngStyle]="name3.length % 2 === 0 ? evenStyle : oddStyle">Your name is: {{ name3 }}</h3> <!--evenStyle và oddStyle là các biến trong comp, nó nằm trong dấu "" -->
+
+
+
 
 <!-- Tại file html cần phân biệt:
     +Trong trường hợp chỉ gọi class: thì "A" là gọi đến biến A trong comp
@@ -54,14 +62,18 @@ lúc gọi ra #txtUsername.value và theo định dạng json nên bọc ngoài 
 -->
 
 <!-- ======================== -->
-<!-- Class binding -->
+<!-- Class binding : dùng để gọi các class bên css hoặc js-->
 
 <!-- TH gán cứng: "square" gọi đến biến square trong file css, vì dấu "" -->
 <!-- <div class="square"></div> -->
 
 <!-- TH gán linh động-->
 <div [class] = "isHighLight ? 'circle' : 'square'"></div> <!--isHighLight=true thì class=circle, hiện hình tròn. isHighLight bên comp là true.-->
-<div [class.circle] = !isHighLight  [class.square] = isHighLight></div> <!-- Nếu isHighLight=true thì ở trên hiện tòn, ở dưới square=true nên hiện vuông
+<div [class.circle] = !isHighLight  [class.square] = isHighLight></div> <!-- Nếu isHighLight=true thì ở trên hiện tròn, ở dưới square=true nên hiện vuông
                                                                             nếu isHighLight=false thì trên vuông, dưới sẽ circle=!false=true nên hiện tròn.-->
 
+                                                                        
+<!-- Sử dụng ngClass: dùng để gọi class css hoặc js -->
+<!-- <div [ngClass]="{ circle: true }"></div> -->
 
+<div [ngClass]="currentClass"></div> <!-- gọi đến biến currentClass trong component-->

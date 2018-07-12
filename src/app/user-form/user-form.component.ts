@@ -9,8 +9,11 @@ export class UserFormComponent implements OnInit {
 
   name = ''; //khai báo biến name rỗng
   name2 = ''; //two-way binding, dùng cho cách 4 sử dụng ngModel.
-  name3 =''; 
-  isHighLight = true;
+  name3 =''; isHighLight = true;
+  evenStyle= { color: 'red', fontSize: '40px'}; //chẵn (số lượng chữ nhập vào là chẵn)
+  oddStyle= { color: 'black', fontSize: '20px'}; //lẽ
+
+  currentClass = { circle: !this.isHighLight, square: this.isHighLight};
   
   constructor() { }
 
