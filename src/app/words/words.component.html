@@ -1,3 +1,13 @@
+<!--sử dụng [(ngModel)] để gắn dữ liệu cho các biến ở newEn,Vn trong comp, mỗi lần nhập vào nó tự gắn dl. -->
+<input placeholder="English" [(ngModel)] = "newEn"/>
+<input placeholder="VietNamese" [(ngModel)] = "newVn"/>
+<br><br>
+<!-- sự kiện click, khi click sẽ gọi đến hàm addWord() của comp -->
+<button (click)="addWord();">Thêm từ mới</button>
+
+
+
+
 <div *ngFor="let word of arrWords">
   <!-- Toán tử 3 ngôi, nếu thuộc tính memorized của word = true, thì có nghĩa đã học rồi, màu xanh -->
   <h4 [ngStyle]="{color: word.memorized ? 'green' : 'red'}">
