@@ -11,9 +11,11 @@ export class WordsComponent implements OnInit {
   newEn = '';
   newVn = '';
 
+  isShowForm = false;
 
 
   //thêm mảng object để dùng ngFor
+  //dữ liệu lấy từ: https://github.com/vanpho93/learn-angular/blob/master/snippet.txt
   arrWords = [
     { id: 1, en: "action", vn: "hành động", memorized: true },
     { id: 2, en: "actor", vn: "diễn viên", memorized: false },
@@ -42,6 +44,9 @@ export class WordsComponent implements OnInit {
     //lúc này chỉ cần ta cho newEn, newVn về lại rỗng thì lập tức [(ngModel)] cũng thành rỗng và ô nhập vào sẽ bị rỗng theo.
     this.newEn = '';
     this.newVn = '';
+
+    // Sau khi thêm thì ẩn form đi bằng cách set lại isShowForm=false. Cmt lại vì để ở đây cũng đc, để qua bên button của html cũng đc.
+    //this.isShowForm=false; //qua button thêm của html để set lại giá trị isShowForm cũng đc.
   }
 
 }

@@ -1,11 +1,18 @@
-<!--sử dụng [(ngModel)] để gắn dữ liệu cho các biến ở newEn,Vn trong comp, mỗi lần nhập vào nó tự gắn dl. -->
-<input placeholder="English" [(ngModel)] = "newEn"/>
-<input placeholder="VietNamese" [(ngModel)] = "newVn"/>
-<br><br>
-<!-- sự kiện click, khi click sẽ gọi đến hàm addWord() của comp -->
-<button (click)="addWord();">Thêm từ mới</button>
+<!-- *ngIf giúp ẩn hiện thẻ, Ở đây là nếu isShowForm=true thì mới hiện thẻ lên.-->
+<div *ngIf="isShowForm">
+  <!--sử dụng [(ngModel)] để gắn dữ liệu cho các biến ở newEn,Vn trong comp, mỗi lần nhập vào nó tự gắn dl. -->
+  <input placeholder="English" [(ngModel)]="newEn" />
+  <br>
+  <input placeholder="VietNamese" [(ngModel)]="newVn" />
+  <br>
+  <!-- sự kiện click, khi click sẽ gọi đến hàm addWord() của comp để thêm phần tử.
+  Sau khi thêm thì ẩn form đi bằng cách set lại isShowForm=false -->
+  <button (click)="addWord(); isShowForm=false">Thêm từ mới</button>
+</div>
 
-
+<!-- button show form ra, show ra rồi thì ẩn đi. Sự kiện click set lại isShowForm=true. Ban đầu bên com nó = false. -->
+<!-- *ngIf giúp ẩn hiện thẻ, Ở đây là nếu isShowForm=false thì mới hiện thẻ lên, =true nghĩa là hiện form rồi thì ẩn thẻ này xuống -->
+<button (click)="isShowForm=true" *ngIf="!isShowForm">Thêm từ mới</button>
 
 
 <div *ngFor="let word of arrWords">
