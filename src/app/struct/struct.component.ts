@@ -10,7 +10,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StructComponent implements OnInit {
 
+  //tạo biến để sd ngIf
   isShow = true;
+
+  //tạo mảng để sử dụng ngFor
+  arrSubjects = ['Angular', 'Nodejs', 'Reactjs'];
 
   constructor() { }
 

@@ -7,5 +7,13 @@
 <!-- ngIf bằng cách gọi đến biến isShow trong comp -->
 <p *ngIf="isShow">struct works!</p>
 
+<!-- Dùng ngFor giống với foreach, subject cũng như item trong foreach -->
+<ul>
+  <li *ngFor="let subject of arrSubjects">
+    <p>{{ 'Thanh phan: ' + subject }}</p>
+  </li>
+</ul>
+
 <!-- click vào thì isShow sẽ đổi trạng thái true-false, làm cho <p/> ở trên sẽ ẩn hiện theo từng trạng thái -->
 <button (click)="isShow =! isShow">Toggle</button>
+
