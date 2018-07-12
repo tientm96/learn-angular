@@ -35,8 +35,33 @@ lúc gọi ra #txtUsername.value và theo định dạng json nên bọc ngoài 
 <code>{{ txtUsername.value | json }}</code> 
 
 
+<!-- Style binding -->
+<br>
+<input placeholder="Enter username3" [(ngModel)]="name3">
 
+<!--TH gán cứng màu, ko linh động được -->
+<!-- <h3 style="color: red">Your name is: {{ name3 }}</h3>-->
 
+<!-- Trường hợp gọi thuộc tính color của style, chỉ định màu là " 'red' ", nếu ko có dấu '' thì nó lại hiểu là biến red trong comp chứ ko phải red là chuỗi màu red đỏ. -->
+<!-- <h3 [style.color]="name3.length % 2 === 0 ? 'red' : 'black'">Your name is: {{ name3 }}</h3> -->
 
+<!-- Trường hợp ko gán cứng, ta gọi đến biến style trong comp -->
+<h3 [style.color]="isHighLight ? 'red' : 'black'">Your name is: {{ name3 }}</h3>
+
+<!-- Tại file html cần phân biệt:
+    +Trong trường hợp chỉ gọi class: thì "A" là gọi đến biến A trong comp
+    +Trong trường hợp gọi [class]: thì "A" là gọi tới biến A trong comp, "'A'" là gọi tới chuỗi A sử dụng tính chất của chuỗi A đó 
+-->
+
+<!-- ======================== -->
+<!-- Class binding -->
+
+<!-- TH gán cứng: "square" gọi đến biến square trong file css, vì dấu "" -->
+<!-- <div class="square"></div> -->
+
+<!-- TH gán linh động-->
+<div [class] = "isHighLight ? 'circle' : 'square'"></div> <!--isHighLight=true thì class=circle, hiện hình tròn. isHighLight bên comp là true.-->
+<div [class.circle] = !isHighLight  [class.square] = isHighLight></div> <!-- Nếu isHighLight=true thì ở trên hiện tòn, ở dưới square=true nên hiện vuông
+                                                                            nếu isHighLight=false thì trên vuông, dưới sẽ circle=!false=true nên hiện tròn.-->
 
 

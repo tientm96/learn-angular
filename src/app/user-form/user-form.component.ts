@@ -9,6 +9,8 @@ export class UserFormComponent implements OnInit {
 
   name = ''; //khai báo biến name rỗng
   name2 = ''; //two-way binding, dùng cho cách 4 sử dụng ngModel.
+  name3 =''; 
+  isHighLight = true;
   
   constructor() { }
 
