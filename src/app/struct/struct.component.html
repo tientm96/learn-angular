@@ -1,0 +1,11 @@
+
+<!-- sử dụng ngIf -->
+
+<!-- *ngIf=true thì nó hiện thẻ p, false thì nó ẩn -->
+<!-- <p *ngIf=true>struct works!</p> -->
+
+<!-- ngIf bằng cách gọi đến biến isShow trong comp -->
+<p *ngIf="isShow">struct works!</p>
+
+<!-- click vào thì isShow sẽ đổi trạng thái true-false, làm cho <p/> ở trên sẽ ẩn hiện theo từng trạng thái -->
+<button (click)="isShow =! isShow">Toggle</button>

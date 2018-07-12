@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+// Dùng lệnh ng g c book để tạo component book có đầy đủ 4 file.
+
 @Component({
   selector: 'app-book',
   templateUrl: './book.component.html',
