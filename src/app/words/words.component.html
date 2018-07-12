@@ -15,11 +15,14 @@
 <button (click)="isShowForm=true" *ngIf="!isShowForm">Thêm từ mới</button>
 
 
-<div *ngFor="let word of arrWords">
+<!-- dùng class=word trong css để bọc mỗi phần tử lại-->
+<div *ngFor="let word of arrWords" class="word">
   <!-- Toán tử 3 ngôi, nếu thuộc tính memorized của word = true, thì có nghĩa đã học rồi, màu xanh -->
   <h4 [ngStyle]="{color: word.memorized ? 'green' : 'red'}">
     {{ word.en }}
   </h4>
-  
   <p>{{ word.vn }}</p>
+
+  <!-- Gọi đến hàm removeWord trong comp -->
+  <button (click)="removeWord(word.id);">xóa</button>
 </div>

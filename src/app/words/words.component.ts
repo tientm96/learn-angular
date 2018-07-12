@@ -49,4 +49,14 @@ export class WordsComponent implements OnInit {
     //this.isShowForm=false; //qua button thêm của html để set lại giá trị isShowForm cũng đc.
   }
 
+
+  //hàm xóa phần tử, nhận id từ html truyền vào.
+  //Từ id, tìm index của phần tử đó, rồi xóa theo index.
+  //Dùng hàm splice(startnumber, countnumber): TRong mảng xóa bắt đầu từ phần tử bao nhiêu và xóa đi bao nhiêu phần tử.
+  // ở đây bắt đầu từ vị trí index, và xóa 1 phần tử.
+  removeWord(id: number){
+    const index = this.arrWords.findIndex(word => word.id === id);
+    this.arrWords.splice(index,1);
+  }
+
 }
