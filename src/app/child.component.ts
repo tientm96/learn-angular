@@ -4,12 +4,15 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
     selector: 'app-child',
     template: `<button (click)="addForParent();">Add</button>
                 <button (click)="subForParent();">Sub</button>
+                <br><br>
+                <h3>{{ value2 }}</h3>
     `
-    
-
 })
 
 export class ChildComponent implements OnInit {
+
+    value2 = 0;
+
     constructor() { }
 
     ngOnInit() { }
