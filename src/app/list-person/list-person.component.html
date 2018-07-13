@@ -18,6 +18,14 @@
   <ng-container>: là thẻ khi render ra sẽ mất đi, ko hiển thị trên element khi F12 -->
 
 <ng-container *ngFor="let person of arrPeople">
-  <app-person [name]="person.name" [age]="person.age"></app-person>
+  <app-person
+    [name]="person.name"
+    [age]="person.age" 
+    (removePerson)="removePersonByName($event)"> 
+    <!--Vì chưa biết param là gì, nên ta luôn để là $event. 
+      (removePerson): là sự kiện output đc gửi từ person.js qua, sự kiện này gửi thêm param qua, param này đc đưa vào $event -->
+</app-person>
 
 </ng-container>
+
+

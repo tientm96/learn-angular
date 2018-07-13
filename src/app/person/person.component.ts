@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 // Dùng lệnh ng g c person để tạo component person có đầy đủ 4 file.
 
@@ -13,12 +13,46 @@ export class PersonComponent implements OnInit {
   import Input vào dòng import ở trên cùng.
   Khi khai báo các biến để lấy input thì phải @Input() biến: kdl;
   */ 
- @Input() name: String;
+
+  /*string: kdl bình thường. Kiểu này ta có thể so sánh 2 chuỗi = nhau hay ko.
+
+String: object. Là kiểu hỗn hợp. Kiểu này ta ko thể so sánh 2 chuỗi được, vì ngoài giá trị 2 chuỗi còn các thuộc tính khác.
+(ko thể so sánh object như so sánh kdl bình thường)
+  */
+
+  /*Ứng dụng Output vào để gửi sự kiện từ person.ts qua list-person.ts: Xem các file child.comp.ts để hiểu rõ hơn về Output.
+    -Import EventEmitter, Output ở dòng trên cùng
+    -Khai báo sự kiện phải có @Output eventname = new EventMiter<kiểu dl tham số truyền từ đây qua list-person.html>();.
+    -eventname.emit(tham số truyền đi): để kích hoạt sự kiện truyền đi, đồng thời gửi param truyền đi đó.
+
+    -event removePerson đã đc tạo ở đây, qua list-person.html ta chỉ cần gọi đến event removePerson: <app-person (removePerson)="removePersonByName($event)"></app-person>
+        +person.comp.ts gửi (removePerson) đến list-person.comp.html, nhưng lúc này removePerson chưa có tác dụng vì chưa đc kích hoạt.
+        +tại person.comp.html, mỗi lần kích btnXóa thì event removePerson lại đc kích hoạt(gọi đến removePerson.emit(name)), 
+        nên (removePerson) bên list-person mới có tác dụng, mới hoạt động.
+
+    =>Tóm lại: ở đây html bấm Xóa thì kích hoạt event removePerson, làm cho event removePerson đã đc gọi bên list-person.html có tác dụng, sẽ thực thi sự kiện đó.
+
+    -Tại list-person.html: ( <app-person (removePerson)="removePersonByName($event)"></app-person> ): Vì chưa biết param là gì, nên ta luôn để là $event. 
+      +(removePerson): là sự kiện output đc gửi từ person.ts qua, sự kiện này gửi thêm param qua, param này đc đưa vào $event.
+      +gửi param qua bằng cách removePerson.emit(param truyền qua);
+      +ở đây param truyền qua là chuỗi, nên để tiện cho việc so sánh thì param truyền vào phải là string chứ ko phải String (vì String là object khó so sánh).
+      -->
+  
+  */
+
+ @Input() name: string;
  @Input() age: Number;
+
+
+ @Output() removePerson = new EventEmitter<string>();
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  removeByClick(){
+    this.removePerson.emit(this.name);
   }
 
 }
