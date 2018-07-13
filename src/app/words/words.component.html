@@ -56,5 +56,11 @@ Nếu (filterStatus==='XEM_CHUA_NHO' && !word.memorized): để đk ()=true thì
   
     <!-- Gọi đến hàm removeWord trong comp -->
     <button (click)="removeWord(word.id);">xóa</button>
+
+    <!-- Thay đổi trạng thái đã thuộc / chưa thuộc:
+     Mỗi sự kiện click sẽ khiến memorized đổi thành true/false. 
+    Nếu memorized=true nghĩa đã thuộc, vậy sẽ hiện lên button chưa thuộc để đổi trạng thái. Và ngược lại...-->
+    <button (click)="word.memorized = !word.memorized">{{ word.memorized ? 'Chưa thuộc' : 'Đã thuộc' }}</button>  
+
   </div>
 </div>
