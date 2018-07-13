@@ -1,0 +1,23 @@
+
+<!--Tương tác, truyền mảng từ folder list-person sang folder person.
+
+  Lấy giá trị từng person của mảng arrPeople trong comp, truyền qua cho folder person.component.ts.
+  Vì truyền từ đây qua folder person.component.ts nên phải gọi <app-person>.
+
+  Chú ý: <app-person [name]="person.name" [age]="person.age">:
+    Với [name],[age] là các thuộc tính Input của person.component.ts đc gọi ra để gán các giá trị vào.
+    
+    Nếu ko có [] bọc ngoài name,age đầu, thì sẽ đc hiểu là gán trực tiếp giá trị chuỗi "person.name","person.age" cho nó, chứ ko phải giá trị lấy từ duyệt mảng.
+ -->
+<!-- <div *ngFor="let person of arrPeople">
+  <app-person [name]="person.name" [age]="person.age"></app-person>
+
+</div> -->
+
+<!-- Ở trên thẻ div, khi render ra thì Inspect(F12) sẽ cho ra code có dòng div. Nếu ko muốn xuất hiện thẻ bọc div thì ta dùng thẻ <ng-container>.
+  <ng-container>: là thẻ khi render ra sẽ mất đi, ko hiển thị trên element khi F12 -->
+
+<ng-container *ngFor="let person of arrPeople">
+  <app-person [name]="person.name" [age]="person.age"></app-person>
+
+</ng-container>
