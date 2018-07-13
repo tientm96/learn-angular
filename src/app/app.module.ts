@@ -15,6 +15,7 @@ import { ListPersonComponent } from './list-person/list-person.component';
 
 import { ParentComponent } from './parent.component';
 import { ChildComponent } from './child.component';
+import { CardComponent } from './card.component';
 
 
 
@@ -40,7 +41,8 @@ và đc gọi vào bên trong declarations của file app.module.cs này.
     PersonComponent,
     ListPersonComponent,    
     ParentComponent,
-    ChildComponent  
+    ChildComponent,
+    CardComponent  
   ],
   imports: [
     BrowserModule,

@@ -25,7 +25,24 @@
 <p>------------------------------</p>
 
 <app-parent></app-parent>
+<p>------------------------------</p>
 
+<!-- add card.comp học ngContent: khung bọc ngoài cho những comp khác -->
+<!-- Chỉ truyền luôn vào class chính, truyền vào 1 chỗ -->
+<app-card>
+    <p>Khoa phạm: truyền vào 1 chỗ</p>
+</app-card>
+
+<!-- Truyền vào các class khác nhau, truyền vào nhiều chỗ-->
+<!-- dù header ở dưới nhưng nó vẫn hiện lên trên khi render ra, vì trong comp card.ts nó nằm ở trên -->
+<app-card>
+    <p class="card-body">Khoa phạm: nhiều chỗ-vào body</p>
+    <p class="card-header">Khoa phạm: nhiều chỗ-vào header</p>
+    <br><br>
+    <!-- thậm chí truyền vào thẻ là comp cũng đc -->
+    <app-child class="card-body">Khoa phạm: nhiều chỗ-vào header</app-child>
+    
+</app-card>
 
 <br> <br>
 
