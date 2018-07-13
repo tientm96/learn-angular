@@ -13,6 +13,10 @@ import { WordsComponent } from './words/words.component';
 import { PersonComponent } from './person/person.component';
 import { ListPersonComponent } from './list-person/list-person.component';
 
+import { ParentComponent } from './parent.component';
+import { ChildComponent } from './child.component';
+
+
 
 /*TẠO COMPONENT
 - app.module.ts : là file chạy đầu tiên.
@@ -34,7 +38,9 @@ và đc gọi vào bên trong declarations của file app.module.cs này.
     StructComponent,
     WordsComponent,
     PersonComponent,
-    ListPersonComponent,      
+    ListPersonComponent,    
+    ParentComponent,
+    ChildComponent  
   ],
   imports: [
     BrowserModule,
