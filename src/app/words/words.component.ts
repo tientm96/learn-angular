@@ -11,6 +11,8 @@ export class WordsComponent implements OnInit {
   newEn = '';
   newVn = '';
 
+  filterStatus='XEM_TAT_CA';
+
   isShowForm = false;
 
 
@@ -58,5 +60,16 @@ export class WordsComponent implements OnInit {
     const index = this.arrWords.findIndex(word => word.id === id);
     this.arrWords.splice(index,1);
   }
+
+
+  /*Viết hàm lọc danh sách.
+  */
+ getShowStatus(memorized: boolean){
+    const dkXemTatCa = this.filterStatus==='XEM_TAT_CA'; //3 cái đều trả về true/false
+    const dkXemDaNho = this.filterStatus==='XEM_DA_NHO' && memorized; //memorized nghĩa là memorized===true 
+    const dkXemChuaNho = this.filterStatus==='XEM_CHUA_NHO' && !memorized; 
+    
+    return dkXemTatCa || dkXemDaNho || dkXemChuaNho; //viết tắt của return dkXemTatCa nếu dkXemTatCa===true,...    
+ }
 
 }

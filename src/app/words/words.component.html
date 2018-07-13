@@ -14,15 +14,47 @@
 <!-- *ngIf giúp ẩn hiện thẻ, Ở đây là nếu isShowForm=false thì mới hiện thẻ lên, =true nghĩa là hiện form rồi thì ẩn thẻ này xuống -->
 <button (click)="isShowForm=true" *ngIf="!isShowForm">Thêm từ mới</button>
 
+<br><br>
 
-<!-- dùng class=word trong css để bọc mỗi phần tử lại-->
-<div *ngFor="let word of arrWords" class="word">
-  <!-- Toán tử 3 ngôi, nếu thuộc tính memorized của word = true, thì có nghĩa đã học rồi, màu xanh -->
-  <h4 [ngStyle]="{color: word.memorized ? 'green' : 'red'}">
-    {{ word.en }}
-  </h4>
-  <p>{{ word.vn }}</p>
+<!-- Bài 22: Lọc mảng hiển thị. 
+Dùng thẻ select để xác định 1 danh sách có thể chọn giống combobox. Thẻ option xác định một tùy chọn trong danh sách drop-down.
 
-  <!-- Gọi đến hàm removeWord trong comp -->
-  <button (click)="removeWord(word.id);">xóa</button>
+Sử dụng [(ngModel)] gắn với biến filterStatus trong comp, value trong thẻ option có giá trị = filterStatus sẽ đc chọn ra trong khung danh sách.
+Khi chọn 1 option thì value của nó sẽ đc gắn vào ngModel và sẽ gắn vào filterStatus, nhờ vậy ta dùng filterStatus để ngIf lấy ra các giá trị tương ứng ở bên dưới. 
+vd: xổ ra rồi chọn mục Xem tất cả thì filterStatus=ngModel=valueOption=XEM_TAT_CA
+
+-Những phần tử nào đc xuất hiện sẽ code trong phần *ngIf bên dưới. Nhắc lại thẻ chứa *ngIf chỉ hiển thị <=> *ngIf=true.
+-Duyệt mỗi thẻ div trong *ngFor, thẻ div đó có showed hay ko tùy thuộc vào *ngIf của nó có = true hay ko:
+Nếu filterStatus==='XEM_TAT_CA' (nghĩa là chọn Xem tất cả): ko có điều kiện gì thêm cả, mọi thẻ trong div trong *ngFor đều đc hiển thị.
+Nếu (filterStatus==='XEM_DA_NHO' && word.memorized): để đk ()=true thì filterStatus=XEM_DA_NHO và word.memorized=true. 
+  Lúc này những thẻ div có word.memorized=false sẽ làm cho ()=false, nên những thẻ div đó sẽ ko đc hiển thị ra.
+Nếu (filterStatus==='XEM_CHUA_NHO' && !word.memorized): để đk ()=true thì filterStatus=XEM_CHUA_NHO và word.memorized=false. 
+  Lúc này những thẻ div có word.memorized=true sẽ làm cho ()=false, nên những thẻ div đó sẽ ko đc hiển thị ra.
+
+
+**Cách 2: Viết function cho việc show từ nào đó lên hay ko, function ở trong file ts.
+
+-->
+<select [(ngModel)]="filterStatus">
+  <option value="XEM_TAT_CA">Xem tất cả</option>
+  <option value="XEM_DA_NHO">Xem từ đã nhớ</option>
+  <option value="XEM_CHUA_NHO">Xem từ chưa nhớ</option>
+</select>
+
+<div *ngFor="let word of arrWords" >
+  <!-- dùng class=word trong css để bọc mỗi phần tử lại-->  
+  <!-- <div class="word" *ngIf="filterStatus==='XEM_TAT_CA' || (filterStatus==='XEM_DA_NHO' && word.memorized) || (filterStatus==='XEM_CHUA_NHO' && !word.memorized)"> -->
+
+  <!-- Cách 2: gọi function xét điều kiện lọc từ comp, truyền vào memorized của từng word đc duyệt trong *ngFor,
+  function getShowStatus() sẽ return về true/false, nếu true thì div của phần tử này sẽ đc hiển thị -->
+  <div class="word" *ngIf="getShowStatus(word.memorized);">
+    <!-- Toán tử 3 ngôi, nếu thuộc tính memorized của word = true, thì có nghĩa đã học rồi, màu xanh -->
+    <h4 [ngStyle]="{color: word.memorized ? 'green' : 'red'}">
+      {{ word.en }}
+    </h4>
+    <p>{{ word.vn }}</p>
+  
+    <!-- Gọi đến hàm removeWord trong comp -->
+    <button (click)="removeWord(word.id);">xóa</button>
+  </div>
 </div>
