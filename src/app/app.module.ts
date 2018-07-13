@@ -10,6 +10,7 @@ import { BookComponent } from './book/book.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { StructComponent } from './struct/struct.component';
 import { WordsComponent } from './words/words.component';
+import { PersonComponent } from './person/person.component';
 
 /*TẠO COMPONENT
 - app.module.ts : là file chạy đầu tiên.
@@ -29,7 +30,8 @@ và đc gọi vào bên trong declarations của file app.module.cs này.
     BookComponent,
     UserFormComponent,
     StructComponent,
-    WordsComponent  
+    WordsComponent,
+    PersonComponent    
   ],
   imports: [
     BrowserModule,
