@@ -2,7 +2,11 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 
 @Component({
     selector: 'app-child',
-    template: `<button (click)="addForParent();">Add</button>`
+    template: `<button (click)="addForParent();">Add</button>
+                <button (click)="subForParent();">Sub</button>
+    `
+    
+
 })
 
 export class ChildComponent implements OnInit {
@@ -23,11 +27,28 @@ export class ChildComponent implements OnInit {
     =>Tóm lại: ở đây bấm Add thì kích hoạt myClick, làm cho myClick đc gọi bên parent.ts có tác dụng dẫn đến value++.
     */
 
-    //tạo ra sự kiện output
-    @Output() myClick = new EventEmitter();
+    /*bài 28: Ouput có tham số
+    -TH Ở parent.ts cần nhận tham số từ child.ts truyền về:
+    +Vị trí nhận tham số ở parent.ts phải truyền vào LUÔN là tham số $event
+    +Ở child mỗi khi xác nhận sự kiện myClick thì truyền kèm theo tham số
+    +Ở @Output chỗ new EventEmitter<boolean> phải truyền kiểu dl vào, để khẳng định đúng kdl cần truyền qua bên parent, ở đây khẳng định tham số truyền qua là boolean.
+    (nếu ko có <boolean> thì nó sẽ truyền qua bất kỳ cái gì mà sẽ ko báo lỗi)
+    
+    vd: ở child: this.myClick.emit(true); 
+        ở parent: changeValue($event);
+        =>thì là truyền tham số true ở child qua tham số $event ở parent mỗi khi myClick đc kích hoạt.
+
+    */
+
+    //tạo ra sự kiện output, kèm theo <kiểu dl tham số cần truyền qua parent>
+    @Output() myClick = new EventEmitter<boolean>();
 
     //kích hoạt sự kiện output
     addForParent(){
-        this.myClick.emit();
+        this.myClick.emit(true);
+    }
+
+    subForParent(){
+        this.myClick.emit(false);
     }
 } 

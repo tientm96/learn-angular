@@ -4,9 +4,11 @@ import { Component, OnInit } from '@angular/core';
     selector: 'app-parent',
     template: `
         <h3>{{ value }}</h3>
-        <app-child (myClick)="value = value + 1"></app-child>
+        <app-child (myClick)="changeValue($event);"></app-child>
     `
+    //$event nhận tham số truyền qua từ child.ts: qua đó xem.
 })
+
 
 export class ParentComponent implements OnInit {
     
@@ -15,4 +17,8 @@ export class ParentComponent implements OnInit {
     constructor() { }
 
     ngOnInit() { }
+
+    changeValue(isAdd: boolean){
+        isAdd ? this.value++ : this.value--; //isAdd=true thì ++
+    }
 }
