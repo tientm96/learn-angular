@@ -1,5 +1,9 @@
-<h3>Saigon is now</h3>
-<input placeholder="Enter your city name">
+<!-- nếu = rỗng thì hiện yêu cầu nhập. Nếu nhập cityName rồi thì hiện ra tên city đó + nhiệt độ -->
+<h3>{{ cityName === '' ? 'Enter your city name' : (cityName + ' is now ' + temp) }}</h3>
+
+<!-- ngModel sẽ gắn với biến txtCityName trong comp. Nó lấy giá trị nhập vào trong ô này gắn vào txtCityName-->
+<input placeholder="Enter your city name" [(ngModel)]="txtCityName">
 
 <br>
-<button>Get weather</button>
+<!-- sự kiện click sẽ gọi đến hàm getWeather(); -->
+<button (click)="getWeather();">Get weather</button>

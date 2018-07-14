@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IpService } from './ip.service';
+import { IpService } from './ip.service'; //IpService: là class bên trong ip.service.ts
 
 @Component({
   selector: 'app-ip2',
