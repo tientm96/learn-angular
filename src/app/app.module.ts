@@ -4,6 +4,10 @@ import { NgModule } from '@angular/core';
 //để dùng two-way binding phải import dòng này và gọi ra dưới phần imports: []
 import { FormsModule } from '@angular/forms';
 
+//để lấy service từ server phải import Http
+import { HttpModule } from '@angular/http';
+
+
 import { AppComponent } from './app.component';
 import { WorldComponent } from './word/word.component';
 import { BookComponent } from './book/book.component';
@@ -12,11 +16,11 @@ import { StructComponent } from './struct/struct.component';
 import { WordsComponent } from './words/words.component';
 import { PersonComponent } from './person/person.component';
 import { ListPersonComponent } from './list-person/list-person.component';
-
 import { ParentComponent } from './parent.component';
 import { ChildComponent } from './child.component';
 import { CardComponent } from './card.component';
 import { LearnPipeComponent } from './learn-pipe/learn-pipe.component';
+import { IpComponent } from './ip/ip.component';
 
 //import round.pipe.ts cũng giống như import 1 comp.
 import { RoundPipe } from './round.pipe';
@@ -49,11 +53,13 @@ và đc gọi vào bên trong declarations của file app.module.cs này.
     ChildComponent,
     CardComponent,
     LearnPipeComponent,
+    IpComponent,
     RoundPipe
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpModule
   ],
   providers: [],
   bootstrap: [AppComponent]
