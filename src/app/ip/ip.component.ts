@@ -49,8 +49,11 @@ export class IpComponent implements OnInit {
     //  .catch(err => console.log(err)); //nếu có lỗi thì phóng lỗi ra console.
      //Chạy và F12 vào console xem kết quả, nó sẽ log ra object với thuộc tính ip chứa ip.
 
-     .then(resJson => this.ip = resJson.ip)
+     .then(resJson => this.ip = resJson.ip) //gán ip lấy từ service cho biến ip ở trên.
      .catch(err => console.log(err)); //nếu có lỗi thì phóng lỗi ra console.
+
+    //Ở đây then: nhận giá trị trả về, và catch phóng ngoại lệ.
+
     }
 
   ngOnInit() {
