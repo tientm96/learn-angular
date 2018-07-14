@@ -18,7 +18,6 @@ import { IpService } from './ip.service';
 
   +vào trong app.module.ts: import { IpService } from './ip2/ip.service';
   +cũng tại app.module.ts: kéo xuống gọi IpService vào trong providers là xong: providers: [IpService]
-
   */
 })
 
