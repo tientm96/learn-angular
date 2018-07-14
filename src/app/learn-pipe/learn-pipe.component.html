@@ -24,3 +24,15 @@ TH1: nếu là kdl bình thường gửi từ comp qua thì chỉ {{biến}} là
 <!-- TH2: nếu là kdl từ server gửi về comp, rồi comp chuyển qua đây. Thì phải dùng async để chuyển.
 Vào video sau để hiểu rõ hơn về permise async: https://www.youtube.com/watch?v=Xj0pqYWwX8Y -->
 <p>{{ addressServer | async }}</p>
+
+<!-- Custom pipe: tự tạo 1 pipe làm tròn: xem trong round.pipe.ts -->
+
+<!-- Sau khi gọi đến pipe làm tròn, xử lý số, sẽ render ra là 2, chứ ko phải 1.9 -->
+
+<!-- Ở đây ta có truyền vào tham số true/false cho hàm transform() của roundNum, để nó làm tròn lên xuống theo ý muốn. 
+:10/:1 là 2 tham số truyền vào cho tham số addTo bên trong hàm  transform().
+Truyền vào bao nhiêu tham số cũng đc, mỗi tham số tương ứng truyền theo thứ tự: (pipename: ts1:ts2:ts3...)-->
+
+<p>{{ 1.9 | roundNum: true: 10 }}</p>
+<p>{{ 3.7 | roundNum: false: 1 }}</p>
+

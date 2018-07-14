@@ -18,6 +18,10 @@ import { ChildComponent } from './child.component';
 import { CardComponent } from './card.component';
 import { LearnPipeComponent } from './learn-pipe/learn-pipe.component';
 
+//import round.pipe.ts cũng giống như import 1 comp.
+import { RoundPipe } from './round.pipe';
+
+
 
 
 /*TẠO COMPONENT
@@ -44,7 +48,8 @@ và đc gọi vào bên trong declarations của file app.module.cs này.
     ParentComponent,
     ChildComponent,
     CardComponent,
-    LearnPipeComponent
+    LearnPipeComponent,
+    RoundPipe
   ],
   imports: [
     BrowserModule,
