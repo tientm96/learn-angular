@@ -1,0 +1,26 @@
+
+<!-- Pipe: công cụ show dữ liệu ra cho người dùng xem. Chuyển đổi từ dữ liệu thô, sang dữ liệu thân thiện hơn cho người dùng. -->
+
+<!-- Muốn tìm format của date thì angular.io/api rồi chọn pipe trong phần type.
+Chọn vào DatePipe để xem các format của nó, có rất nhiều loại format. Kéo xuống để xem Examples ví dụ.-->
+<p>
+  {{ birthday | date:'medium' }}
+</p>
+
+<!-- định dạng json: gọi 1 kiểu OBJECT trong comp ra thì phải định dạng json cho nó. -->
+<p>{{ person | json }}</p>
+
+<!-- uppercase, lowercase, titlecase: định dạng hoa, thường, tiêu đề -->
+<p>{{ person.name | uppercase }}</p>
+
+<!-- Kết hợp giữa 2 hoặc nhiều pipe: vừa định dạng json, vừa uppercase-->
+<p>{{ person | json | uppercase }}</p>
+
+<!-- Dùng AsyncPipe để xử lý bất đồng bộ:  
+TH1: nếu là kdl bình thường gửi từ comp qua thì chỉ {{biến}} là đc
+-->
+<p>{{ addressBT }}</p>
+
+<!-- TH2: nếu là kdl từ server gửi về comp, rồi comp chuyển qua đây. Thì phải dùng async để chuyển.
+Vào video sau để hiểu rõ hơn về permise async: https://www.youtube.com/watch?v=Xj0pqYWwX8Y -->
+<p>{{ addressServer | async }}</p>

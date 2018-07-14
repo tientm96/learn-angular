@@ -16,6 +16,7 @@ import { ListPersonComponent } from './list-person/list-person.component';
 import { ParentComponent } from './parent.component';
 import { ChildComponent } from './child.component';
 import { CardComponent } from './card.component';
+import { LearnPipeComponent } from './learn-pipe/learn-pipe.component';
 
 
 
@@ -39,10 +40,11 @@ và đc gọi vào bên trong declarations của file app.module.cs này.
     StructComponent,
     WordsComponent,
     PersonComponent,
-    ListPersonComponent,    
+    ListPersonComponent,
     ParentComponent,
     ChildComponent,
-    CardComponent  
+    CardComponent,
+    LearnPipeComponent
   ],
   imports: [
     BrowserModule,
