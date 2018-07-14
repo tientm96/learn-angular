@@ -26,6 +26,9 @@ import { Ip2Component } from './ip2/ip2.component';
 //import round.pipe.ts cũng giống như import 1 comp.
 import { RoundPipe } from './round.pipe';
 
+//import ip.service.ts ở đây: để nhiều comp đều sử dụng đc service này.
+//kéo xuống providers[] gọi nó ra.
+import { IpService } from './ip2/ip.service';
 
 
 
@@ -63,7 +66,7 @@ và đc gọi vào bên trong declarations của file app.module.cs này.
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [IpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
