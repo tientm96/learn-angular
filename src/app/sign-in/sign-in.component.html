@@ -6,7 +6,7 @@
 
 **Template-driven forms: https://angular.io/guide/forms
 -Các control đc bao lại trong thẻ <Form>
--Button Submit trong form: không cần tạo sự kiện (click) trong btn Submit nữa, sự kiện sẽ đc đưa thẳng lên khai báo form, khi bấm btn Submit thì nó sẽ gọi tới sự kiện (submit) trong khai báo form.
+-Button Submit trong form: không cần tạo sự kiện (click) trong btn Submit nữa, sự kiện sẽ đc đưa thẳng lên khai báo form, khi bấm btn Submit thì nó sẽ gọi tới sự kiện (submit/ngSubmit) trong khai báo form.
 
 -Tất cả thẻ input đều phải có [(ngModel)], có thể nó ko gắn cho 1 biến nào cả nhưng ép buộc phải có ngModel.
 ép buộc phải có thuộc tính name="biến mà ngModel gắn" mới có thể sử dụng ngModel trong form.
@@ -19,7 +19,7 @@ Template variables #formSignIn đc gắn với directive ngForm để lấy ra c
 
 <!-- Xem giải thích ở trên: Tóm gọn ở đây.
 -khai báo name="biến gắn với ngModel"
--đưa sự kiện click của Submit lên form thành sự kiện submit cùng tên với btn.(cho đúng tiêu chuẩn, nếu ko đưa lên cũng đc ko sao cả)
+-đưa sự kiện click của Submit lên form thành sự kiện submit/ngSubmit cùng tên với btn Submit.(cho đúng tiêu chuẩn, nếu ko đưa lên cũng đc ko sao cả)
 
 -***thêm directive ngForm, và Template variables #formSignIn gắn với nó:
 + #formSignIn LẤY RA TẤT CẢ CÁC GIÁ TRỊ INPUT VÀO CỦA FORM. 
@@ -34,15 +34,46 @@ Vậy nên ta muốn truyền mọi input về component thì chỉ cần truy�
 kéo xuống phần value của object đó, sẽ thấy có chứa mọi input của form.
 Nên bên comp muốn lấy ra value thì gọi  console.log(formSignIn.value)
 -->
+
+<!-- Bài 45: Validate template form
+-Validate dữ liệu: là kiểm tra dữ liệu trước khi form submit lên server, giúp người dùng biết được trường nào họ đang nhập có thể sai.
+vd: tại email ép buộc người dùng nhập vào, nếu người dùng chưa nhập vào thì chưa cho phép người dùng bấm btn Submit.
+
+-thuộc tính required(cần thiết: thêm vào sau name): nếu ô đó chưa nhập gì thì nó trả về true, còn nhập rồi thì false.
+và required nó trả về trong errors của Object (F12 ra sẽ thấy).
+
+(bên comp chỉ console.log(formSignIn): render rồi vào object form>controls>email>errors>thấy required=true nếu chưa nhập)
+
++Nếu formSignIn.controls.email?.errors?.required = true : có nghĩa là chưa nhập, cho hiển thị dòng thông báo.
+Dấu email? và errors?: Bởi vì lúc đầu render lên chưa thể có email hay error nếu chưa ấn btn Submit, nên để dấu ? ý là có thể ko có.
+(**render ko báo lỗi, nhưng dòng này trong vs code lại báo lỗi: nên tạm thời đóng nó lại).
+
+-Ẩn btn Submit nếu chưa nhập dl ô nào đó.
++Sử dụng formSignIn.invalid. CHÚ Ý: invalid: Không hiệu lực >< valid: có hiệu lực
+(thuộc tính valid xem trong F12 của từng input đều có).
+
++Khi ta đặt required cho input nào thì thuộc tính valid(có hiệu lực) sẽ phụ thuộc vào required đó. 
+Nếu chưa nhập input thì required=true, lúc đấy thuộc tính valid=false thì cho button Submit ẩn đi.
+
++Ở đây formSignIn.invalid là KHÔNG HIỆU LỰC, nó ngược lại với valid, nên cho formSignIn.invalid=true 
+có nghĩa valid=false thì cho ẩn btn Submit đi.
+
++Nếu ta xét valid cho nhiều input, thì nó sẽ xét nếu valid(có hiệu lực) của tất cả == true 
+thì mới cho invalid(ko hiệu lực)=false, mới cho hiện lên.  
+-->
 <h3>Bài 43,44: Form - sign-in.component.html</h3>
 
-<form (submit)="onSubmit(formSignIn);" #formSignIn="ngForm">
-    <input placeholder="Email" [(ngModel)]="email" name="email">
+<form (ngSubmit)="onSubmit(formSignIn);" #formSignIn="ngForm">
+    <input placeholder="Email" [(ngModel)]="email" name="email" required>
+
+    <p *ngIf="formSignIn.controls.email?.errors?.required">Email is required</p>
+
     <br>
-    <input type="password" placeholder="Password" [(ngModel)]="password" name="password">
+    <input type="password" placeholder="Password" [(ngModel)]="password" name="password" required>
+    <p *ngIf="formSignIn.controls.password?.errors?.required">Password is required</p>
+
     <br>
-    <br>
-    <button>Submit</button>
+    <button [disabled]="formSignIn.invalid">Submit</button>
 </form>
 
 
