@@ -1,17 +1,48 @@
-
-<!--hầu hết ứng dụng thu thập thông tin người dùng qua các form.
-Angular hỗ trở xử lý form input rất tốt.
-Đã học cách xử lý tập tin qua input bằng two-way binding, event binding.
-
-Tuy nhiên đối với các form nhập liệu lớn hơn, thì cách thu thập thông tin qua từng input sẽ gặp khó khăn.
- =>giải pháp: gộp các input đó thành các form để có sử dụng tốt hơn.
- -->
-
- <!-- placeholder: thuộc tính hiện ẩn trong khung -->
+<!-- placeholder: thuộc tính hiện ẩn trong khung -->
 <!-- Sử dụng [(ngModel)] để gắn với các biến email, password trong comp. Khi ta nhập từ form vào thì nó tự động gắn giá trị cho các biến đó.-->
+
+
+<!-- -Có 2 loại phổ biến là Template-driven forms và Reactive Forms: Bài này ta học Template-driven forms 
+
+**Template-driven forms: https://angular.io/guide/forms
+-Các control đc bao lại trong thẻ <Form>
+-Button Submit trong form: không cần tạo sự kiện (click) trong btn Submit nữa, sự kiện sẽ đc đưa thẳng lên khai báo form, khi bấm btn Submit thì nó sẽ gọi tới sự kiện (submit) trong khai báo form.
+
+-Tất cả thẻ input đều phải có [(ngModel)], có thể nó ko gắn cho 1 biến nào cả nhưng ép buộc phải có ngModel.
+ép buộc phải có thuộc tính name="biến mà ngModel gắn" mới có thể sử dụng ngModel trong form.
+
+-Bên trong khai báo form: ngoài sự kiện (submit) đc khai báo tại đây; 
+thì còn có directive ngForm đc khai báo: #formSignIn="ngForm";
+Template variables #formSignIn đc gắn với directive ngForm để lấy ra các giá trị trong MỌI INPUT của ngForm.
+
+-->
+
+<!-- Xem giải thích ở trên: Tóm gọn ở đây.
+-khai báo name="biến gắn với ngModel"
+-đưa sự kiện click của Submit lên form thành sự kiện submit cùng tên với btn.(cho đúng tiêu chuẩn, nếu ko đưa lên cũng đc ko sao cả)
+
+-***thêm directive ngForm, và Template variables #formSignIn gắn với nó:
++ #formSignIn LẤY RA TẤT CẢ CÁC GIÁ TRỊ INPUT VÀO CỦA FORM. 
+
++Lúc này trong form tất cả input nhập vào là: email vầ password; sẽ được đưa vào ngForm và gắn cho #formSignIn;
+Vậy nên ta muốn truyền mọi input về component thì chỉ cần truyền biến formSignIn là đủ.
+(Ở đây đưa vào hàm onSubmit(formSignIn) để truyền formSignIn về)
+
++Lúc này comp thật dễ dàng để nhận và gửi dl lên server.
+
++Thành phần trong formSignIn: Lúc này nếu bên comp console.log(formSignIn) thì F12 ta sẽ thấy 1 object NgForm{} lớn,
+kéo xuống phần value của object đó, sẽ thấy có chứa mọi input của form.
+Nên bên comp muốn lấy ra value thì gọi  console.log(formSignIn.value)
+-->
 <h3>Bài 43,44: Form - sign-in.component.html</h3>
-<input placeholder="Email" [(ngModel)]="email">
-<br>
-<input type="password" placeholder="Password" [(ngModel)]="password">
-<br><br>
-<button (click)="onSubmit();">Submit</button>
+
+<form (submit)="onSubmit(formSignIn);" #formSignIn="ngForm">
+    <input placeholder="Email" [(ngModel)]="email" name="email">
+    <br>
+    <input type="password" placeholder="Password" [(ngModel)]="password" name="password">
+    <br>
+    <br>
+    <button>Submit</button>
+</form>
+
+
