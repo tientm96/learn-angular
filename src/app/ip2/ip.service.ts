@@ -27,8 +27,6 @@ export class IpService {
         .toPromise() //để chuyển dl sang dạng Promise. Để có toPromise() thì phải import ở trên cùng (Với Angular6 thì ko cần import nữa).
         .then(res => res.json()) //then sẽ nhận gtri trả về, chuyển promise sang kiểu json.
         .then(resJson => resJson.ip) //trả về ip của json, ip lấy từ service. (đúng với tên gọi getIp() của function này)
-        .catch(err => console.log(err)); //nếu có lỗi thì phóng lỗi ra console.
-
 
         //Ở đây then: nhận giá trị trả về, và catch phóng ngoại lệ.
     }
