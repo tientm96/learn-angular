@@ -8,7 +8,7 @@
 -Các control đc bao lại trong thẻ <Form>
 -Button Submit trong form: không cần tạo sự kiện (click) trong btn Submit nữa, sự kiện sẽ đc đưa thẳng lên khai báo form, khi bấm btn Submit thì nó sẽ gọi tới sự kiện (submit/ngSubmit) trong khai báo form.
 
--Tất cả thẻ input đều phải có [(ngModel)], có thể nó ko gắn cho 1 biến nào cả nhưng ép buộc phải có ngModel.
+-Tất cả thẻ input đều phải có [(ngModel)], có thể nó ko gắn cho 1 biến nào cả nhưng ép buộc phải có ngModel, chỉ cần ghi ngModel là đc.
 ép buộc phải có thuộc tính name="biến mà ngModel gắn" mới có thể sử dụng ngModel trong form.
 
 -Bên trong khai báo form: ngoài sự kiện (submit) đc khai báo tại đây; 
@@ -20,6 +20,11 @@ Template variables #formSignIn đc gắn với directive ngForm để lấy ra c
 <!-- Xem giải thích ở trên: Tóm gọn ở đây.
 -khai báo name="biến gắn với ngModel"
 -đưa sự kiện click của Submit lên form thành sự kiện submit/ngSubmit cùng tên với btn Submit.(cho đúng tiêu chuẩn, nếu ko đưa lên cũng đc ko sao cả)
++Nếu để submit thì khi phóng ngoại lệ nó sẽ đưa lên link chứ ko phóng ra console: http://localhost:4200/?email=ffffg&password=f
++Còn nếu để ngSubmit thì khi phóng ngoại lệ trong comp thì nó sẽ show ngoại lệ ra console. 
+(Xem ví dụ   throw new Error('Form is invalid'); trong hàm onSubmit() trong comp)
+
+
 
 -***thêm directive ngForm, và Template variables #formSignIn gắn với nó:
 + #formSignIn LẤY RA TẤT CẢ CÁC GIÁ TRỊ INPUT VÀO CỦA FORM. 
@@ -63,14 +68,18 @@ thì mới cho invalid(ko hiệu lực)=false, mới cho hiện lên.
 -->
 <h3>Bài 43,44: Form - sign-in.component.html</h3>
 
+<!-- nếu ngSubmit thì khi phóng ngoại lê nó sẽ đưa ra console chứ ko đưa lên link -->
 <form (ngSubmit)="onSubmit(formSignIn);" #formSignIn="ngForm">
-    <input placeholder="Email" [(ngModel)]="email" name="email" required>
+    <!-- Nếu dùng ngForm để lấy input thì ko cần đến biến email và password để gắn; 
+        còn phần ngModel thì phải để cho có, dù ko gắn gì. -->
+    <!-- <input placeholder="Email" [(ngModel)]="email" name="email" required> -->
+    <input placeholder="Email" ngModel name="email" required>
 
-    <p *ngIf="formSignIn.controls.email?.errors?.required">Email is required</p>
+    <!-- <p *ngIf="formSignIn.controls.email?.errors?.required">Email is required</p> -->
 
     <br>
-    <input type="password" placeholder="Password" [(ngModel)]="password" name="password" required>
-    <p *ngIf="formSignIn.controls.password?.errors?.required">Password is required</p>
+    <input type="password" placeholder="Password" ngModel name="password" required>
+    <!-- <p *ngIf="formSignIn.controls.password?.errors?.required">Password is required</p> -->
 
     <br>
     <button [disabled]="formSignIn.invalid">Submit</button>

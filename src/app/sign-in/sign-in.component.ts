@@ -21,8 +21,10 @@ Bài 44: Sử dụng ngForm để thực hiện bài toán trên (Qua html xem g
 */
 
 export class SignInComponent implements OnInit {
-  email = ''; //tạm thời rỗng, [(ngModel)] sẽ auto gắn giá trị cho nó.
-  password = '';
+
+  //nếu dùng ngForm để lấy dữ liệu input từ form, thì sẽ ko cần 2 biến này
+  // email = ''; //tạm thời rỗng, [(ngModel)] sẽ auto gắn giá trị cho nó.
+  // password = '';
 
   constructor() { }
 
@@ -37,6 +39,9 @@ export class SignInComponent implements OnInit {
   //tham số ở đây để nhận tất cả input truyền từ ngForm(trong html) về, bằng cách gọi hàm này trong thẻ form trong html(qua đó mà xem).
   onSubmit(formSignIn){
       console.log(formSignIn.value); //.value có giải thích bên phần cuối giải thích của html.
+
+      //Test cho ngSubmit bên html. Dùng ngSubmit, thì sẽ phóng ngoại lệ ra console chứ ko phóng lên url.
+      throw new Error('Form is invalid');
   }
 
 }
