@@ -23,6 +23,7 @@ import { LearnPipeComponent } from './learn-pipe/learn-pipe.component';
 import { IpComponent } from './ip/ip.component';
 import { Ip2Component } from './ip2/ip2.component';
 import { WeatherComponent } from './weather/weather.component';
+import { SignInComponent } from './sign-in/sign-in.component';
 
 
 //import round.pipe.ts cũng giống như import 1 comp.
@@ -62,6 +63,7 @@ và đc gọi vào bên trong declarations của file app.module.cs này.
     IpComponent,
     Ip2Component,
     WeatherComponent,
+    SignInComponent,
     RoundPipe
   ],
   imports: [

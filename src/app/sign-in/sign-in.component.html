@@ -1,0 +1,17 @@
+
+<!--hầu hết ứng dụng thu thập thông tin người dùng qua các form.
+Angular hỗ trở xử lý form input rất tốt.
+Đã học cách xử lý tập tin qua input bằng two-way binding, event binding.
+
+Tuy nhiên đối với các form nhập liệu lớn hơn, thì cách thu thập thông tin qua từng input sẽ gặp khó khăn.
+ =>giải pháp: gộp các input đó thành các form để có sử dụng tốt hơn.
+ -->
+
+ <!-- placeholder: thuộc tính hiện ẩn trong khung -->
+<!-- Sử dụng [(ngModel)] để gắn với các biến email, password trong comp. Khi ta nhập từ form vào thì nó tự động gắn giá trị cho các biến đó.-->
+<h3>Bài 43,44: Form - sign-in.component.html</h3>
+<input placeholder="Email" [(ngModel)]="email">
+<br>
+<input type="password" placeholder="Password" [(ngModel)]="password">
+<br><br>
+<button (click)="onSubmit();">Submit</button>
