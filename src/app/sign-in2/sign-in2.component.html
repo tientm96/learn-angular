@@ -16,17 +16,44 @@
     <p *ngIf="txtEmail.touched && txtEmail.errors?.email">Email is not valid</p>
 
     <br>
-    <input type="password" placeholder="Password" ngModel name="password">
+
+    <!-- Thêm 2 dạng validate là minlength và pattern để quy định kiểu độ dài tối thiểu và kiểu dl nhập vào cho password .
+    Vào đây để xem những dạng validate dữ liệu: https://angular.io/api?query=validator  -->
+    <input type="password" placeholder="Password" ngModel #txtPassword="ngModel" name="password" minlength="6" pattern="[a-z]*">
     <!-- <input type="password" placeholder="Password" ngModel name="password" required> -->
     <!-- <p *ngIf="formSignIn.controls.password?.errors?.required">Password is required</p> -->
+
+    <br>
+
+    <!-- Bài 49: Xử lý checkbox và ngModelGroup 
+      -ngModelGroup="subjects": đặt các checkbox vào trong 1 group subjects, khi kiểm tra thì nó sẽ in ra "subjects": { "NodeJS": false, "Angular": false, "ReactJS": false } 
+
+      -checkbox: [ngModel]="false": ban đầu ko check
+    -->
+    <div ngModelGroup="subjects">
+      <label><input type="checkbox" [ngModel]="false" name="NodeJS">NodeJS</label>
+      <label><input type="checkbox" [ngModel]="false" name="Angular">Angular</label>
+      <label><input type="checkbox" [ngModel]="false" name="ReactJS">ReactJS</label>
+    </div>
 
     <br>
     <button [disabled]="formSignIn.invalid">Submit</button>
 </form>
 
-<!--lỗi required=true: chưa nhập; lỗi email=true: chưa đúng kiểu email, chưa xác định, not valid
-Ở đây xuất ra màn hình để test thôi.-->
+<!--
+-In ra lỗi của ô input email: lỗi required=true: chưa nhập; lỗi email=true: chưa đúng kiểu email, chưa xác định, not valid
+Ở đây xuất ra màn hình để test thôi.
+
+-In ra các lỗi của password, dựa theo chuẩn minlength và pattern đã nhập vào ở input.
+
+-Nếu ko có lỗi gì thì trả về null
+
+-formSignIn: in ra tất cả input của formSignIn-->
+
 <p>{{ txtEmail.errors | json }}</p>
+<p>{{ txtPassword.errors | json }}</p>
+<p>{{ formSignIn.value | json }}</p> 
+
 
 
 <!-- custom bên file: STYLES.CSS
