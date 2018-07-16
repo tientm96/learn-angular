@@ -1,0 +1,29 @@
+<h3>Bài 51: Gửi post request từ form angular - folder sign-in3</h3>
+
+<!-- Copy từ folder sign-in2: bên đây tách ra để viết riêng phần request cho dễ hiểu.
+Các giải thích chi tiết xem trong sign-in1 và 2 -->
+
+<form (ngSubmit)="onSubmit(formSignIn);" #formSignIn="ngForm">
+    <input placeholder="Email" ngModel #txtEmail="ngModel" name="email" required email>
+
+    <p *ngIf="txtEmail.touched && txtEmail.errors?.required">Email is required</p>
+    <p *ngIf="txtEmail.touched && txtEmail.errors?.email">Email is not valid</p>
+    <br>
+
+    <input type="password" placeholder="Password" ngModel #txtPassword="ngModel" name="password" minlength="6" pattern="[a-z]*">
+    <br>
+
+    <div ngModelGroup="subjects">
+      <label><input type="checkbox" [ngModel]="false" name="NodeJS">NodeJS</label>
+      <label><input type="checkbox" [ngModel]="false" name="Angular">Angular</label>
+      <label><input type="checkbox" [ngModel]="false" name="ReactJS">ReactJS</label>
+    </div>
+    <br>
+
+    <button [disabled]="formSignIn.invalid">Submit</button>
+</form>
+
+<p>{{ txtEmail.errors | json }}</p>
+<p>{{ txtPassword.errors | json }}</p>
+<p>{{ formSignIn.value | json }}</p> 
+

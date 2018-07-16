@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 //để dùng two-way binding phải import dòng này và gọi ra dưới phần imports: []
 import { FormsModule } from '@angular/forms';
 
-//để lấy service từ server phải import Http
+//để lấy service từ server phải import Http, dùng để get hoặc post
 import { HttpModule } from '@angular/http';
 
 
@@ -25,6 +25,7 @@ import { Ip2Component } from './ip2/ip2.component';
 import { WeatherComponent } from './weather/weather.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignIn2Component } from './sign-in2/sign-in2.component';
+import { SignIn3Component } from './sign-in3/sign-in3.component';
 
 
 //import round.pipe.ts cũng giống như import 1 comp.
@@ -66,6 +67,7 @@ và đc gọi vào bên trong declarations của file app.module.cs này.
     WeatherComponent,
     SignInComponent,
     SignIn2Component,
+    SignIn3Component,
     RoundPipe
   ],
   imports: [
@@ -77,3 +79,4 @@ và đc gọi vào bên trong declarations của file app.module.cs này.
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
