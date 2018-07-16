@@ -20,9 +20,15 @@ Các giải thích chi tiết xem trong sign-in1 và 2 -->
     </div>
     <br>
 
+    <!-- Bài 51: Gửi request Post dl lên server.
+    vd: người dùng nhập vào họ tên, sau đó ta gửi request post họ tên đó lên server, còn post ntn thì bên backend sẽ lo.-->
     <button [disabled]="formSignIn.invalid">Submit</button>
 </form>
+<br>
 
+<button (click)="postToExpress();">POST</button>
+
+<br><br>
 <p>{{ txtEmail.errors | json }}</p>
 <p>{{ txtPassword.errors | json }}</p>
 <p>{{ formSignIn.value | json }}</p> 
