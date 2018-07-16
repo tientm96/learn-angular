@@ -16,7 +16,8 @@
     <p *ngIf="txtEmail.touched && txtEmail.errors?.email">Email is not valid</p>
 
     <br>
-    <input type="password" placeholder="Password" ngModel name="password" required>
+    <input type="password" placeholder="Password" ngModel name="password">
+    <!-- <input type="password" placeholder="Password" ngModel name="password" required> -->
     <!-- <p *ngIf="formSignIn.controls.password?.errors?.required">Password is required</p> -->
 
     <br>
@@ -28,5 +29,19 @@
 <p>{{ txtEmail.errors | json }}</p>
 
 
+<!-- custom bên file: STYLES.CSS
+-F12 xem khung input email, khi chưa kích vào thì: thấy có các class="ng-untouched ng-pristine ng-invalid", các class con: ng-untouched, ng-pristine, ng-invalid
+Còn khi đã kích vào thì các class lại chuyển trạng thái:       class="ng-touched ng-pristine ng-invalid" (ng-invalid: khi chưa nhập, hoặc chưa nhập đúng format) 
 
+vd: ở đây ta sẽ xét nếu như ĐÃ kích chuột vào khung input email rồi lại kích chuột ra ngoài thì đó là touched (class ng-touched), 
+nhưng lại chưa thỏa lỗi email(định dạng email) và lỗi required (cả 2 lỗi này thể hiện qua class ng-invalid), thì khung đó sẽ hiện lên màu đỏ.
+
+Lúc này ta cần cấu hình lại file styles.css (file css chính chung cho all) cho 2 class ng-touched (class này chỉ xuất hiện khi trạng thái khi đã kích vào r kích ra,
+ngược lại sẽ hiện class ng-untouched), ng-invalid (trạng thái chưa đúng format email), để khi không thỏa 1 trong 2 cái đó thì sẽ hiện lên viền màu đỏ.
+
+bên file styles.css:
+input.ng-invalid.ng-touched {
+    border: 2px solid red; 
+}
+-->
 

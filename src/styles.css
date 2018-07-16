@@ -1,1 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
+/* Những cái input nào mà có  ng-invalid(ko khả dụng) và ng-touched( đã kích vào r kích ra)  đều true thì cho border màu đỏ cho nó.
+Ở đây ô input email trong bài 48 tại sign-in2.comp.html, xem giải thích tại đó. 
+*/
+
+input.ng-invalid.ng-touched {
+    border: 2px solid red; 
+}
+
