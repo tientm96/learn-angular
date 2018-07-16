@@ -1,3 +1,4 @@
+// NHỚ KHI RUN SERVER: VÀO cd server > node index
 const express = require('express');
 const jsonParser = require('body-parser').json();
 const app = express();
