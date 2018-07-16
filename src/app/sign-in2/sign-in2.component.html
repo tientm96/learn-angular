@@ -1,0 +1,32 @@
+<h3>Bài 48: continouns from folder sign-in</h3>
+
+<form (ngSubmit)="onSubmit(formSignIn);" #formSignIn="ngForm">
+    <!--Trong thẻ input: ngoài required còn có các xử lý lỗi khác như email.
+    Lỗi required=true: chưa nhập; lỗi email=true: chưa đúng kiểu email, chưa xác định, not valid-->
+    <input placeholder="Email" ngModel #txtEmail="ngModel" name="email" required email>
+
+    <!-- Sử dụng txtEmail thay cho formSignIn.controls.email?: trong thẻ input gán 1 template variable #txtEmail="ngModel" thì txtEmail có thể nhận các giá trị input vào.
+    Còn ngModel đứng trước là vẫn để cho có.-->
+    <!-- <p *ngIf="formSignIn.controls.email?.errors?.required">Email is required</p> -->
+ 
+    <!-- Thêm sự kiện touched vào có nghĩa là ban đầu chưa show ra lỗi required ngay, khi người dùng kích vào rồi kích chuột ra bên ngoài thì lúc đó nó mới kiểm tra lỗi hay ko.-->
+    <p *ngIf="txtEmail.touched && txtEmail.errors?.required">Email is required</p>
+    
+    <!-- Xử lý lỗi email=true:chưa đúng định dạng. -->
+    <p *ngIf="txtEmail.touched && txtEmail.errors?.email">Email is not valid</p>
+
+    <br>
+    <input type="password" placeholder="Password" ngModel name="password" required>
+    <!-- <p *ngIf="formSignIn.controls.password?.errors?.required">Password is required</p> -->
+
+    <br>
+    <button [disabled]="formSignIn.invalid">Submit</button>
+</form>
+
+<!--lỗi required=true: chưa nhập; lỗi email=true: chưa đúng kiểu email, chưa xác định, not valid
+Ở đây xuất ra màn hình để test thôi.-->
+<p>{{ txtEmail.errors | json }}</p>
+
+
+
+

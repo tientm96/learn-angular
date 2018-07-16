@@ -44,7 +44,7 @@ Nên bên comp muốn lấy ra value thì gọi  console.log(formSignIn.value)
 -Validate dữ liệu: là kiểm tra dữ liệu trước khi form submit lên server, giúp người dùng biết được trường nào họ đang nhập có thể sai.
 vd: tại email ép buộc người dùng nhập vào, nếu người dùng chưa nhập vào thì chưa cho phép người dùng bấm btn Submit.
 
--thuộc tính required(cần thiết: thêm vào sau name): nếu ô đó chưa nhập gì thì nó trả về true, còn nhập rồi thì false.
+-thuộc tính xét lỗi required(cần thiết: thêm vào sau name): nếu ô đó chưa nhập gì thì lỗi required=true, còn nhập rồi thì lỗi required=false.
 và required nó trả về trong errors của Object (F12 ra sẽ thấy).
 
 (bên comp chỉ console.log(formSignIn): render rồi vào object form>controls>email>errors>thấy required=true nếu chưa nhập)
@@ -70,12 +70,12 @@ thì mới cho invalid(ko hiệu lực)=false, mới cho hiện lên.
 
 <!-- nếu ngSubmit thì khi phóng ngoại lê nó sẽ đưa ra console chứ ko đưa lên link -->
 <form (ngSubmit)="onSubmit(formSignIn);" #formSignIn="ngForm">
-    <!-- Nếu dùng ngForm để lấy input thì ko cần đến biến email và password để gắn; 
+    <!-- Nếu dùng ngForm để lấy input thì ko cần đến biến email và password trong comp để gắn; 
         còn phần ngModel thì phải để cho có, dù ko gắn gì. -->
+        
     <!-- <input placeholder="Email" [(ngModel)]="email" name="email" required> -->
     <input placeholder="Email" ngModel name="email" required>
-
-    <!-- <p *ngIf="formSignIn.controls.email?.errors?.required">Email is required</p> -->
+    <p *ngIf="formSignIn.controls.email?.errors?.required">Email is required</p>
 
     <br>
     <input type="password" placeholder="Password" ngModel name="password" required>

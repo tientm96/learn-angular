@@ -24,6 +24,7 @@ import { IpComponent } from './ip/ip.component';
 import { Ip2Component } from './ip2/ip2.component';
 import { WeatherComponent } from './weather/weather.component';
 import { SignInComponent } from './sign-in/sign-in.component';
+import { SignIn2Component } from './sign-in2/sign-in2.component';
 
 
 //import round.pipe.ts cũng giống như import 1 comp.
@@ -64,6 +65,7 @@ và đc gọi vào bên trong declarations của file app.module.cs này.
     Ip2Component,
     WeatherComponent,
     SignInComponent,
+    SignIn2Component,
     RoundPipe
   ],
   imports: [

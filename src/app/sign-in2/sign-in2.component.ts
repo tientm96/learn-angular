@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-sign-in',
-  templateUrl: './sign-in.component.html',
-  styleUrls: ['./sign-in.component.css']
+  selector: 'app-sign-in2',
+  templateUrl: './sign-in2.component.html',
+  styleUrls: ['./sign-in2.component.css']
 })
 
 
@@ -17,10 +17,9 @@ Bài toán này: ta tạo ra 2 input và gộp 2 input đó lại thành 1 form.
 -----------------------------------
 Bài 44: Sử dụng ngForm để thực hiện bài toán trên (Qua html xem giải thích)
 
-
 */
 
-export class SignInComponent implements OnInit {
+export class SignIn2Component implements OnInit {
 
   //nếu dùng ngForm để lấy dữ liệu input từ form, thì sẽ ko cần 2 biến này
   // email = ''; //tạm thời rỗng, [(ngModel)] sẽ auto gắn giá trị cho nó.
