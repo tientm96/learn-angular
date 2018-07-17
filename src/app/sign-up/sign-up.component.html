@@ -34,6 +34,9 @@ Các tham số bên trong object formSignUp của comp là email và password c�
 
     <div formGroupName="subject">
         <!-- Các checkbox này đã giải thích rồi: xem trong sign-in2.component.html.
+            -giá trị DEFAULT:
+            +Khác với [ngModel]="false" là cách để gắn giá trị default trong template driven form trong sign-in3.comp.html.
+            +Còn Reactive form: sẽ gắn giá trị mặc định trong khởi tạo formGroup trong comp.  
         -->
         <label><input type="checkbox" name="NodeJS" formControlName="nodeJS">NodeJS</label>
         <label><input type="checkbox" name="Angular" formControlName="angular">Angular</label>

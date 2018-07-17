@@ -28,15 +28,15 @@ export class SignUpComponent implements OnInit {
 
     //khởi tạo formSignUp trong constructor hoặc onInit(), với các tham số bên trong là các object FormControl()
     this.formSignUp = new FormGroup({
-      email: new FormControl(), //khai báo và khởi tạo tham số luôn 1 lần.
+      email: new FormControl('tientm96@gmail.com'), //Đưa các giá trị mặc định vào ('default')
       password: new FormControl(),
 
       //tạo các FormControl checkbox để nhận các giá trị checkbox gửi từ html về.
       //tạo FormGroup để nhận nguyên 1 object mang gộp các giá trị của checkbox gửi về.
       subject: new FormGroup({
-        nodeJS: new FormControl(),
-        angular: new FormControl(),
-        reactJS: new FormControl()
+        nodeJS: new FormControl(false), //đưa vào các giá trị mặc định, false là chưa check, true là default=đã check
+        angular: new FormControl(true),
+        reactJS: new FormControl(false)
       }),
 
 
