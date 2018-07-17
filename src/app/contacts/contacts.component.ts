@@ -25,9 +25,22 @@ vd: biến đó sẽ phân biệt: nếu đường dẫn /contacts thì nó chuy
 
 +kéo xuống chỗ imports: [, RouterModule.forRoot(routesConfig)], thêm RouterModule.forRoot(tham số) và truyền vào biến routesConfig đã tạo ở trên.
 
-
 */
 
+/*Bài 59: Xử lý route ngoại lệ
+
+-Giống như trong .net, để thiết lập 1 đường dẫn mặc định, hay thiết lập trang chủ như vào http://localhost:4200 thì nó tự động chuyển đến home: http://localhost:4200/home
+-ở đây ta muốn http://localhost:4200 thì nó tự động chuyển đến /contacts: http://localhost:4200/contacts
+
++vào app.module.ts: tại vị trí khởi tạo biến routesConfig, ta thêm 1 đường dẫn tới contacts như sau:  
+ { path: '', redirectTo: '/contacts', pathMatch: 'full' }
+
+-Nếu thêm vào link 1 địa chỉ lỗi thì nó sẽ chạy đến trang của comp page-not-found (tự tạo comp này): vd: http://localhost:4200/sajsaksjla là 1 địa chỉ lỗi.\
+Thiết lập nó cũng tại vị trí biến routesConfig của app.module.ts, với lệnh:  
+ { path: '**', component: PageNotFoundComponent }
+(dấu ** ý là ko vào đc tất cả comp nào rồi thì mới chạy đến comp PageNotFoundComponent)
+
+*/
 
 @Component({
   selector: 'app-contacts',

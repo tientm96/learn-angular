@@ -18,16 +18,22 @@ import { Routes, RouterModule } from '@angular/router';
 //nhấn vào link /detail  thì chuyển đến ContactDetailComponent.
 const routesConfig: Routes = [
   { path: 'contacts', component: ContactsComponent },
-  { path: 'detail', component: ContactDetailComponent }
+  { path: 'detail', component: ContactDetailComponent },
+
+  //để chỉnh 1 trang làm home, nghĩa là khi vào http://localhost:4200 thì nó tự động chuyển đến /contacts: http://localhost:4200/contacts ;
+  //  giống kiểu thiết lập trang mặc định trong .net MVC, ở đây thiết lập trang mặc định là contacts.
+  { path: '', redirectTo: '/contacts', pathMatch: 'full' },
+
+  //Nếu + vào link 1 địa chỉ lỗi thì nó sẽ chạy đến trang của comp page-not-found (tự tạo comp này): vd: http://localhost:4200/sajsaksjla là 1 địa chỉ lỗi.
+  //Ở đây ta thiết lập dẫn đến trang LỖI khi chạy địa chỉ lỗi tại đây.
+  { path: '**', component: PageNotFoundComponent }  //dấu ** ý là ko vào đc tất cả comp nào rồi thì mới chạy đến comp PageNotFoundComponent
+
 ];
 
 
 //+tiếp theo, kéo xuống chỗ imports: [, RouterModule.forRoot(routesConfig)], add RouterModule.forRoot() và truyền vào biến routesConfig đã tạo ở trên.
 
 //--------------------------------------------Kết thúc phần import vài cài đặt để sử dụng router------------------------------------------------------
-
-
-
 
 
 
@@ -54,12 +60,13 @@ import { SignUp2Component } from './sign-up2/sign-up2.component';
 import { SignUp3Component } from './sign-up3/sign-up3.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { ContactDetailComponent } from './contact-detail/contact-detail.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 //import round.pipe.ts cũng giống như import 1 comp.
 import { RoundPipe } from './round.pipe';
 
-//import IpService trong ip.service.ts vào đây app.module.ts : để nhiều comp đều sử dụng đc service này, kéo xuống providers[] gọi nó ra.
+//import IpService trong ip.service.ts vào đây app.module.ts, kéo xuống providers[] gọi nó ra: : để nhiều comp đều sử dụng đc service này.
 //Còn nếu chỉ import và gọi providers trong comp nào đó thì chỉ mỗi comp đó sd đc service này----------------------.
 import { IpService } from './ip2/ip.service';
 
@@ -100,6 +107,7 @@ và đc gọi vào bên trong declarations của file app.module.cs này.
     SignUp3Component,
     ContactsComponent,
     ContactDetailComponent,
+    PageNotFoundComponent,
     RoundPipe
   ],
   imports: [
