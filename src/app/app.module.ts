@@ -29,14 +29,14 @@ import { SignIn2Component } from './sign-in2/sign-in2.component';
 import { SignIn3Component } from './sign-in3/sign-in3.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { SignUp2Component } from './sign-up2/sign-up2.component';
+import { SignUp3Component } from './sign-up3/sign-up3.component';
 
 
 //import round.pipe.ts cũng giống như import 1 comp.
 import { RoundPipe } from './round.pipe';
 
-//import ip.service.ts ở đây: để nhiều comp đều sử dụng đc service này.
-//kéo xuống providers[] gọi nó ra.;
-
+//import IpService trong ip.service.ts ở đây: để nhiều comp đều sử dụng đc service này. (Còn nếu chỉ import và gọi providers trong comp nào đó thì chỉ mỗi comp đó sd đc service này.)
+//kéo xuống providers[] gọi nó ra.
 import { IpService } from './ip2/ip.service';
 
 
@@ -74,6 +74,7 @@ và đc gọi vào bên trong declarations của file app.module.cs này.
     SignIn3Component,
     SignUpComponent,
     SignUp2Component,
+    SignUp3Component,
     RoundPipe
   ],
   imports: [
