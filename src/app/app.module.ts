@@ -1,8 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-//để dùng two-way binding phải import dòng này và gọi ra dưới phần imports: []
-import { FormsModule } from '@angular/forms';
+//để dùng two-way binding phải import FormsModule và gọi ra dưới phần imports: []
+//để sử dụng Reactive Form phải import ReactiveFormsModule và cũng gọi ra dưới phần import[].
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 //để lấy service từ server phải import Http, dùng để get hoặc post
 import { HttpModule } from '@angular/http';
@@ -26,6 +27,7 @@ import { WeatherComponent } from './weather/weather.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignIn2Component } from './sign-in2/sign-in2.component';
 import { SignIn3Component } from './sign-in3/sign-in3.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 
 //import round.pipe.ts cũng giống như import 1 comp.
@@ -68,12 +70,14 @@ và đc gọi vào bên trong declarations của file app.module.cs này.
     SignInComponent,
     SignIn2Component,
     SignIn3Component,
+    SignUpComponent,
     RoundPipe
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    ReactiveFormsModule
   ],
   providers: [IpService],
   bootstrap: [AppComponent]

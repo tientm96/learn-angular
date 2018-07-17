@@ -1,0 +1,22 @@
+<h3>bài 53: Reactive form: https://angular.io/guide/reactive-forms </h3>
+<br>
+
+<!-- Tương tác với Reactive Forms đc tạo bên comp:
+
+-Sử dụng ngSubmit để gọi sự kiện khi bấm button Submit thuộc form này.
+-dùng [formGroup] để gắn với đối tượng formSignUp bên comp.
+-dùng formControlName để gắn với các các tham số email,pasword đc khởi tạo bên trong đối tượng formSignUp bên comp.
+
+=>Như vậy dl nhập vào ở html, sẽ đc truyền qua obj formSignUp của comp (thông qua việc gắn vào [formGroup]); 
+Các tham số bên trong object formSignUp của comp là email và password cũng đc truyền dl qua (thông qua việc gắn tên các tham số đó với formControlName) 
+-->
+<form (ngSubmit)="onSubmit();" [formGroup]="formSignUp">
+    <input placeholder="Email" formControlName="email">
+    <br>
+
+    <input type="password" placeholder="Password" formControlName="password">
+    <br> <br> 
+    
+    <button>Submit</button>
+</form>
+
