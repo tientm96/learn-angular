@@ -4,11 +4,26 @@
 <!-- Tương tác với Reactive Forms đc tạo bên comp:
 
 -Sử dụng ngSubmit để gọi sự kiện khi bấm button Submit thuộc form này.
--dùng [formGroup] để gắn với đối tượng formSignUp bên comp.
+-dùng [formGroup] để gắn với đối tượng formSignUp bên comp. Đối tượng formSignUp đc khai báo formSignUp: FormGroup và khởi tạo bên trong constructor.
 -dùng formControlName để gắn với các các tham số email,pasword đc khởi tạo bên trong đối tượng formSignUp bên comp.
 
 =>Như vậy dl nhập vào ở html, sẽ đc truyền qua obj formSignUp của comp (thông qua việc gắn vào [formGroup]); 
 Các tham số bên trong object formSignUp của comp là email và password cũng đc truyền dl qua (thông qua việc gắn tên các tham số đó với formControlName) 
+-->
+
+
+<!-- Bài 54: Nested form group
+-formGroup Ở Template-driven forms(xem trong file sign-in2.component.html): thì dùng ngModelGroup là formGroup đc dùng để nhóm các checkbox: ngModelGroup="subjects".
+
+***formGroup ở Reactive form: 
+-Thêm các tham số cho object formSignUp trong comp:
++Để lấy đc giá trị các checkbox thì bên comp.ts phải tạo thêm các tham số kiểu FormControl cho object formSignUp.
++Để lấy đc giá trị của Gourpcheckbox thì phải tạo tham số kiểu FormGroup, sau đó move các FormControl checkbox vào bên trong FormGroup Gourpcheckbox này.
+
+-Ở html:
++Gắn formControlName="tên tham số checkbox vừa tạo bên comp", để nó gửi giá trị checkbox về.
++Gắn formGroupName="tên formGroup checkbox vừa tạo bên comp", để nó gửi nguyên giá trị all checkbox về.
+
 -->
 <form (ngSubmit)="onSubmit();" [formGroup]="formSignUp">
     <input placeholder="Email" formControlName="email">
@@ -16,7 +31,16 @@ Các tham số bên trong object formSignUp của comp là email và password c�
 
     <input type="password" placeholder="Password" formControlName="password">
     <br> <br> 
-    
+
+    <div formGroupName="subject">
+        <!-- Các checkbox này đã giải thích rồi: xem trong sign-in2.component.html.
+        -->
+        <label><input type="checkbox" name="NodeJS" formControlName="nodeJS">NodeJS</label>
+        <label><input type="checkbox" name="Angular" formControlName="angular">Angular</label>
+        <label><input type="checkbox" name="ReactJS" formControlName="reactJS">ReactJS</label>
+    </div>
+    <br> <br> 
+
     <button>Submit</button>
 </form>
 

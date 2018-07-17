@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-//để dùng two-way binding phải import FormsModule và gọi ra dưới phần imports: []
+//để dùng Template-driven forms và two-way binding phải import FormsModule và gọi ra dưới phần imports: []
 //để sử dụng Reactive Form phải import ReactiveFormsModule và cũng gọi ra dưới phần import[].
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 

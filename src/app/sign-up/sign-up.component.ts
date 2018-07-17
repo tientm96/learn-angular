@@ -21,7 +21,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 */ 
 export class SignUpComponent implements OnInit {
 
-  formSignUp: FormGroup; //khai báo thuộc tính formSignUp thuộc class FormGroup().
+  formSignUp: FormGroup; //khai báo thuộc tính formSignUp thuộc class FormGroup(). thuộc tính này nhận các giá trị trả vê từ gắn [formGroup]="formSignUp" của html.
   
 
   constructor() { 
@@ -29,7 +29,17 @@ export class SignUpComponent implements OnInit {
     //khởi tạo formSignUp trong constructor hoặc onInit(), với các tham số bên trong là các object FormControl()
     this.formSignUp = new FormGroup({
       email: new FormControl(), //khai báo và khởi tạo tham số luôn 1 lần.
-      password: new FormControl()
+      password: new FormControl(),
+
+      //tạo các FormControl checkbox để nhận các giá trị checkbox gửi từ html về.
+      //tạo FormGroup để nhận nguyên 1 object mang gộp các giá trị của checkbox gửi về.
+      subject: new FormGroup({
+        nodeJS: new FormControl(),
+        angular: new FormControl(),
+        reactJS: new FormControl()
+      }),
+
+
     });
   }
 
