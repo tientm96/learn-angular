@@ -9,6 +9,28 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 
+
+//--------------------------------------------Phần import vài cài đặt để sử dụng router------------------------------------------------------
+//+để sử dụng đc router để di chuyển các page theo link thì import Routes, RouterModule từ @angular/router
+import { Routes, RouterModule } from '@angular/router';
+
+//+tạo ra biến routesConfig: để config các cái routes (là các hướng chuyển trang): nhấn vào đường link /contacts thì chuyển đến ContactsComponent;
+//nhấn vào link /detail  thì chuyển đến ContactDetailComponent.
+const routesConfig: Routes = [
+  { path: 'contacts', component: ContactsComponent },
+  { path: 'detail', component: ContactDetailComponent }
+];
+
+
+//+tiếp theo, kéo xuống chỗ imports: [, RouterModule.forRoot(routesConfig)], add RouterModule.forRoot() và truyền vào biến routesConfig đã tạo ở trên.
+
+//--------------------------------------------Kết thúc phần import vài cài đặt để sử dụng router------------------------------------------------------
+
+
+
+
+
+
 import { AppComponent } from './app.component';
 import { WorldComponent } from './word/word.component';
 import { BookComponent } from './book/book.component';
@@ -30,27 +52,28 @@ import { SignIn3Component } from './sign-in3/sign-in3.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { SignUp2Component } from './sign-up2/sign-up2.component';
 import { SignUp3Component } from './sign-up3/sign-up3.component';
+import { ContactsComponent } from './contacts/contacts.component';
+import { ContactDetailComponent } from './contact-detail/contact-detail.component';
 
 
 //import round.pipe.ts cũng giống như import 1 comp.
 import { RoundPipe } from './round.pipe';
 
-//import IpService trong ip.service.ts ở đây: để nhiều comp đều sử dụng đc service này. (Còn nếu chỉ import và gọi providers trong comp nào đó thì chỉ mỗi comp đó sd đc service này.)
-//kéo xuống providers[] gọi nó ra.
+//import IpService trong ip.service.ts vào đây app.module.ts : để nhiều comp đều sử dụng đc service này, kéo xuống providers[] gọi nó ra.
+//Còn nếu chỉ import và gọi providers trong comp nào đó thì chỉ mỗi comp đó sd đc service này----------------------.
 import { IpService } from './ip2/ip.service';
+
+
+
 
 
 
 /*TẠO COMPONENT
 - app.module.ts : là file chạy đầu tiên.
-
 +nên mọi component đc tạo dưới dạng Name.component.ts phải đc import vào app.module.cs,
 và đc gọi vào bên trong declarations của file app.module.cs này.
-
 +lúc này ta có thể gọi component ra giống như 1 thẻ </> ở file app.component.html(File hiển thị chính).\
-
 */
-
 //và gọi component vào đây
 @NgModule({
   declarations: [
@@ -75,13 +98,16 @@ và đc gọi vào bên trong declarations của file app.module.cs này.
     SignUpComponent,
     SignUp2Component,
     SignUp3Component,
+    ContactsComponent,
+    ContactDetailComponent,
     RoundPipe
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule.forRoot(routesConfig)
   ],
   providers: [IpService],
   bootstrap: [AppComponent]

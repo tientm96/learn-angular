@@ -78,5 +78,14 @@
 <p>------------------------------</p>
 
 
+<!-- Bắt đầu phần tạo page cho app. Bài 58, 59
+Mục tiêu: Click vào link Contacts sẽ hiện comp contact, click vào link Detail sẽ hiện comp contacts-detail -->
+<!-- <a href="/contacts">Contacts</a> : dùng href thì sẽ refresh lại trang, nên ta đổi href thành routerLink-->
+<a routerLink="/contacts">Contacts</a>
+<a routerLink="/detail">Detail</a>
+
+<!-- Tại vị trí thẻ router-outlet này sẽ hiển thị ra các comp đc kích vào link -->
+<router-outlet></router-outlet>
+
 <br><br>
 
