@@ -11,24 +11,39 @@ import { HttpModule } from '@angular/http';
 
 
 //--------------------------------------------Phần import vài cài đặt để sử dụng router------------------------------------------------------
+/*VÌ ĐÃ TÁCH NHỮNG GÌ LIÊN QUAN ĐẾN ROUTER RA RIÊNG BÊN app-routing.module.ts, 
+NÊN SẼ XÓA/CMT NHỮNG CÁI LIÊN QUAN ĐẾN ROUTER Ở ĐÂY.
+(xem giải thích sẽ cmt/xóa những chỗ nào: bên phần giải thích bên file app-routing.module.ts)
+
+XÓA XONG THÌ GỌI MODULE ROUTER ĐÃ TÁCH VÀO ĐÂY: gọi class AppRoutingModule từ file app-routing.module.ts
+VÀ ADD AppRoutingModule DƯỚI imports[]
+*/
+import { AppRoutingModule } from './app-routing.module';
+
+
+
 //+để sử dụng đc router để di chuyển các page theo link thì import Routes, RouterModule từ @angular/router
-import { Routes, RouterModule } from '@angular/router';
+
+// XEM GIẢI THÍCH CỤ THỂ TRONG contacts.component.ts
+
+// import { Routes, RouterModule } from '@angular/router';
 
 //+tạo ra biến routesConfig: để config các cái routes (là các hướng chuyển trang): nhấn vào đường link /contacts thì chuyển đến ContactsComponent;
 //nhấn vào link /detail  thì chuyển đến ContactDetailComponent.
-const routesConfig: Routes = [
-  { path: 'contacts', component: ContactsComponent },
-  { path: 'detail', component: ContactDetailComponent },
 
-  //để chỉnh 1 trang làm home, nghĩa là khi vào http://localhost:4200 thì nó tự động chuyển đến /contacts: http://localhost:4200/contacts ;
-  //  giống kiểu thiết lập trang mặc định trong .net MVC, ở đây thiết lập trang mặc định là contacts.
-  { path: '', redirectTo: '/contacts', pathMatch: 'full' },
+// const routesConfig: Routes = [
+//   { path: 'contacts', component: ContactsComponent },
+//   { path: 'detail', component: ContactDetailComponent },
 
-  //Nếu + vào link 1 địa chỉ lỗi thì nó sẽ chạy đến trang của comp page-not-found (tự tạo comp này): vd: http://localhost:4200/sajsaksjla là 1 địa chỉ lỗi.
-  //Ở đây ta thiết lập dẫn đến trang LỖI khi chạy địa chỉ lỗi tại đây.
-  { path: '**', component: PageNotFoundComponent }  //dấu ** ý là ko vào đc tất cả comp nào rồi thì mới chạy đến comp PageNotFoundComponent
+//   //để chỉnh 1 trang làm home, nghĩa là khi vào http://localhost:4200 thì nó tự động chuyển đến /contacts: http://localhost:4200/contacts ;
+//   //  giống kiểu thiết lập trang mặc định trong .net MVC, ở đây thiết lập trang mặc định là contacts.
+//   { path: '', redirectTo: '/contacts', pathMatch: 'full' },
 
-];
+//   //Nếu + vào link 1 địa chỉ lỗi thì nó sẽ chạy đến trang của comp page-not-found (tự tạo comp này): vd: http://localhost:4200/sajsaksjla là 1 địa chỉ lỗi.
+//   //Ở đây ta thiết lập dẫn đến trang LỖI khi chạy địa chỉ lỗi tại đây.
+//   { path: '**', component: PageNotFoundComponent }  //dấu ** ý là ko vào đc tất cả comp nào rồi thì mới chạy đến comp PageNotFoundComponent
+
+// ];
 
 
 //+tiếp theo, kéo xuống chỗ imports: [, RouterModule.forRoot(routesConfig)], add RouterModule.forRoot() và truyền vào biến routesConfig đã tạo ở trên.
@@ -58,9 +73,9 @@ import { SignIn3Component } from './sign-in3/sign-in3.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { SignUp2Component } from './sign-up2/sign-up2.component';
 import { SignUp3Component } from './sign-up3/sign-up3.component';
-import { ContactsComponent } from './contacts/contacts.component';
-import { ContactDetailComponent } from './contact-detail/contact-detail.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+// import { ContactsComponent } from './contacts/contacts.component';
+// import { ContactDetailComponent } from './contact-detail/contact-detail.component';
+// import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 //import round.pipe.ts cũng giống như import 1 comp.
@@ -105,9 +120,9 @@ và đc gọi vào bên trong declarations của file app.module.cs này.
     SignUpComponent,
     SignUp2Component,
     SignUp3Component,
-    ContactsComponent,
-    ContactDetailComponent,
-    PageNotFoundComponent,
+    // ContactsComponent,
+    // ContactDetailComponent,
+    // PageNotFoundComponent,
     RoundPipe
   ],
   imports: [
@@ -115,7 +130,8 @@ và đc gọi vào bên trong declarations của file app.module.cs này.
     FormsModule,
     HttpModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(routesConfig)
+    // RouterModule.forRoot(routesConfig)
+    AppRoutingModule
   ],
   providers: [IpService],
   bootstrap: [AppComponent]
