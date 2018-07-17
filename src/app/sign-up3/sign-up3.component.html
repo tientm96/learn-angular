@@ -7,7 +7,7 @@
     <input placeholder="Email" formControlName="email">
     <br>
 
-    <!-- Các lỗi required và kq trả về touched: Xem trong sign-in2.component.html có giải thích.-->
+    <!-- Các lỗi required và kq trả về touched: Xem trong sign-in2.component.html có giải thích. Các object controls, email, errors: đều do tìm thấy khi F12 -->
     <!-- <p *ngIf="formSignUp.controls.email.invalid && formSignUp.controls.email.touched">Email is required</p> -->
     
     <!-- dùng get('email') thay cho  controls.email, nếu là param nodeJS ở bên trong subject thì get('subject.nodeJS')-->
@@ -29,3 +29,5 @@
     <button [disabled]="formSignUp.invalid">Submit</button>
 </form>
 
+<!-- in lỗi ra. Các object controls, email, errors: đều do tìm thấy khi F12 -->
+<code>{{ formSignUp.controls.email.errors | json }}</code>
