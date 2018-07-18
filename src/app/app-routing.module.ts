@@ -13,18 +13,18 @@ GIẢI THÍCH CHO app-routing.module.ts:
 -Tạo ra routesConfig, copy từ app.module.ts qua, bên đó có giải thích rõ ràng rồi
 
 -Tạo decurator function tên là: @NgModule({}) để chứa:
- +import[] những cái cần thiết cho router như trong app.module.ts
- 
- +declarations[] để gọi các class (3 class ContactsComponent,ContactDetailComponent,PageNotFoundComponent) comp đã import vào (giống như bên app.module.ts cũng import xong thì gọi xuống declarations)
+ +import[] những cái cần thiết cho router như trong app.module.ts 
+ +declarations[] để gọi các class (3 class ContactsComponent,ContactDetailComponent,PageNotFoundComponent) comp đã import vào (giống như bên app.module.ts cũng import xong thì gọi xuống declarations).
 
-(exports có s)
- +expors: [RouterModule] : Tại vì trong app.component.html có dùng router-outlet nên ở đây ta phải exports RouterModule ra.
-(sẽ báo lỗi vì @NgModule({}) cần phải tạo thêm export class tiếp theo sau đây, để nó liên kết)
+ +(sẽ báo lỗi vì @NgModule({}) cần phải tạo thêm export class tiếp theo sau đây, để nó liên kết)
+
+
+ +expors (exports có s): [RouterModule] : Tại vì trong app.component.html có dùng router-outlet nên ở đây ta phải exports RouterModule ra.
 
 -Tạo export class AppRoutingModule{}
 ----------------------------------------------------------------------------------------------------
 
-GIẢI THÍCH CHO app.component.ts
+GIẢI THÍCH CHO app.module.ts
 ----------
 **Tại app.module.ts: XÓA HOẶC Cmt LẠI CÁC khai báo đã tách ra bên này. IMPORT FILE module TÁCH VÀO LẠI app.module.ts
 
@@ -52,7 +52,23 @@ import { Routes, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 
-import { ContactsComponent } from './contacts/contacts.component';
+
+/*TÁCH RA MODULE CHILD CHO 1 COMP CONTACTS: VÌ ĐÃ TÁCH MODULE RIÊNG CHO COMP CONTACTS, NÊN SẼ CMT/XÓA NHỮNG THỨ ĐÃ TÁCH; VÀ IMPORT GỌI MODULE CHILD ĐÓ VÀO:
+
+-import ContactsModule của contacts.module.ts vào đây; kéo xuống phần import trong @NgModule để thêm ContactsModule vào:
+    +nếu là Angular4 thì phải thêm ở đầu imports: [ContactsModule, RouterModule.forRoot(routesConfig), CommonModule ]
+    +nếu là Angular6 thì thêm ở đâu cũng đc, ở đây thêm ở cuối imports: [RouterModule.forRoot(routesConfig), CommonModule, ContactsModule ]
+
+-XÓA/cmt: import { ContactsComponent } và lần gọi nó trong declarations[] bên dưới
+
+    
+-XÓA/cmt: { path: 'contacts', component: ContactsComponent }, vì đã move qua bên contacts.module.ts
+*/
+import { ContactsModule } from './contacts/contacts.module';
+// import { ContactsComponent } from './contacts/contacts.component';
+
+
+
 import { ContactDetailComponent } from './contact-detail/contact-detail.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
@@ -66,8 +82,11 @@ const routesConfig: Routes = [
     { path: 'detail/:id/:name/:phoneNumber', component: ContactDetailComponent } thông qua đúng format với routerLink bên html để lấy dl từ bên đó.
     -Ở đây sẽ lấy dl id, name, phoneNumber từ html để truyền qua ContactDetailComponent: XEM giải thích QUY TRÌNH TRUYỀN DL tại file contacts.component.html.
     */
-    { path: 'contacts', component: ContactsComponent },
-    // { path: 'detail', component: ContactDetailComponent },
+
+    // { path: 'contacts', component: ContactsComponent },  //XÓA VÌ ĐÃ TÁCH RA MODULE CHILD RIÊNG RỒI: contacts.module.ts
+
+    // { path: 'detail', component: ContactDetailComponent }, //BỎ DÒNG NÀY THÌ KHI KÍCH VÀO nút link Detail bên app.component.html nó sẽ trả về comp page-not-found.
+    
     { path: 'detail/:id/:name/:phoneNumber', component: ContactDetailComponent },
 
     //để chỉnh 1 trang làm home, nghĩa là khi vào http://localhost:4200 thì nó tự động chuyển đến /contacts: http://localhost:4200/contacts ;
@@ -82,13 +101,14 @@ const routesConfig: Routes = [
 
 //Tạo @NgModule để gọi các module và comp đã import ở trên.  
 @NgModule({
-    imports: [RouterModule.forRoot(routesConfig), CommonModule],
+    imports: [RouterModule.forRoot(routesConfig), CommonModule, ContactsModule], //ContactsModule: nếu là Angular 4 thì phải thêm ở đầu import[ContactsModule,,]
     declarations: [
-        ContactsComponent,
+        // ContactsComponent,
         ContactDetailComponent,
         PageNotFoundComponent
     ],
 
+    // +expors (exports có s): [RouterModule] : Tại vì trong app.component.html có dùng router-outlet nên ở đây ta phải exports RouterModule ra.
     exports: [RouterModule]
 })
 
