@@ -1,3 +1,42 @@
-<p>
-  contacts works!
-</p>
+
+<!-- 
+  -Yêu cầu: ở trong comp contacts sẽ hiện ra danh sách tên. 
+  Click vào 1 trong các tên đó sẽ chuyển sang comp contactdetail là thông tin chi tiết của contact đc chọn.
+
+  THỰC HIỆN:
+  -tạo 1 mảng contacts chứa danh sách.
+  -viết html: Xem bên dưới.
+  -Vì trong html này có sd *ngFor, nhưng ở comp này ta đang thực hiện routing trong app-routing.module.ts, nên phải import thư viện chứa các ngFor,ngIf... vào module này.
+  Qua app-routing.module.ts import: import { CommonModule } from '@angular/common'; Và gọi xuống phần imports[] trong @NgModule({}) bên dưới module đó.
+
+  -Chỉnh format path của routesConfig trong file app-routing.module.ts; để nó có thể nhận ra đc format đường dẫn tương ứng từ html, để nó nhận và thực thi chuyển comp.
+
+  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  
+  QUY TRÌNH TRUYỀN DỮ LIỆU:
+  -dữ liệu ban đầu ở comp contacts là id,name,phoneNumber, sẽ đc truyền vào html contacts thông qua gọi {{ntn}}.
+  
+  -từ html contacts, thông qua routerLink sẽ truyền các id,name,phoneNumber đó qua app-routing.module.ts.
+  
+  -app-routing.module.ts sẽ thông qua điều khiển path đúng format với routerLink html: { path: 'detail/:id/:name/:phoneNumber', component: ContactDetailComponent },
+  để nhận các giá trị truyền từ routerLink html qua và gán chúng cho :id, :name,:phoneNumber(dấu : chỉ để nói đây là biến, còn gọi biến thì id, name như bt.);
+ 
+  Và lập tức truyền các giá trị :id,:name,:phoneNumber vừa nhận đc đến component ContactDetailComponent, và CHUYỂN MÀN HÌNH ĐẾN component ContactDetailComponent.
+
+  -component ContactDetailComponent: dùng ActivatedRoute, ParamMap để nhận dl truyền từ routing qua. (bên comp ContactDetailComponent có giải thích phần đó.)
+  
+  =>Lúc này comp Detail đã có dữ liệu, nó sẽ hiển thị lên bên html của nó như bình thường.
+
+   - - - - - - - -
+  ***CHÚ Ý: NẾU TỰ TRUYỀN VÀO 1 ĐƯỜNG LINK ĐÚNG FORMAT THÌ NÓ VẪN ĐẨY GIÁ TRỊ QUA CHO ROUTING MODUL.
+  VD: nhập vào đường link khi chạy web ra: http://localhost:4200/detail/123/Teooo/01663538331
+  thì nó vẫn gửi id=123, name=Teooo, phoneNumber=01663538331 qua app-routing.module.ts.
+
+-->
+
+<div *ngFor="let contact of contacts">
+  <!-- Hiện lên mỗi contact trong danh sách contacts là mỗi đường link:
+  -Tên link là contact.name; Khi kích vào thì nó chuyển tới link: /detail/{{ contact.id }}; 
+  với name,id,phoneNumber và contacts là các biến, mảng gọi từ comp.-->
+  <a routerLink="/detail/{{ contact.id }}/{{ contact.name }}/{{ contact.phoneNumber }}">{{ contact.name }}</a>
+</div>

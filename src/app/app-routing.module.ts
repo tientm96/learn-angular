@@ -47,13 +47,28 @@ và xóa các lần gọi của các comp này trong declarations[].
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+//Để các comp có sử dụng module routing này: khi routing sẽ sử dụng đc ngIF, ngFor: thì ở module routing này phải import thư viện này. 
+//Và gọi xuống phần imports[] trong @NgModule({}) bên dưới.
+import { CommonModule } from '@angular/common';
+
+
 import { ContactsComponent } from './contacts/contacts.component';
 import { ContactDetailComponent } from './contact-detail/contact-detail.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routesConfig: Routes = [
+    
+    /*-Kích vào đường dẫn contacts, thì sẽ làm việc trên component ContactsComponent, và chuyển màn hình đến ContactsComponent.
+
+    -Đường dẫn path sẽ đc truyền vào từ routerLink="/detail/{{ contact.id }}" trong html, khi kích vào sẽ cho ra link /detail/1 /detail/2 /detail/3 ...
+    Vậy khi link là /detail/1 thì path:'detail/:id' sẽ nhận đường dẫn này vì đúng với format của nó, rồi chuyển đến ContactDetailComponent.
+
+    { path: 'detail/:id/:name/:phoneNumber', component: ContactDetailComponent } thông qua đúng format với routerLink bên html để lấy dl từ bên đó.
+    -Ở đây sẽ lấy dl id, name, phoneNumber từ html để truyền qua ContactDetailComponent: XEM giải thích QUY TRÌNH TRUYỀN DL tại file contacts.component.html.
+    */
     { path: 'contacts', component: ContactsComponent },
-    { path: 'detail', component: ContactDetailComponent },
+    // { path: 'detail', component: ContactDetailComponent },
+    { path: 'detail/:id/:name/:phoneNumber', component: ContactDetailComponent },
 
     //để chỉnh 1 trang làm home, nghĩa là khi vào http://localhost:4200 thì nó tự động chuyển đến /contacts: http://localhost:4200/contacts ;
     //  giống kiểu thiết lập trang mặc định trong .net MVC, ở đây thiết lập trang mặc định là contacts.
@@ -65,9 +80,9 @@ const routesConfig: Routes = [
 
 ];
 
-//
+//Tạo @NgModule để gọi các module và comp đã import ở trên.  
 @NgModule({
-    imports: [RouterModule.forRoot(routesConfig)],
+    imports: [RouterModule.forRoot(routesConfig), CommonModule],
     declarations: [
         ContactsComponent,
         ContactDetailComponent,
