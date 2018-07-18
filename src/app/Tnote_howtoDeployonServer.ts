@@ -24,7 +24,7 @@ CÁCH LÀM:
 
 =>DEPLOY LÊN github đã xong. 
 
-Lúc này chỉ cần chạy link: tientm96.github.io chính là trang web mà mình vừa deploy lên xong.
+Lúc này chỉ cần chạy link: https://tientm96.github.io/ chính là trang web mà mình vừa deploy lên xong.
 
 -------------------------
 
