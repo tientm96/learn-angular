@@ -1,3 +1,4 @@
+<p>phần này là Comp struc</p>
 
 <!-- sử dụng ngIf -->
 
@@ -16,4 +17,19 @@
 
 <!-- click vào thì isShow sẽ đổi trạng thái true-false, làm cho <p/> ở trên sẽ ẩn hiện theo từng trạng thái -->
 <button (click)="isShow =! isShow">Toggle</button>
+<br>
 
+
+<p>---------ngSwich---------</p>
+
+<!-- Gắn ngSwitch bằng biến action trong comp 
+Nếu action=like thì hiện div LIKE, nếu action=love thì hiện div LOVE.
+Nếu action='' thì hiện div DEFAULT. (bằng bất cứ gì khác những ngSwitchCase đã cho thì đều trả về default)-->
+<button (click)="useActionSwitch();">Use Action</button> 
+
+<div [ngSwitch]="action"> 
+  <div *ngSwitchCase="'like'">LIKE</div>
+  <div *ngSwitchCase="'love'">LOVE</div>
+  <div *ngSwitchDefault>DEFAULT</div>
+
+</div>

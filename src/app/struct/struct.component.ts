@@ -16,9 +16,17 @@ export class StructComponent implements OnInit {
   //tạo mảng để sử dụng ngFor
   arrSubjects = ['Angular', 'Nodejs', 'Reactjs'];
 
+  //tạo biến action cho ngSwitch
+  action: string = ''; //có string hay ko đều được
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  //ES6 so sánh phải === nghĩa là bằng 1 cách nhất quán, bằng kể cả kdl.
+  useActionSwitch(){
+    return this.action = this.action === '' ? 'like' : (this.action === 'like' ? 'love' : '' );
   }
 
 }
