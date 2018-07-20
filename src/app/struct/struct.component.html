@@ -20,8 +20,9 @@ ng-template: chỉ hiển thị khi sử dụng để so sánh điều kiện #e
   <p>Nếu elseBlock=true thì hiện thẻ này, chứng tỏ ngIf=false</p>
 </ng-template>
 
-
-
+<!-- click vào thì isShow sẽ đổi trạng thái true-false, làm cho <p/> ở trên sẽ ẩn hiện theo từng trạng thái -->
+<button (click)="isShow =! isShow">Toggle</button>
+<br>
 
 
 <!-- Dùng ngFor giống với foreach, subject cũng như item trong foreach -->
@@ -31,12 +32,116 @@ ng-template: chỉ hiển thị khi sử dụng để so sánh điều kiện #e
   </li>
 </ul>
 
-<!-- click vào thì isShow sẽ đổi trạng thái true-false, làm cho <p/> ở trên sẽ ẩn hiện theo từng trạng thái -->
-<button (click)="isShow =! isShow">Toggle</button>
+
+<!-- Dùng ngFor nâng cao: https://angular.io/guide/structural-directives -->
+<!-- Bình thường chưa sd các biến cục bộ của ngFor-->
+<p>Chỉ ngFor, chưa sd các biến cục bộ</p>
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>Stt</th>
+      <th>Tên</th>
+      <th>Giá</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of products">
+      <td>{{ product.id }}</td>
+      <td>{{ product.name }}</td>
+      <td>{{ product.price }}</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<!-- Sử dụng các biến cục bộ của ngFor: https://angular.io/guide/structural-directives
+  "index: chỉ số hiện tại (0 đến n-1)
+	first: trả về true nếu là phần tử đầu tiên
+	last: trả về true nếu là phần tử cuối cùng
+	even: trả về true nếu là phần tử chẵn
+  odd: trả về true nếu phần tử lẽ
+  
+  trackBy: function_ofComp"
+
+
+  vd:<div *ngFor="let hero of heroes; let i=index; let odd=odd; trackBy: trackById" [class.odd]="odd"> //[class.odd] là property binding, ko liên quan, bỏ cũng đc.
+  
+  vd: firts của hàng k = false thì hàng k đó ko phải phần tử đầu
+      odd của hàng k = true thì hàng k là phần tử lẽ, là ở hàng index = 1 3 5...
+
+================================   
+
+**RIÊNG: DÙNG TRACKBY: Trong trường hợp ta lấy dl từ server về, để cho những hàng đã binding lên rồi thì ko binding lại, chỉ binding những hàng chưa có, hoặc những hàng
+được cập nhật thôi, như v sẽ làm cho hiệu suất tốt hơn.
+
+-tại trong ngFor trong html chỉ cần chèn:       trackBy: myTrackByFunction       như chèn các biến cục bộ thông thường. 
+
+-trong đó myTrackByFunction là hàm được viết trong comp với 2 params cứng là index, item:
+
+Hàm nàytrả về 1 thành phần phân biệt nào đó trong item (phải là thành phần phân biệt để dựa vào đó mà phân biệt với các item khác,
+  để biết item nào đã binding vào rồi thì sẽ ko binding nữa, vd như id,ma,...)
+
+  myTrackByFunction(index, item){
+    return item.id;
+  }
+
+=>Vậy chỉ cần thêm trong html và comp vài dòng như trên ta đã có thể dùng trackBy để tăng performance cho page mỗi lần binding với ngFor.
+
+Mỗi lần bấm btn UpdateTable thì nó lại gọi hàm onLoadData() bên comp để cập nhật mảng dl (giả sử là mới lấy từ server về cập nhật lại), để binding lại sang html.
+
+
+**CHÚ Ý: 
+-Để biết xem làm các phần tử có binding lại hay ko? Ta vào F12, kích đến vị trí dùng ngFor.
+Khi bấm btn UpdateTable mà các phần tử đã tồn tại ko nhấp nháy, có nghĩa là nó ko bị binding lại, lúc đấy chỉ có các phần tử vừa add vào mới nhấp nháy thôi.
+Khi bấm btn UpdateTable mà nếu tất cả phần tử bao gồm mới cũ đều nhấp nháy, có nghĩa là nó đã binding lại từ đầu, lúc này cần xem lại trackBy. 
+
+-Ở đây phần tử cuối cùng dù đã tồn tại, nhưng mỗi khi btn UpdateTable thì nó lại nhấp nháy, vì nó cập nhật lại background-color, vì ban đầu nó ở dưới cùng màu beige,
+nhưng sau khi bấm btn UpdateTable thì nó ko phải phần tử dưới cùng nữa nên background-color sẽ bị thay đổi, nên sẽ nhấp nháy phần background-color thôi chứ ko nháy toàn bộ item đó.
+-->
+
+<br>
+<br>
+<p>ngFor có sử dụng các biến cục bộ</p>
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>Stt</th>
+      <th>Tên</th>
+      <th>Giá</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let product of products; 
+        let i=index;
+        let f=first; 
+        let l=last;
+        let e=even;
+        let o=odd; 
+
+        trackBy: myTrackByFunction
+        " 
+
+        [style.background-color]="f === true ? 'gray' : (l === true ? 'beige' : (e === true ? 'purple' : 'cyan') )">
+      
+      <!--<td>{{ product.id }}</td> thay vì lấy id trong comp thì lấy index của mảng 0->n-1-->
+      <td>{{ i + 1 }}</td>
+      <td>{{ product.name }}</td>
+      <td>{{ product.price }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<button type="button" class="btn btn-success" (click)="onLoadData();">UpdateTable</button>
+
+<br>
 <br>
 
 
-<p>---------ngSwich---------</p>
+
+
+
+<p>---------ngSwich------------------------</p>
 
 <!-- Gắn ngSwitch bằng biến action trong comp 
 Nếu action=like thì hiện div LIKE, nếu action=love thì hiện div LOVE.

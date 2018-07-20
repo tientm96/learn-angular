@@ -3,111 +3,136 @@
 <!-- các dấu {{}} là cú pháp để gọi biến title trong app.component.ts-->
 <!-- <h1>Welcome to {{ title }}!</h1> -->
 
-<app-world></app-world>
-<hr>
-
-<app-book></app-book>
-<hr>
-
-<app-user-form></app-user-form>
-<hr>
 
 
-<br>
-<app-struct></app-struct>
-<p>------------------------------</p>
-<hr>
+<!-- TẠO container, row, panel bằng bs3-container -row -panel -->
+<div class="container">
 
-<app-words></app-words>
-<p>------------------------------</p>
-<hr>
+    <div class="row">
+        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
 
-<!-- Tại app.component.html: Gọi comp ra và đồng thời truyền input vào comp đó -->
-<app-person name="Tèo Nguyễn" age="18"></app-person>
-<app-person name="Tí Nguyễn" age="15"></app-person>
-<p>------------------------------</p>
-<hr>
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <h3 class="panel-title">LEARN ANGULAR</h3>
+                </div>
+                <div class="panel-body">
 
-<app-list-person></app-list-person>
-<p>------------------------------</p>
-<hr>
+                    <app-world></app-world>
+                    <hr>
 
-<app-parent></app-parent>
-<p>------------------------------</p>
-<hr>
+                    <app-book></app-book>
+                    <hr>
 
-<!-- add card.comp học ngContent: khung bọc ngoài cho những comp khác -->
-<!-- Chỉ truyền luôn vào class chính, truyền vào 1 chỗ -->
-<app-card>
-    <p>Khoa phạm: truyền vào 1 chỗ</p>
-</app-card>
-<hr>
-
-<!-- Truyền vào các class khác nhau, truyền vào nhiều chỗ-->
-<!-- dù header ở dưới nhưng nó vẫn hiện lên trên khi render ra, vì trong comp card.ts nó nằm ở trên -->
-<app-card>
-    <p class="card-body">Khoa phạm: nhiều chỗ-vào body</p>
-    <p class="card-header">Khoa phạm: nhiều chỗ-vào header</p>
-    <br><br>
-    <!-- thậm chí truyền vào thẻ là comp cũng đc -->
-    <app-child class="card-body">Khoa phạm: nhiều chỗ-vào header</app-child>
-    
-</app-card>
-<p>------------------------------</p>
-<hr>
-
-<app-learn-pipe></app-learn-pipe>
-<p>------------------------------</p>
-<hr>
-
-<!-- Lấy service từ http://ip.jsontest.com/ -->
-<app-ip></app-ip>
-<p>------------------------------</p>
-<hr>
-
-<app-ip2></app-ip2>
-<p>------------------------------</p>
-<hr>
-
-<app-weather></app-weather>
-<p>------------------------------</p>
-<hr>
-
-<app-sign-in></app-sign-in>
-<p>------------------------------</p>
-<hr>
-
-<app-sign-in2></app-sign-in2>
-<p>------------------------------</p>
-<hr>
-
-<app-sign-in3></app-sign-in3>
-<p>------------------------------</p>
-<hr>
-
-<app-sign-up></app-sign-up>
-<p>------------------------------</p>
-<hr>
+                    <app-user-form></app-user-form>
+                    <hr>
 
 
-<app-sign-up2></app-sign-up2>
-<p>------------------------------</p>
-<hr>
+                    <br>
+                    <app-struct></app-struct>
+                    <p>------------------------------</p>
+                    <hr>
 
-<app-sign-up3></app-sign-up3>
-<p>------------------------------</p>
-<hr>
+                    <app-words></app-words>
+                    <p>------------------------------</p>
+                    <hr>
+
+                    <!-- Tại app.component.html: Gọi comp ra và đồng thời truyền input vào comp đó -->
+                    <app-person name="Tèo Nguyễn" age="18"></app-person>
+                    <app-person name="Tí Nguyễn" age="15"></app-person>
+                    <p>------------------------------</p>
+                    <hr>
+
+                    <app-list-person></app-list-person>
+                    <p>------------------------------</p>
+                    <hr>
+
+                    <app-parent></app-parent>
+                    <p>------------------------------</p>
+                    <hr>
+
+                    <!-- add card.comp học ngContent: khung bọc ngoài cho những comp khác -->
+                    <!-- Chỉ truyền luôn vào class chính, truyền vào 1 chỗ -->
+                    <app-card>
+                        <p>Khoa phạm: truyền vào 1 chỗ</p>
+                    </app-card>
+                    <hr>
+
+                    <!-- Truyền vào các class khác nhau, truyền vào nhiều chỗ-->
+                    <!-- dù header ở dưới nhưng nó vẫn hiện lên trên khi render ra, vì trong comp card.ts nó nằm ở trên -->
+                    <app-card>
+                        <p class="card-body">Khoa phạm: nhiều chỗ-vào body</p>
+                        <p class="card-header">Khoa phạm: nhiều chỗ-vào header</p>
+                        <br>
+                        <br>
+                        <!-- thậm chí truyền vào thẻ là comp cũng đc -->
+                        <app-child class="card-body">Khoa phạm: nhiều chỗ-vào header</app-child>
+
+                    </app-card>
+                    <p>------------------------------</p>
+                    <hr>
+
+                    <app-learn-pipe></app-learn-pipe>
+                    <p>------------------------------</p>
+                    <hr>
+
+                    <!-- Lấy service từ http://ip.jsontest.com/ -->
+                    <app-ip></app-ip>
+                    <p>------------------------------</p>
+                    <hr>
+
+                    <app-ip2></app-ip2>
+                    <p>------------------------------</p>
+                    <hr>
+
+                    <app-weather></app-weather>
+                    <p>------------------------------</p>
+                    <hr>
+
+                    <app-sign-in></app-sign-in>
+                    <p>------------------------------</p>
+                    <hr>
+
+                    <app-sign-in2></app-sign-in2>
+                    <p>------------------------------</p>
+                    <hr>
+
+                    <app-sign-in3></app-sign-in3>
+                    <p>------------------------------</p>
+                    <hr>
+
+                    <app-sign-up></app-sign-up>
+                    <p>------------------------------</p>
+                    <hr>
 
 
-<!-- Bắt đầu phần tạo page cho app. Bài 58, 59
-Mục tiêu: Click vào link Contacts sẽ hiện comp contact, click vào link Detail sẽ hiện comp contacts-detail -->
-<!-- <a href="/contacts">Contacts</a> : dùng href thì sẽ refresh lại trang, nên ta đổi href thành routerLink-->
-<a routerLink="/contacts">Contacts</a>
-<a routerLink="/detail">Detail</a>
+                    <app-sign-up2></app-sign-up2>
+                    <p>------------------------------</p>
+                    <hr>
 
-<!-- Tại vị trí thẻ router-outlet này sẽ hiển thị ra các comp đc kích vào link -->
-<router-outlet></router-outlet>
+                    <app-sign-up3></app-sign-up3>
+                    <p>------------------------------</p>
+                    <hr>
 
-<br><br>
-<hr>
 
+                    <!-- Bắt đầu phần tạo page cho app. Bài 58, 59
+                        Mục tiêu: Click vào link Contacts sẽ hiện comp contact, click vào link Detail sẽ hiện comp contacts-detail -->
+                    <!-- <a href="/contacts">Contacts</a> : dùng href thì sẽ refresh lại trang, nên ta đổi href thành routerLink-->
+                    <a routerLink="/contacts">Contacts</a>
+                    <a routerLink="/detail">Detail</a>
+
+                    <!-- Tại vị trí thẻ router-outlet này sẽ hiển thị ra các comp đc kích vào link -->
+                    <router-outlet></router-outlet>
+
+                    <br>
+                    <br>
+                    <hr>
+
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
