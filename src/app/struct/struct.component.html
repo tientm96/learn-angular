@@ -1,12 +1,28 @@
-<p>phần này là Comp struc</p>
+<p>phần này là Comp struct</p>
 
-<!-- sử dụng ngIf -->
+<!-- sử dụng ngIf-->
 
 <!-- *ngIf=true thì nó hiện thẻ p, false thì nó ẩn -->
 <!-- <p *ngIf=true>struct works!</p> -->
 
 <!-- ngIf bằng cách gọi đến biến isShow trong comp -->
-<p *ngIf="isShow">struct works!</p>
+<!-- <p *ngIf="isShow">struct works!</p> -->
+
+<!-- Sử dụng if và else: sử dụng cấu trúc <ng-container/> và <ng-template/>.
+Nếu isShow=true thì hiện ra thẻ này, lúc này elseBlock=false và ngược lại.-->
+<ng-container *ngIf="isShow; else elseBlock">
+  <p>Nếu isShow=true thì thỏa ngIf, lúc này elseBlock=false</p>
+</ng-container>
+
+<!-- Nếu elseBlock=true thì hiện thẻ này ra. Phải để trong ng-template mới sử dụng else đc.
+ng-template: chỉ hiển thị khi sử dụng để so sánh điều kiện #elseBlock, còn khi dùng làm việc khác nó sẽ ko hiển thị lên-->
+<ng-template #elseBlock>
+  <p>Nếu elseBlock=true thì hiện thẻ này, chứng tỏ ngIf=false</p>
+</ng-template>
+
+
+
+
 
 <!-- Dùng ngFor giống với foreach, subject cũng như item trong foreach -->
 <ul>
