@@ -19,12 +19,12 @@ export class LearnPipe2Component implements OnInit {
       status : true
     },
     {
-      id : 1,
+      id : 2,
       name : 'Iphone 7',
       status : false
     },
     {
-      id : 1,
+      id : 3,
       name : 'Samsung s7',
       status : false
     },
