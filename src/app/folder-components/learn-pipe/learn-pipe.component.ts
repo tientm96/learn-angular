@@ -10,7 +10,10 @@ export class LearnPipeComponent implements OnInit {
 
   birthday = new Date(2015,7,25); //tháng đc tính từ 0->7 nên ghi 7 thì sẽ render ra tháng 8
 
-  person={ name: 'Khoa Phạm', age: 30 }; //tạo 1 object
+  // person={ name: 'Khoa Phạm', age: 30 }; //tạo 1 object, nó tự hiểu kdl
+ 
+  //gắn cứng kdl là any nghĩa là kiểu dl bất kỳ nào đó, thường là dùng cho object
+  public person : any = { name: 'Khoa Phạm', age: 30 }; 
 
   //Dùng AsyncPipe:
   //TH1: nếu là kdl string bình thường thì chỉ cần khai báo rồi gọi trong html {{ biến }} là đc.

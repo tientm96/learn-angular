@@ -53,37 +53,48 @@ import { AppRoutingModule } from './app-routing.module';
 
 
 import { AppComponent } from './app.component';
-import { WorldComponent } from './word/word.component';
-import { BookComponent } from './book/book.component';
-import { UserFormComponent } from './user-form/user-form.component';
-import { StructComponent } from './struct/struct.component';
-import { WordsComponent } from './words/words.component';
-import { PersonComponent } from './person/person.component';
-import { ListPersonComponent } from './list-person/list-person.component';
-import { ParentComponent } from './parent.component';
-import { ChildComponent } from './child.component';
-import { CardComponent } from './card.component';
-import { LearnPipeComponent } from './learn-pipe/learn-pipe.component';
-import { IpComponent } from './ip/ip.component';
-import { Ip2Component } from './ip2/ip2.component';
-import { WeatherComponent } from './weather/weather.component';
-import { SignInComponent } from './sign-in/sign-in.component';
-import { SignIn2Component } from './sign-in2/sign-in2.component';
-import { SignIn3Component } from './sign-in3/sign-in3.component';
-import { SignUpComponent } from './sign-up/sign-up.component';
-import { SignUp2Component } from './sign-up2/sign-up2.component';
-import { SignUp3Component } from './sign-up3/sign-up3.component';
+import { WorldComponent } from './folder-components/word/word.component';
+import { BookComponent } from './folder-components/book/book.component';
+import { UserFormComponent } from './folder-components/user-form/user-form.component';
+import { StructComponent } from './folder-components/struct/struct.component';
+import { WordsComponent } from './folder-components/words/words.component';
+import { PersonComponent } from './folder-components/person/person.component';
+import { ListPersonComponent } from './folder-components/list-person/list-person.component';
+import { ParentComponent } from './folder-components/parent.component';
+import { ChildComponent } from './folder-components/child.component';
+import { CardComponent } from './folder-components/card.component';
+import { LearnPipeComponent } from './folder-components/learn-pipe/learn-pipe.component';
+import { IpComponent } from './folder-components/ip/ip.component';
+import { Ip2Component } from './folder-components/ip2/ip2.component';
+import { WeatherComponent } from './folder-components/weather/weather.component';
+import { SignInComponent } from './folder-components/sign-in/sign-in.component';
+import { SignIn2Component } from './folder-components/sign-in2/sign-in2.component';
+import { SignIn3Component } from './folder-components/sign-in3/sign-in3.component';
+import { SignUpComponent } from './folder-components/sign-up/sign-up.component';
+import { SignUp2Component } from './folder-components/sign-up2/sign-up2.component';
+import { SignUp3Component } from './folder-components/sign-up3/sign-up3.component';
 // import { ContactsComponent } from './contacts/contacts.component';
 // import { ContactDetailComponent } from './contact-detail/contact-detail.component';
 // import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { LearnPipe2Component } from './folder-components/learn-pipe2/learn-pipe2.component';
+
+
 
 
 //import round.pipe.ts cũng giống như import 1 comp.
-import { RoundPipe } from './round.pipe';
+
+import { RoundPipe } from './folder-pipes/round.pipe';
+import { FormatDataPipe } from './folder-pipes/format-data.pipe';
+import { FilterPipe } from './folder-pipes/filter.pipe';
+
+
+
+
+
 
 //import IpService trong ip.service.ts vào đây app.module.ts, kéo xuống providers[] gọi nó ra: : để nhiều comp đều sử dụng đc service này.
 //Còn nếu chỉ import và gọi providers trong comp nào đó thì chỉ mỗi comp đó sd đc service này----------------------.
-import { IpService } from './ip2/ip.service';
+import { IpService } from './folder-components/ip2/ip.service';
 
 
 
@@ -123,7 +134,11 @@ và đc gọi vào bên trong declarations của file app.module.cs này.
     // ContactsComponent,
     // ContactDetailComponent,
     // PageNotFoundComponent,
-    RoundPipe
+    LearnPipe2Component,
+    
+    RoundPipe,
+    FormatDataPipe,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

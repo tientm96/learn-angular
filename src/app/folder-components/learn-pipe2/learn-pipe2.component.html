@@ -1,0 +1,77 @@
+<h3>learn-pipe2 component</h3>
+
+
+<!-- dùng bootstrap 3 - bs3-container -->
+<div class="container">
+
+  <!-- bs3-row col -->
+  <div class="row">
+    <!-- <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8"> -->
+    <div class="col-md-8">
+
+      <!-- bs3-table bordered -->
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>Tên pipe</th>
+            <th>Đầu vào</th>
+            <th>Đầu ra</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>FormatData</td>
+            <td>{{ content }}</td>
+            <td>{{ content | formatData }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+    <div class="col-md-8">
+      <!-- bs3-table bordered -->
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <!--nhập dl vào 3 ô input này, nó sẽ lọc từng cột ra theo dl nhập vào, kiểu như search -->
+            <td>
+              <input type="text" class="form-control" [(ngModel)]="idFilter">
+            </td>
+            <td>
+              <input type="text" class="form-control" [(ngModel)]="nameFilter">
+            </td>
+            <td>
+              <!-- <input type="text" class="form-control" [(ngModel)]="statusFilter"> -->
+
+              <!-- dạng drop-down(combobox), nếu chọn mục Active thì sẽ trả về cho biến comp string statusFilter='true'-->
+              <select class="form-control" [(ngModel)]="statusFilter">
+                <option value="true">Active</option>
+                <option value="false">Deactive</option>
+              </select>
+            </td>
+          </tr>
+
+          <!-- mỗi vòng for là 1 tr, mỗi tr là 1 hàng.
+          Gọi filter pipe và các tham số truyền vào pipe(các biến idFilter...là biến của comp, giá trị lấy từ input, gắn với ngModel ở trên )-->
+          <tr *ngFor="let product of products | filter : idFilter : nameFilter : statusFilter">
+            <td>{{ product.id }}</td>
+            <td>{{ product.name }}</td>
+            <td>{{ product.status ? 'Active' : 'Deactive' }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+
+  </div>
+
+</div>

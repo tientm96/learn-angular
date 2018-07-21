@@ -13,6 +13,7 @@ export class UserFormComponent implements OnInit {
   evenStyle= { color: 'red', fontSize: '40px'}; //chẵn (số lượng chữ nhập vào là chẵn)
   oddStyle= { color: 'black', fontSize: '20px'}; //lẽ
 
+
   current = { circle: !this.isHighLight, square: this.isHighLight};
   
   constructor() { }

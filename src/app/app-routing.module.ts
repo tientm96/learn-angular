@@ -64,13 +64,13 @@ import { CommonModule } from '@angular/common';
     
 -XÓA/cmt: { path: 'contacts', component: ContactsComponent }, vì đã move qua bên contacts.module.ts
 */
-import { ContactsModule } from './contacts/contacts.module';
+import { ContactsModule } from './folder-components/contacts/contacts.module';
 // import { ContactsComponent } from './contacts/contacts.component';
 
 
 
-import { ContactDetailComponent } from './contact-detail/contact-detail.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ContactDetailComponent } from './folder-components/contact-detail/contact-detail.component';
+import { PageNotFoundComponent } from './folder-components/page-not-found/page-not-found.component';
 
 const routesConfig: Routes = [
     

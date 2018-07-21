@@ -13,6 +13,10 @@ import { Pipe, PipeTransform } from '@angular/core';
 giống như cấu hình 1 component bình thường.
 
 
+-CHÚ Ý: nếu dùng lệnh để tạo 1 folder chứa các file name.pipe.ts riêng thì dùng như comp thôi:
++tạo comp: ng g c compname
++tạo pipe: ng g p my-new-pipe
+(xem hình pipe-các lệnh trong hình trong image note. Hoặc tại: https://www.npmjs.com/package/@angular/cli )
 
 */
 
@@ -29,6 +33,7 @@ export class RoundPipe implements PipeTransform {
         // return Math.floor(value + addTo); //nếu isUpper=false thì làm tròn xuống
 
         //Dùng toán tử 3 ngôi
+        //addTo đơn giản chỉ là 1 tham số truyền vào từ html: vd addTo=10, value=1.5 thì sẽ làm tròn cho (11.5)
         return isUpper ? Math.ceil(value + addTo) : Math.floor(value + addTo);
 
         // return Math.round(value); //hàm làm tròn theo toán học thông thường.
