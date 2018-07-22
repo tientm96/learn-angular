@@ -87,6 +87,10 @@ import { RoundPipe } from './folder-pipes/round.pipe';
 import { FormatDataPipe } from './folder-pipes/format-data.pipe';
 import { FilterPipe } from './folder-pipes/filter.pipe';
 import { SortNumberPipe } from './folder-pipes/sort-number.pipe';
+import { CapitalizePipe } from './folder-pipes/capitalize.pipe';
+import { EvenOddPipe } from './folder-pipes/even-odd.pipe';
+import { SortPipe } from './folder-pipes/sort.pipe';
+
 
 
 
@@ -140,7 +144,10 @@ và đc gọi vào bên trong declarations của file app.module.cs này.
     RoundPipe,
     FormatDataPipe,
     FilterPipe,
-    SortNumberPipe
+    SortNumberPipe,
+    CapitalizePipe,
+    EvenOddPipe,
+    SortPipe
   ],
   imports: [
     BrowserModule,

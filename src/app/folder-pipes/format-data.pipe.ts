@@ -1,3 +1,6 @@
+
+//PIPE: Lấy 1 đoạn văn bản + ...: nếu văn bản dài quá, mà muốn hiển thị lên thì ta chỉ lấy 1 đoạn thôirồi + thêm dấu ...
+
 import { Pipe, PipeTransform } from '@angular/core';
 
 //pipename formatData sẽ đc gọi trong html để gọi ra tính chất của pipe.

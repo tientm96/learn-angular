@@ -1,3 +1,6 @@
+
+//PIPE: sắp xếp array number
+
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({

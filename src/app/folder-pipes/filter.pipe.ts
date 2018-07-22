@@ -1,3 +1,6 @@
+
+//PIPE: lọc các phần tử trong mảng ra theo điều kiện
+
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({

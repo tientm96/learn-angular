@@ -8,6 +8,8 @@
   <div class="row">
     <!-- trong row thì có thể tạo nhiều class với thẻ div, để tạo nhiều table -->
 
+    
+    <!-- format-data.pipe.ts: cắt văn bản nếu quá dài, == pipe slice có sẵn -->
     <!-- <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8"> -->
     <div class="col-md-8">
 
@@ -31,6 +33,8 @@
 
     </div>
 
+
+    <!-- filter.pipe.ts: lọc mảng theo điều kiện đưa vào -->
     <div class="col-md-8">
       <!-- bs3-table bordered -->
       <table class="table table-bordered table-hover">
@@ -74,13 +78,15 @@
 
     </div>
 
+
+    <!-- sort-number.pipe.ts: sắp xếp mảng arrayNumber -->
     <div class="col-md-8">
         <!-- bs3-table bordered -->
         <table class="table table-bordered table-hover">
           <thead>
             <tr>
-              <th>Đầu vào</th>
-              <th>Đầu ra</th>
+              <th>Đầu vào arrayNumber</th>
+              <th>Đầu ra sau khi sx</th>
             </tr>
           </thead>
           <tbody>
@@ -98,8 +104,87 @@
           </tbody>
         </table>
   
-      </div>
-      
+    </div>
+
+
+    <!-- capitalize.pipe.ts: định dạng viết hoa cho ký tự đầu, kể cả có dấu Đ,Â,Ô... -->
+    <div class="col-md-8">
+        <!-- bs3-table bordered -->
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>Đầu vào chuỗi</th>
+              <th>Đầu ra: hoa chữ đầu</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <input type="text" class="form-control" [(ngModel)]="name">
+                
+              </td>
+              <td> {{ name | capitalize }}</td>
+            </tr>
+          </tbody>
+        </table>
+  
+    </div>
+
+
+    <!-- even-odd.pipe.ts: pipe lọc phần tử chẵn, lẽ trong arrayNumber -->
+    <div class="col-md-8">
+      <!-- bs3-table bordered -->
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>Đầu vào arrayNumber</th>
+            <th>Sau khi phân biệt chẵn lẽ</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <!-- sự kiện click sẽ gọi hàm onHandleEven() trong comp và truyền vào 1,-1-->
+              <button type="button" class="btn btn-danger" (click)="onHandleEven(1);">Chẵn</button>
+              <button type="button" class="btn btn-primary" (click)="onHandleEven(-1);">Lẽ</button>
+              <p>{{ evenValue }}</p>
+              <p>{{ arrNumber }}</p>
+            </td>
+            <!-- Đưa param sortValue từ comp vào pipe sortNumber để sx. -->
+            <td>{{ arrNumber | evenOdd : evenValue}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+
+    <!-- sort.pipe.ts: bài tập sắp xếp mảng -->
+    <div class="col-md-8">
+      <!-- bs3-table bordered -->
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <!--click  vào tiêu đề name thì sx theo name tăng/giảm, gửi param 'name' về; 
+            click vào tiêu đề Price thì sx theo Price tăng/giảm, gửi param 'price' về truyền cho sortByBT của comp.
+            Truyền các tham số 'name' 'price' vào hàm onSort() trong comp-->
+            <th (click)="onSort('name')">Name</th>
+            <th (click)="onSort('price')">Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Vì pipe sort là sx luôn cho cả array, nên ta truyền trong ngFor -->
+          <tr *ngFor="let product of products2 | sort: sortByBT : sortValueBT; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ product.name }}</td>
+            <td>{{ product.price | currency:'USD':'symbol':'1.2-3'}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+
 
 
   </div>
