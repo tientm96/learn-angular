@@ -6,6 +6,8 @@
 
   <!-- bs3-row col -->
   <div class="row">
+    <!-- trong row thì có thể tạo nhiều class với thẻ div, để tạo nhiều table -->
+
     <!-- <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8"> -->
     <div class="col-md-8">
 
@@ -71,6 +73,33 @@
       </table>
 
     </div>
+
+    <div class="col-md-8">
+        <!-- bs3-table bordered -->
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>Đầu vào</th>
+              <th>Đầu ra</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <!-- sự kiện click sẽ gọi hàm onHandleSort() trong comp và truyền vào 1,-1-->
+                <button type="button" class="btn btn-danger" (click)="onHandleSort(1);">Tăng dần</button>
+                <button type="button" class="btn btn-primary" (click)="onHandleSort(-1);">Giảm dần</button>
+                <p>{{ sortValue }}</p>
+                <p>{{ arrNumber }}</p>
+              </td>
+              <!-- Đưa param sortValue từ comp vào pipe sortNumber để sx. -->
+              <td>{{ arrNumber | sortNumber : sortValue}}</td>
+            </tr>
+          </tbody>
+        </table>
+  
+      </div>
+      
 
 
   </div>

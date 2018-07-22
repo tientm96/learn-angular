@@ -22,6 +22,9 @@ giống như cấu hình 1 component bình thường.
 
 export class RoundPipe implements PipeTransform {
     transform(value: number, isUpper: boolean, addTo: number): number {  
+        // console.log(typeof addTo); //để xem addTo là kiểu dl gì
+
+        
         // bên trong (value): đưa vào kiểu number;
         // bên ngoài ngoặc () có :number: trả ra kết quả sau khi pipe cũng kiểu number.
         // thêm tham số  isUpper để nhận tham số truyền vào từ bên ngoài.

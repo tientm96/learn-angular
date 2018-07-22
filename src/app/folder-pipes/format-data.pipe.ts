@@ -11,6 +11,8 @@ export class FormatDataPipe implements PipeTransform {
   //any nghĩa là kiểu dl bất kỳ nào đó, thường là dùng cho object
   //kiểu any trong () là kiểu value nhận vào, any bên ngoài là kiểu value trả ra. 
   transform(value: any, args?: any): any {
+    // console.log(typeof args); //để xem args là kiểu dl gì
+
     return value.substr(0, 10) + '...'; //cắt từ vị trí 0 đến 10-1
   }
 

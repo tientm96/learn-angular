@@ -86,6 +86,7 @@ import { LearnPipe2Component } from './folder-components/learn-pipe2/learn-pipe2
 import { RoundPipe } from './folder-pipes/round.pipe';
 import { FormatDataPipe } from './folder-pipes/format-data.pipe';
 import { FilterPipe } from './folder-pipes/filter.pipe';
+import { SortNumberPipe } from './folder-pipes/sort-number.pipe';
 
 
 
@@ -138,7 +139,8 @@ và đc gọi vào bên trong declarations của file app.module.cs này.
     
     RoundPipe,
     FormatDataPipe,
-    FilterPipe
+    FilterPipe,
+    SortNumberPipe
   ],
   imports: [
     BrowserModule,

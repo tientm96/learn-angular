@@ -40,11 +40,19 @@ export class LearnPipe2Component implements OnInit {
   public nameFilter: string;
   public statusFilter: string;
 
+  //mảng dùng để học pipe sắp xếp arraynumber
+  public arrNumber = [1, 3, 2, 4, 7];
+  public sortValue = 1;
 
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+
+  onHandleSort(value){
+    this.sortValue = value;
   }
 
 }
