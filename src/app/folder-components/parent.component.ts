@@ -15,8 +15,11 @@ import { ChildComponent } from './child.component';
 
         ***CÁCH 2: DÙNG ViewChild: xem bên dưới
     */
+
+   //$event: thông qua thẻ <app-child>, biến này nhận value gửi qua từ output myClick của comp Child.-->
     template: `
         <h3>{{ value }}</h3>
+        
         <app-child (myClick)="changeValue($event);" #child></app-child>
         
         <button (click)="child.value2 = child.value2 + 1">Add for Child-#Child</button> 
@@ -54,6 +57,7 @@ export class ParentComponent implements OnInit {
     @ViewChild(ChildComponent)
     myChild: ChildComponent;
 
+    //gọi biến value2 từ ChildComponent
     onAddForViewChild(){
         this.myChild.value2++;
     }

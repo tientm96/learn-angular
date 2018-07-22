@@ -1,14 +1,16 @@
 
-<!--Tương tác, truyền mảng từ folder list-person sang folder person.
+<!--ngFor kết hợp Input:
+  Tương tác, truyền mảng từ comp list-person(cha) sang comp person(con).
 
   Lấy giá trị từng person của mảng arrPeople trong comp, truyền qua cho folder person.component.ts.
   Vì truyền từ đây qua folder person.component.ts nên phải gọi <app-person>.
 
-  Chú ý: <app-person [name]="person.name" [age]="person.age">:
-    Với [name],[age] là các thuộc tính Input của person.component.ts đc gọi ra để gán các giá trị vào.
+  Chú ý: <app-person [name]="person.name" [age]="person.age">: person là thành phần trong ngFor
+    Với [name],[age] là các thuộc tính Input của person.component.ts đc gọi ra để gắn các giá trị vào.
     
-    Nếu ko có [] bọc ngoài name,age đầu, thì sẽ đc hiểu là gán trực tiếp giá trị chuỗi "person.name","person.age" cho nó, chứ ko phải giá trị lấy từ duyệt mảng.
- -->
+    Nếu ko có [] bọc ngoài name,age đầu, thì sẽ đc hiểu là gán trực tiếp giá trị chuỗi "person.name","person.age" cho nó, 
+    chứ ko phải giá trị lấy từ duyệt mảng.
+-->
 <!-- <div *ngFor="let person of arrPeople">
   <app-person [name]="person.name" [age]="person.age"></app-person>
 
@@ -23,7 +25,9 @@
     [age]="person.age" 
     (removePerson)="removePersonByName($event)"> 
     <!--Vì chưa biết param là gì, nên ta luôn để là $event. 
-      (removePerson): là sự kiện output đc gửi từ person.js qua, sự kiện này gửi thêm param qua, param này đc đưa vào $event -->
+      (removePerson): là sự kiện output đc gửi từ person.js qua, sự kiện này gửi thêm param qua, param này đc đưa vào $event
+
+      -$event: thông qua thẻ <app-person>, biến này nhận name gửi qua từ output removePerson của com person.-->
 </app-person>
 
 </ng-container>

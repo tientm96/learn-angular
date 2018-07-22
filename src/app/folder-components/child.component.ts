@@ -20,7 +20,7 @@ export class ChildComponent implements OnInit {
 
     /*Muốn gửi sự kiện từ child qua parent thì phải:
     Import EventEmitter, Output ở dòng trên cùng
-    Khai báo sự kiện phải có @Output eventname = new EventMiter().
+    Khai báo sự kiện phải có @Output() eventname = new EventMiter().
     Sau khi khai báo đầy đủ, muốn kích hoạt myclick để có thể gửi sự kiện đi: this.myclick.emit()
 
     event myClick đã đc tạo ở đây, qua parent ta chỉ cần gọi đến myClick: <app-child (myClick)="value = value + 1"></app-child>

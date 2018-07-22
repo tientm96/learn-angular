@@ -14,7 +14,7 @@ export class PersonComponent implements OnInit {
   Khi khai báo các biến để lấy input thì phải @Input() biến: kdl;
   */ 
 
-  /*string: kdl bình thường. Kiểu này ta có thể so sánh 2 chuỗi = nhau hay ko.
+  /*string: kdl bình thường. Kiểu này ta có thể so sánh 2 chuỗi === nhau.
 
 String: object. Là kiểu hỗn hợp. Kiểu này ta ko thể so sánh 2 chuỗi được, vì ngoài giá trị 2 chuỗi còn các thuộc tính khác.
 (ko thể so sánh object như so sánh kdl bình thường)
@@ -40,7 +40,16 @@ String: object. Là kiểu hỗn hợp. Kiểu này ta ko thể so sánh 2 chu�
   
   */
 
- @Input() name: string;
+
+  //khai báo các biến để nhận input truyền vào từ app.comp.html(comp cha)
+/* bên app.comp.html sẽ gọi đến comp person và truyền dl vào comp person này:
+  <app-person name="Tèo Nguyễn" age="18"></app-person>
+  <app-person name="Tí Nguyễn" age="15"></app-person>
+
+  -tại comp person.ts ta chỉ cần import, rồi khai báo biến như 2 dòng bên dưới để nhận dl truyền vào.
+*/
+
+  @Input() name: string;
  @Input() age: Number;
 
 
