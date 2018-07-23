@@ -1,18 +1,30 @@
+<div class="panel panel-success">
+  <div class="panel-heading">
+    <h3 class="panel-title">user-list comp: nhận user array gửi về từ parent2 comp</h3>
+  </div>
+  <div class="panel-body">
 
-<table class="table table-bordered table-hover">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Họ tên</th>
-      <th>Địa chỉ</th>
-    </tr>
-  </thead>
-  <tbody>
-    <!-- thẻ tr là 1 hàng của bảng. Mỗi vòng for là 1 hàng -->
-    <tr *ngFor="let user of users">
-      <td>{{ user.id }}</td>
-      <td>{{ user.name }}</td>
-      <td>{{ user.address }}</td>
-    </tr>
-  </tbody>
-</table>
+    <p>name và phone gửi từ output của child2 qua parent2, rồi từ parent2 truyền qua input của user-list này.</p>
+    <p>name: {{ fullname }}</p>
+    <p>phone: {{ phone }}</p>
+
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Họ tên</th>
+          <th>SĐT</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- thẻ tr là 1 hàng của bảng. Mỗi vòng for là 1 hàng -->
+        <tr *ngFor="let user of users">
+          <td>{{ user.id }}</td>
+          <td>{{ user.name }}</td>
+          <td>{{ user.phone }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>

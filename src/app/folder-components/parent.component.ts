@@ -17,7 +17,8 @@ import { ChildComponent } from './child.component';
         ***CÁCH 2: DÙNG ViewChild: xem bên dưới
     */
 
-   //$event: thông qua thẻ <app-child>, biến này nhận value gửi qua từ output myClick của comp Child.-->
+   //$event: thông qua thẻ <app-child>, biến này nhận value gửi qua từ output myClick của comp Child.
+   //gọi đên sự kiện output bên child comp trong dấu ngoặc () như: (myClick)
     template: `
         <h3>{{ value }}</h3>
         

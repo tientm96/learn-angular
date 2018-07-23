@@ -1,19 +1,42 @@
-<h3>parent2 comp: học thêm về input, output</h3>
+<div class="panel panel-warning">
+    <div class="panel-heading">
+        <h3 class="panel-title">parent2 comp: chứa child2 comp: học thêm về input, output</h3>
+    </div>
 
-<!-- 
--Tại app.component.html: Gọi comp con ra và đồng thời truyền input vào comp đó, các biến input phải để trong [] .
+    <div class="panel-body">
+        <!-- 
+        -Tại app.component.html: Gọi comp con ra và đồng thời truyền input vào comp đó, các biến input phải để trong [] .
+        -Các cách truyền input: biến name là biến input của comp con đc gọi ra để gắn giá trị vào, phải để trong dấu [](là dạng property binding):
+        +Nếu gán biến input với 1 biến nào đó từ comp cha: [name]="biến từ comp cha"
+        +Nếu gán cứng giá trị từ html: [name]="'Tèo Nguyễn'" (chuỗi phải trong dấu ''), [age]="18" (số nguyên thì ko cần '')
 
--Các cách truyền input: biến name là biến input của comp con đc gọi ra để gắn giá trị vào, phải để trong dấu [](là dạng property binding):
+        vd:  <app-person [name]="nameComp" [age]="ageComp"></app-person> : gán bằng biến từ comp
+            <app-person [name]="'Tí Nguyễn'" [age]="15"></app-person>  : gán trực tiếp trong html-->
+        
+        <!-- onHandleFullName: là biến output của child2 comp, nó mang dl từ child2 comp truyền qua đây.
+        Comp cha gọi biến output của comp con bằng dấu ngoặc () bên ngoài (biến output),
+        $event: là tượng trưng giá trị biến output truyền qua, sẽ đưa vào param hàm, để hàm lấy giá trị về xử lý.-->
+        <app-child2 
+            [married]="isMarried" 
+            [age]="age" [name]="'Tiến đẹp trai'"
+            
+            (onHandleFullName)="onGetFullName($event);"
+            (onHandlePhoneNumber)="onGetPhoneNumber($event);"
+            >
+        </app-child2>
 
-+Nếu gán biến input với 1 biến nào đó từ comp cha: [name]="biến từ comp cha"
-+Nếu gán cứng giá trị từ html: [name]="'Tèo Nguyễn'" (chuỗi phải trong dấu ''), [age]="18" (số nguyên thì ko cần '')
-
-vd:  <app-person [name]="nameComp" [age]="ageComp"></app-person> : gán bằng biến từ comp
-    <app-person [name]="'Tí Nguyễn'" [age]="15"></app-person>  : gán trực tiếp trong html
--->
-
-<app-child2 [married]="isMarried" [age]="age" [name]="'Tiến đẹp trai'"></app-child2>
+        <p>Dl từ child2 gửi qua parent2 comp: </p>
+        <p>Fullname: {{ fullname }}</p>
+        <p>PhoneNumber: {{ phonenumber }}</p>
 
 
-<!-- gửi mảng users bên comp qua cho biến input [users] của user-list comp -->
-<app-user-list [users]="users" ></app-user-list>
+        <!-- gửi mảng users bên comp parent2 này qua cho biến input [users] của user-list comp -->
+        <app-user-list [users]="users" [fullname]="fullname" [phone]="phonenumber"></app-user-list>
+    
+
+        <!-- nếu check === true thì show thẻ này. -->
+        <p *ngIf="check">Dl nhận vào từ output của child2 đã đc thêm vào mảng.</p>
+
+    </div>
+
+</div>

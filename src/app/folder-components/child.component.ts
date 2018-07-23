@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter} from '@angular/core';
 
 @Component({
     selector: 'app-child',
@@ -43,8 +43,14 @@ export class ChildComponent implements OnInit {
 
     */
 
-    //tạo ra sự kiện output, kèm theo <kiểu dl tham số cần truyền qua parent>
+
+    //tạo ra keyname đồng thời là tên biến sự kiện output, kèm theo <kiểu dl tham số cần truyền qua parent2>, nếu ko biết kdl gì thì để <any>.
+    // @Output() myClick = new EventEmitter<any>();
     @Output() myClick = new EventEmitter<boolean>();
+
+    //cách khác: truyền keyname !==/=== tenbienOutput (biến thì sd cho child comp, còn keyname là để gọi bên parent comp)
+    // @Output('myClickKey') myClick = new EventEmitter<boolean>();
+
 
     //kích hoạt sự kiện output
     addForParent(){
