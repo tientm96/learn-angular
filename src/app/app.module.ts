@@ -79,6 +79,7 @@ import { SignUp3Component } from './folder-components/sign-up3/sign-up3.componen
 import { LearnPipe2Component } from './folder-components/learn-pipe2/learn-pipe2.component';
 import { Child2Component } from './folder-components/child2/child2.component';
 import { Parent2Component } from './folder-components/parent2/parent2.component';
+import { UserListComponent } from './folder-components/user-list/user-list.component';
 
 
 
@@ -145,6 +146,7 @@ và đc gọi vào bên trong declarations của file app.module.cs này.
     LearnPipe2Component,
     Child2Component,
     Parent2Component,
+    UserListComponent,
 
 
     

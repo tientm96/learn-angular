@@ -1,5 +1,19 @@
 <h3>parent2 comp: học thêm về input, output</h3>
 
-<!-- [married]: là biến @input của app-child2 để nhận dl truyền vào là isMarried -->
-<!-- <app-child2 [married]="isMarried"></app-child2> -->
+<!-- 
+-Tại app.component.html: Gọi comp con ra và đồng thời truyền input vào comp đó, các biến input phải để trong [] .
 
+-Các cách truyền input: biến name là biến input của comp con đc gọi ra để gắn giá trị vào, phải để trong dấu [](là dạng property binding):
+
++Nếu gán biến input với 1 biến nào đó từ comp cha: [name]="biến từ comp cha"
++Nếu gán cứng giá trị từ html: [name]="'Tèo Nguyễn'" (chuỗi phải trong dấu ''), [age]="18" (số nguyên thì ko cần '')
+
+vd:  <app-person [name]="nameComp" [age]="ageComp"></app-person> : gán bằng biến từ comp
+    <app-person [name]="'Tí Nguyễn'" [age]="15"></app-person>  : gán trực tiếp trong html
+-->
+
+<app-child2 [married]="isMarried" [age]="age" [name]="'Tiến đẹp trai'"></app-child2>
+
+
+<!-- gửi mảng users bên comp qua cho biến input [users] của user-list comp -->
+<app-user-list [users]="users" ></app-user-list>

@@ -49,11 +49,24 @@ String: object. Là kiểu hỗn hợp. Kiểu này ta ko thể so sánh 2 chu�
   -tại comp person.ts ta chỉ cần import, rồi khai báo biến như 2 dòng bên dưới để nhận dl truyền vào.
 */
 
-  @Input() name: string;
- @Input() age: Number;
+  /* Có 2 cách đặt tên biến input: Với keyname là tên input đc gọi ở comp cha
+  (nếu comp cha muốn gọi tới input này thì nó sẽ gọi keyname và gắn giá trị vào keyname)
+
+  +@Input() tenbienInput: kdl;  Cách này thì tenbienInput === keyname
+
+  +@Input('keyname') tenbienInput : kdl;  Cách này thì tenbienInput có thể !== keyname
+
+  */
+
+  //Dùng cách truyền bằng keyname
+  // @Input('name') Name : string = 'ABC'; 
+
+  //Có thể gắn giá trị default hoặc ko. Giá trị default sẽ đc dùng nếu như input ko đc truyền giá trị vào.
+  @Input() name: string = 'Tên Còn Trống';
+  @Input() age: Number;
 
 
- @Output() removePerson = new EventEmitter<string>();
+  @Output() removePerson = new EventEmitter<string>();
 
   constructor() { }
 

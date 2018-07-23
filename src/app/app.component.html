@@ -36,9 +36,21 @@
                     <p>------------------------------</p>
                     <hr>
 
-                    <!-- Tại app.component.html: Gọi comp ra và đồng thời truyền input vào comp đó -->
-                    <app-person name="Tèo Nguyễn" age="18"></app-person>
-                    <app-person name="Tí Nguyễn" age="15"></app-person>
+                    <!-- INPUT:
+                        -Tại app.component.html: Gọi comp con ra và đồng thời truyền input vào comp đó, các biến input phải để trong [] .
+                        
+                        -Các cách truyền input: biến name,age là 2 biến input của app-person đc gọi ra để gắn giá trị vào, phải để trong dấu [](là dạng property binding):
+                        +Nếu gán biến input với 1 biến nào đó từ comp cha: [name]="biến từ comp cha"
+                        +Nếu gán cứng giá trị từ html: [name]="'Tèo Nguyễn'" (chuỗi phải trong dấu ''), [age]="18" (số nguyên thì ko cần '')
+                    -->
+
+                    <app-person [name]="nameComp" [age]="ageComp"></app-person>
+                    <!-- <app-person [name]="'Tèo Nguyễn'" [age]="18"></app-person> -->
+                    <app-person [name]="'Tí Nguyễn'" [age]="15"></app-person>
+
+                    <!-- Hoặc cách ko cần dùng [], gán trực tiếp, nhưng cách này ít dùng. -->
+                    <!-- <app-person name="Tí Nguyễn" age="15"></app-person> -->
+
                     <p>------------------------------</p>
                     <hr>
 

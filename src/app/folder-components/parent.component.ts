@@ -8,6 +8,7 @@ import { ChildComponent } from './child.component';
     //$event nhận tham số truyền qua từ child.ts: qua đó xem.
 
     /*Bai 31: Tạo object. Thay đổi biến thông qua object:
+    
     #child trong <app-child #child>: là tạo ra 1 biến/object child của class child.comp.ts.
         Do đó child có thể gọi đến biến value2 ở child.comp.ts để set lại giá trị cho nó.
 
