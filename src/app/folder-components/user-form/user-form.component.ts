@@ -29,6 +29,12 @@ export class UserFormComponent implements OnInit {
     this.name = event.target.value;
   }
 
+  //hàm dùng cho template variable, nhận tham số truyền vào từ temp #txtUserName
+  username='';
+  onGetUser(username) : void{
+    //  console.log(username);
+    this.username = username; 
+	}
 
   /*cách 4.2: two-way binding bằng cách dùng thuộc tính directive: https://angular.io/guide/architecture-components#data-binding
   Trong link có dòng: <input [(ngModel)]="hero.name">  dòng này để dùng trong file html.

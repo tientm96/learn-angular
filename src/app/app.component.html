@@ -6,7 +6,7 @@
 
 
 <!-- TẠO container, row, panel bằng bs3-container -row -panel -->
-<div class="container">
+<div class="container" [style.margin-top.px]="20">
 
     <div class="row">
         <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
@@ -76,7 +76,8 @@
                         <p class="card-header">Khoa phạm: nhiều chỗ-vào header</p>
                         <br>
                         <br>
-                        <!-- thậm chí truyền vào thẻ là comp cũng đc -->
+                        <!-- thậm chí truyền vào thẻ là comp cũng đc. 
+                            Truyền nguyên comp app-child vào body, nhưng dòng text thì lại truyền vào chổ <ng-content/> trong app-child -->
                         <app-child class="card-body">Khoa phạm: nhiều chỗ-vào body</app-child>
 
                     </app-card>
@@ -144,7 +145,6 @@
                     <hr>
 
 
-                    
                     <!-- học thêm về input, output: https://www.youtube.com/watch?v=0dp_5uD2lmw&list=PLJ5qtRQovuENHYHqlQP5XT7zwbCA5Q5He&index=13 -->
                     <!-- <app-child2></app-child2> -->
                     <app-parent2></app-parent2>
@@ -153,6 +153,21 @@
 
 
 
+                    <!-- Vòng đời: xem note bài 37.1 
+                    Kích btn thì sẽ ẩn hiện lifecycle comp.
+                    Ban đầu đang hiện comp, đến lúc ẩn comp thì hàm OnDestroy() bên comp đó mới thực thi -->
+                    <ng-container *ngIf="!isDestroy">
+                        <app-lifecycle-hooks [total]="total"></app-lifecycle-hooks>
+                    </ng-container>
+                    <button type="button" class="btn btn-danger" (click)="onHandleDestroy();">Toggle-Deploy/Destroy Comp LifeCycle</button>
+
+                    <br><br>
+                    Số thứ 1: <input type="number" class="form-control" [(ngModel)]="a">
+                    Số thứ 2: <input type="number" class="form-control" [(ngModel)]="b">
+                    <button type="button" class="btn btn-danger" (click)="amount(a.value, b.value);">Tính tổng</button>
+                    
+                    <br><br>
+                    <hr>
                     
 
                 </div>

@@ -2,7 +2,11 @@ import { Component, OnInit, Output, EventEmitter} from '@angular/core';
 
 @Component({
     selector: 'app-child',
-    template: `<button (click)="addForParent();">Add</button>
+    template: `
+                <ng-content></ng-content>
+                <br>
+
+                <button (click)="addForParent();">Add</button>
                 <button (click)="subForParent();">Sub</button>
                 <br><br>
                 <h3>{{ value2 }}</h3>

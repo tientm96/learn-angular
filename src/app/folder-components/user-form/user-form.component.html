@@ -27,13 +27,17 @@ hoặc Directive vừa học ở bài 12.
 
 vd: <input #phone placeholder="phone number">
 
--Ở bài này #txtUsername tham chiếu đến ngModel, nhận các thay đổi từ ngModel.
+-Ở bài này #txtUsername tham chiếu đến input (cũng giống với ngModel), nhận các thay đổi từ Input.
 lúc gọi ra #txtUsername.value và theo định dạng json nên bọc ngoài sẽ có dấu ""
 -->
 <input placeholder="Enter username2" [(ngModel)]="name2" #txtUsername>
 <h3>Your name is: {{ name2 }}</h3>
-<code>{{ txtUsername.value | json }}</code> 
+<code>{{ txtUsername.value | json }}</code>     
 
+<!--hoặc sd temp #txtUsername để lấy giá trị input và truyền như param vào 1 hàm nào đó cho comp.-->
+<br><br>
+<button (click)="onGetUser(txtUsername.value);">Get User</button>	
+<p>giá trị lấy từ temp #txtUsername là: {{ username }}</p>
 
 <!-- Style binding : dùng để binding các tính chất thuộc về style như color, size...-->
 <br>

@@ -24,7 +24,14 @@ ng-template: chỉ hiển thị khi sử dụng để so sánh điều kiện #e
 <button (click)="isShow =! isShow">Toggle</button>
 <br>
 
+<!-- nếu  isShow = true thì hiện lên 1 comp con khác.-->
+<p *ngIf="isShow">
+  <app-book></app-book>
+</p>
 
+
+
+<!-- =================================================================== -->
 <!-- Dùng ngFor giống với foreach, subject cũng như item trong foreach -->
 <ul>
   <li *ngFor="let subject of arrSubjects">

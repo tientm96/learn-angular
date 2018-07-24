@@ -80,6 +80,7 @@ import { LearnPipe2Component } from './folder-components/learn-pipe2/learn-pipe2
 import { Child2Component } from './folder-components/child2/child2.component';
 import { Parent2Component } from './folder-components/parent2/parent2.component';
 import { UserListComponent } from './folder-components/user-list/user-list.component';
+import { LifecycleHooksComponent } from './folder-components/lifecycle-hooks/lifecycle-hooks.component';
 
 
 
@@ -147,6 +148,8 @@ và đc gọi vào bên trong declarations của file app.module.cs này.
     Child2Component,
     Parent2Component,
     UserListComponent,
+    LifecycleHooksComponent,
+
 
 
     

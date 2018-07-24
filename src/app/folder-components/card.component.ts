@@ -3,6 +3,10 @@ import { Component } from '@angular/core';
 
 /* ngContent giúp tạo ra những comp làm khung sườn, tức là làm những khung bao bên ngoài cho những comp khác.
 
+phân vùng để đỗ dl vào. Dữ liệu đc đưa vào đi kèm mỗi khi gọi comp này ra. 
+
+<com này>dl đưa vào mỗi khi gọi nó ra ở comp khác</com này>
+
 - Chỉ truyền luôn vào class chính, truyền vào 1 chỗ :
 Ở đây ta truyền <ng-content></ng-content> trong class="card" là class tạo 1 khung bọc xung quanh.
 
