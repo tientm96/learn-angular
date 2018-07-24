@@ -62,27 +62,52 @@
                     <p>------------------------------</p>
                     <hr>
 
-                    <!-- add card.comp học ngContent: khung bọc ngoài cho những comp khác -->
-                    <!-- Chỉ truyền luôn vào class chính, truyền vào 1 chỗ -->
-                    <app-card>
-                        <p>Khoa phạm: truyền vào 1 chỗ</p>
-                    </app-card>
-                    <hr>
 
-                    <!-- Truyền vào các class khác nhau, truyền vào nhiều chỗ-->
-                    <!-- dù header ở dưới nhưng nó vẫn hiện lên trên khi render ra, vì trong comp card.ts nó nằm ở trên -->
+
+                    <!-- ================NG-CONTENT===================== -->
+                    <!-- Trường hợp gọi comp con ra, rồi truyền dl vào, nhưng ko phải là dl @Input, mà là dl ở <comp>dl ở giữa<compcard> thẻ như bình thường, thì lúc này phải
+                    truyền vào vị trí ng-content của thẻ đó.
+                
+                    <compcard NẾU TRUYỀN THEO @INPUT THÌ PHẢI TRUYỀN TRONG NÀY>dl đưa vào mỗi khi gọi nó ra ở comp khác</compcard> -->
+
+                    <!-- Ở ĐÂY CÓ THỂ TRUYỀN LỘN XỘN, NHƯNG NÓ SẼ SX THEO ĐÚNG MÃ ng-content ĐÃ TRUYỀN QUA -->
                     <app-card>
-                        <p class="card-body">Khoa phạm: nhiều chỗ-vào body</p>
-                        <p class="card-header">Khoa phạm: nhiều chỗ-vào header</p>
-                        <br>
-                        <br>
-                        <!-- thậm chí truyền vào thẻ là comp cũng đc. 
-                            Truyền nguyên comp app-child vào body, nhưng dòng text thì lại truyền vào chổ <ng-content/> trong app-child -->
-                        <app-child class="card-body">Khoa phạm: nhiều chỗ-vào body</app-child>
+                        <p>truyền vào ng-content ko đk</p>
+
+                        <!-- tương tự TH1 trên cùng, truyền mà ko vào class nào cả, sẽ truyền trong ng-content ko chứa điều kiện, ng-content trên cùng. -->
+                        <h1>Value: h1 tag</h1>        
+                        <h2>Value: h2 tag</h2>
+
+
+                        <p class="card-header">truyền vào ng-content có đk là: select=".card-header"</p>
+                        <p class="card-body">truyền vào ng-content có đk là: select=".card-body"</p>
+
+                        <!--thậm chí truyền vào thẻ là comp cũng đc. 
+                            Truyền nguyên comp app-child vào body, nhưng dòng text thì lại truyền vào chổ <ng-content/> trong comp <app-child> chứ ko phải comp card -->
+                        <app-child class="card-body">truyền nguyên cả comp child, vào ng-content có đk là: select=".card-body"</app-child>
+                        
+                        <!-- Vẫn là truyền theo class như 2 cái ở trên: truyền vào ng-content có select=".myClass"-->
+                        <h3 class="myClass">Value: h3 tag: truyền vào ng-content có đk là: select=".myClass"</h3>
+
+
+
+                        <!-- Lẽ ra là ko có đk, nên truyền vào ng-content chính, nhưng bên card comp có ng-content cho thẻ h4 riêng, nên nó sẽ truyền vào  vị trí đó. -->
+                        <h4>Value: h4 tag: truyền vào ng-content có đk là thẻ h4: select="h4"</h4>
+
+                        <!-- truyền vào ng-content có select="[myAttr]" -->
+                        <div myAttr>div tag - Truyền theo Attr: select="[myAttr]"</div>
+
+                        <!-- truyền vào ng-content có select="[course=angular6]" -->
+                        <span course="angular6">span tag - truyền theo: select="[course=angular6]"</span>
+
+                        <!-- truyền vào ng-content có select="[handsome][demo]" -->
+                        <p handsome demo>Multi tag - truyền theo: select="[handsome][demo]"</p>
 
                     </app-card>
                     <p>------------------------------</p>
                     <hr>
+                    <!-- ================NG-CONTENT===================== -->
+
 
                     <app-learn-pipe></app-learn-pipe>
                     <p>------------------------------</p>
