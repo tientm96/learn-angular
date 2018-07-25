@@ -1,0 +1,46 @@
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">Học service bổ sung: comp movie-list</h3>
+  </div>
+  <div class="panel-body">
+    
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>Stt: index+1</th>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Link</th>
+          <th>Author</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let movie of movies; let i = index" (click)="enableUpdateVideo(movie.id, movie.name, movie.link, movie.author);" (dblclick)="deleteVideo(movie.id);">
+          <td>{{ i + 1 }}</td>
+          <td>{{ movie.id }}</td>
+          <td>{{ movie.name }}</td>
+          <td>
+            <a [href]="movie.link">{{ movie.name }}</a>
+          </td>
+          <td>{{ movie.author }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div *ngIf="isCheckUpdate">
+        Name: <input type="text" class="form-control" [value]="name" #nameRef>
+        Link: <input type="text" class="form-control" [value]="link" #linkRef>
+        Author: <input type="text" class="form-control" [value]="author" #authorRef>
+        <!-- sự kiện click, khi click sẽ gọi đến hàm addWord() của comp để thêm phần tử.
+        Sau khi thêm thì ẩn form đi bằng cách set lại isShowForm=false-->
+        <br>
+        <button type="button" class="btn btn-success" (click)="handleUpdateVideo(nameRef.value, linkRef.value, authorRef.value);">Update</button>
+    </div>
+    
+    <br>
+    <p>Single click vào hàng cần sửa</p>
+    <p>Double click vào hàng cần xóa</p>
+    
+  </div>
+</div>

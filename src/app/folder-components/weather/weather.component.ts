@@ -17,11 +17,12 @@ import { WeatherService } from './weather.service';
 export class WeatherComponent implements OnInit {
 
   txtCityName=''; // bên html dùng ngModel để gắn với biến này. Nhập vào là nó tự nhận dl.
-  cityName = '';
+  cityName = ''; // biến thành phố hiển thị ra = tên tp tìm kiếm
   temp= null; //nhiệt độ, lúc đầu chưa có nhiệt độ nên cho null
   isLoading= false;//thuộc tính hiển thị đang loading..., mới đầu chưa load gì cả nên false.
 
   //khởi tạo ngầm object của service cần gọi
+  //Cơ chế Dependence Injection sẽ Inject service vào constructor, mà ko cần phải khởi tạo đối tượng.
   constructor(private weatherService: WeatherService) { }
 
   //test thử service get weather

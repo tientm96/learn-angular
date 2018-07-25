@@ -1,4 +1,3 @@
-import { WeatherComponent } from './weather.component';
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 // import 'rxjs/add/operator/toPromise'; //trong angular 6 thì ko cần dòng này cũng có thể toPromise với get http.
@@ -7,6 +6,7 @@ import { Http } from '@angular/http';
 
 
 @Injectable()
+
 
 export class WeatherService {
     //kb biến http từ thư viện Http, angular sẽ tự động new ngầm cho nó thành đối tượng của Http. 
@@ -21,7 +21,7 @@ export class WeatherService {
         return this.http.get(url)
         .toPromise() 
         .then(res => res.json())
-        .then(resJson => resJson.main.temp) //theo url thì cấu trúc json chứa weather là main bọc bên ngoài temp 
+        .then(resJson => resJson.main.temp) //F12 theo url thì cấu trúc json chứa weather là main bọc bên ngoài temp 
     }
 
 }

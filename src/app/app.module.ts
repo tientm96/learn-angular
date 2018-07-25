@@ -1,12 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-//để dùng Template-driven forms và two-way binding phải import FormsModule và gọi ra dưới phần imports: []
+//để dùng Template-driven forms; two-way binding; service: phải import FormsModule và gọi ra dưới phần imports: []
 //để sử dụng Reactive Form phải import ReactiveFormsModule và cũng gọi ra dưới phần import[].
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-//để lấy service từ server phải import Http, dùng để get hoặc post
+//để lấy service từ server phải import Http, để dùng GET hoặc POST
 import { HttpModule } from '@angular/http';
+
 
 
 
@@ -16,8 +17,7 @@ NÊN SẼ XÓA/CMT NHỮNG CÁI LIÊN QUAN ĐẾN ROUTER Ở ĐÂY.
 (xem giải thích sẽ cmt/xóa những chỗ nào: bên phần giải thích bên file app-routing.module.ts)
 
 XÓA XONG THÌ GỌI MODULE ROUTER ĐÃ TÁCH VÀO ĐÂY: gọi class AppRoutingModule từ file app-routing.module.ts
-VÀ ADD AppRoutingModule DƯỚI imports[]
-*/
+VÀ ADD AppRoutingModule DƯỚI imports[] */
 import { AppRoutingModule } from './app-routing.module';
 
 
@@ -81,13 +81,15 @@ import { Child2Component } from './folder-components/child2/child2.component';
 import { Parent2Component } from './folder-components/parent2/parent2.component';
 import { UserListComponent } from './folder-components/user-list/user-list.component';
 import { LifecycleHooksComponent } from './folder-components/lifecycle-hooks/lifecycle-hooks.component';
+import { MovieListComponent } from './folder-components/movie-list/movie-list.component';
+import { MovieHandleComponent } from './folder-components/movie-handle/movie-handle.component';
+
 
 
 
 
 
 //import round.pipe.ts cũng giống như import 1 comp.
-
 import { RoundPipe } from './folder-pipes/round.pipe';
 import { FormatDataPipe } from './folder-pipes/format-data.pipe';
 import { FilterPipe } from './folder-pipes/filter.pipe';
@@ -100,11 +102,14 @@ import { SortPipe } from './folder-pipes/sort.pipe';
 
 
 
-
-
-//import IpService trong ip.service.ts vào đây app.module.ts, kéo xuống providers[] gọi nó ra: : để nhiều comp đều sử dụng đc service này.
-//Còn nếu chỉ import và gọi providers trong comp nào đó thì chỉ mỗi comp đó sd đc service này----------------------.
+/*import IpService trong ip.service.ts vào đây app.module.ts, kéo xuống providers[] gọi nó ra: : để nhiều comp đều sử dụng đc service này.
+Còn nếu chỉ import và gọi providers trong comp nào đó thì chỉ mỗi comp đó sd đc service này.*/
 import { IpService } from './folder-components/ip2/ip.service';
+import { LoggingService } from './folder-services/logging.service';
+import { MovieService } from './folder-services/movie.service';
+
+
+
 
 
 
@@ -115,7 +120,7 @@ import { IpService } from './folder-components/ip2/ip.service';
 - app.module.ts : là file chạy đầu tiên.
 +nên mọi component đc tạo dưới dạng Name.component.ts phải đc import vào app.module.cs,
 và đc gọi vào bên trong declarations của file app.module.cs này.
-+lúc này ta có thể gọi component ra giống như 1 thẻ </> ở file app.component.html(File hiển thị chính).\
++lúc này ta có thể gọi component ra giống như 1 thẻ </> ở file app.component.html(File truyền vào file hiển thị chính: index.html).
 */
 //và gọi component vào đây
 @NgModule({
@@ -149,8 +154,11 @@ và đc gọi vào bên trong declarations của file app.module.cs này.
     Parent2Component,
     UserListComponent,
     LifecycleHooksComponent,
+    MovieListComponent,
+    MovieHandleComponent,
 
 
+    
 
     
     RoundPipe,
@@ -169,7 +177,8 @@ và đc gọi vào bên trong declarations của file app.module.cs này.
     // RouterModule.forRoot(routesConfig)
     AppRoutingModule
   ],
-  providers: [IpService],
+  //gọi service đã import, service đc import và gọi trong file này sẽ được dùng cho tất cả comp
+  providers: [IpService, LoggingService, MovieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

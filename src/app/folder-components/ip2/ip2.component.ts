@@ -10,7 +10,7 @@ import { IpService } from './ip.service'; //IpService: là class bên trong ip.s
   // providers: [IpService]  
 
   /* thuộc tính providers: là mảng chứa các file đc import. Ở đây là ip.service.ts.
-  -Nếu ta gọi providers ở đây: thì chỉ một class ip2.comp.ts này sử dụng đc service trong file ip.service.ts
+  -Nếu ta gọi providers ở đây: thì chỉ một comp ip2.comp.ts này sử dụng đc service trong file ip.service.ts
   (các comp khác muốn sd nó cũng phải làm tương tự)
 
   -Nhưng nếu ta gọi khai báo trong tệp khai báo chung: trong app.module.ts, thì mọi comp đều sử dụng đc 
@@ -32,13 +32,15 @@ Tạo folder ip2.component.ts để thực hiện get service tách riêng.
 -trong @component: thêm vào mảng providers để chứa các file import qua để sử dụng nó trong comp này,
 ở đây nó chứa file IpService.
 
--Trong class comp: nhận id trả về.
+-Trong class comp: nhận ip trả về.
 */
 export class Ip2Component implements OnInit {
   
   ip: String;
 
-  constructor(private ipService: IpService) { //biến: kdl, ở đây là kb biến ipService
+  //biến: kdl, ở đây là kb biến ipService
+  //Cơ chế Dependence Injection sẽ Inject service vào constructor, mà ko cần phải khởi tạo đối tượng.
+  constructor(private ipService: IpService) { 
     // this.ipService.getIp()  
     // .then(ip => this.ip = ip) 
     // .catch(err => console.log(err));
@@ -46,7 +48,7 @@ export class Ip2Component implements OnInit {
 
   //Xem phần dưới sẽ giải thích tại sao dùng ngOnInit() để gán ip, thay cho dùng trong hàm tạo.
   ngOnInit(): void {
-    this.ipService.getIp()  //gọi tới hàm getIp(), hàm này trả về ip.
+    this.ipService.getIp()  //gọi tới hàm getIp(), hàm này lấy ip từ server về, rồi xử lý kiểu dl, rồi trả về ip.
     .then(ip => this.ip = ip) //then: sẽ nhận ip trả về đó.
     .catch(err => console.log(err));
   }
@@ -59,7 +61,5 @@ export class Ip2Component implements OnInit {
 
   -Vậy nên ở đây ta ko lấy ip (từ IpService-ip.service.ts) ở trong hàm tạo nữa, mà đưa vào hàm ngOnInit() để lấy ip. 
   Hàm tạo chỉ cần khởi tạo đối tượng của IpService là đc.
-
-
   */ 
 }

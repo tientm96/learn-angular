@@ -1,0 +1,33 @@
+<div class="panel panel-success">
+  <div class="panel-heading">
+    <h3 class="panel-title">Học service bổ sung: comp movie-handle</h3>
+  </div>
+  <div class="panel-body">
+    <!-- Test service: logging.service.ts -->
+    <button type="button" class="btn btn-info" (click)="onClick();">Test logging service</button>
+    <br>
+    <hr>
+
+    <!-- Handle movie -->
+    <!-- #name: dạng template deference variable -->
+    <form role="form">
+      <div class="form-group">
+        <label for="">Tên phim</label>
+        <input type="text" class="form-control" #name>
+      </div>
+
+      <div class="form-group">
+        <label for="">Đường dẫn</label>
+        <input type="text" class="form-control" #link>
+      </div>
+
+      <div class="form-group">
+        <label for="">Tác giả</label> 
+        <input type="text" class="form-control" #author>
+      </div>
+      <button type="submit" class="btn btn-primary" (click)="addVideo(name.value, link.value, author.value);">Thêm</button>
+    </form>
+
+
+  </div>
+</div>
