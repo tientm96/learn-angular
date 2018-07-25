@@ -197,16 +197,27 @@
                         <app-lifecycle-hooks [total]="total"></app-lifecycle-hooks>
                     </ng-container>
                     <button type="button" class="btn btn-danger" (click)="onHandleDestroy();">Toggle-Deploy/Destroy Comp LifeCycle</button>
-
                     <br><br>
-                    Số thứ 1: <input type="number" class="form-control" [(ngModel)]="a">
-                    Số thứ 2: <input type="number" class="form-control" [(ngModel)]="b">
-                    <button type="button" class="btn btn-danger" (click)="amount(a.value, b.value);">Tính tổng</button>
                     
+                    
+                    <!-- Cách 1 dùng ([ngModel]) -->
+                    <!-- Số thứ 1: <input type="number" class="form-control" [(ngModel)]="a">
+                    Số thứ 2: <input type="number" class="form-control" [(ngModel)]="b">
+                    <button type="button" class="btn btn-danger" (click)="amount();">Tính tổng</button> -->
+
+
+                    <!-- Cách 2 dùng template reference variable.
+                    CHÚ Ý:
+                    Dạng template ref var luôn nhận vào dạng text, dù ta có để input đầu vào là dạng number đi chăng nữa;
+                    ở đây nó sẽ nhận về dạng text và chuyển qua comp sẽ là string, nên bên comp muốn sd dạng số thì phải chuyển đổi trước khi sd.-->
+                    Số thứ 1: <input type="number" class="form-control" #a>
+                    Số thứ 2: <input type="number" class="form-control" #b>
+                    <button type="button" class="btn btn-danger" (click)="amount(a.value, b.value);">Tính tổng</button>
+
+
+
                     <br><br>
                     <hr>
-                    
-
                 </div>
             </div>
 
