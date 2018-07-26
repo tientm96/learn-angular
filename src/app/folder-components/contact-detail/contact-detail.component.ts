@@ -1,8 +1,8 @@
-/*Để nhận id,name,phoneNumber từ comp này sang app-routing.module.ts
+/*Để nhận id,name,phoneNumber từ app-routing.module.ts vào component này.
 
 -import ActivatedRoute, ParamMap từ router
 -trong constructor sẽ khởi tạo biến cho ActivatedRoute
--Vào ngOnInit(): dùng ParamMap để get các biến truyền vào. vd params.get('id') là lấy id truyền qua từ app-routing.module.ts.
+-Vào ngOnInit(): dùng ParamMap để get các biến truyền vào. vd params.get('id') là lấy giá trị biến id truyền qua từ app-routing.module.ts.
 */
 
 import { Component, OnInit } from '@angular/core';

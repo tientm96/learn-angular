@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { forEach } from '../../../node_modules/@angular/router/src/utils/collection';
+import { forEach } from '@angular/router/src/utils/collection';
 
 @Pipe({
   name: 'evenOdd'

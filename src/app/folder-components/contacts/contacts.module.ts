@@ -1,5 +1,5 @@
 /*
--Tạo ra những cái ngModulenhỏ hơn, để quản lý code tốt hơn trong những cái module riêng như app-routing.module.ts
+-Tạo ra những cái ngModule nhỏ hơn, để quản lý code tốt hơn trong những cái module riêng như app-routing.module.ts
 =>Viết module riêng cho mỗi comp có sử dụng routing.
 
 THỰC HIỆN

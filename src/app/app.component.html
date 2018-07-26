@@ -164,14 +164,40 @@
                     <hr>
 
 
-                    <!-- Bắt đầu phần tạo page cho app. Bài 58, 59
-                        Mục tiêu: Click vào link Contacts sẽ hiện comp contact, click vào link Detail sẽ hiện comp contacts-detail -->
-                    <!-- <a href="/contacts">Contacts</a> : dùng href thì sẽ refresh lại trang, nên ta đổi href thành routerLink-->
-                    <a routerLink="/contacts">Contacts</a>
-                    <a routerLink="/detail">Detail</a>
+                    
+                    <!-- ROUTER -->
+                    <div class="panel panel-success">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Router</h3>
+                        </div>
+                        <div class="panel-body">
+                            <!-- Bắt đầu phần tạo page cho app. Bài 58, 59
+                            Mục tiêu: Click vào link Contacts sẽ hiện comp contact, click vào link Detail sẽ hiện comp contacts-detail -->
+                            <!-- <a href="/contacts">Contacts</a> : dùng href thì sẽ refresh lại trang, nên ta đổi href thành routerLink-->
+                            <a routerLink="/contacts">Contacts</a> <span>{{ ' ' }}</span>
+                            <a routerLink="/detail">Detail</a>
+                            <br>
+                            <hr>
+                            
+                            <button type="button" class="btn btn-primary" [routerLink]="['/index']">Home</button>   <span>{{ ' ' }}</span>
+                            <button type="button" class="btn btn-primary" [routerLink]="['/contact2']">Contact2</button>    <span>{{ ' ' }}</span>
+                            <button type="button" class="btn btn-primary" [routerLink]="['/about']">About</button>  
+                            <br><br>
+                            
 
-                    <!-- Tại vị trí thẻ router-outlet này sẽ hiển thị ra các comp đc kích vào link -->
-                    <router-outlet></router-outlet>
+                            <!-- Tại vị trí thẻ router-outlet này sẽ hiển thị ra các comp đc kích vào link. (giống như ng-content vậy, nhưng thẻ này dùng cho routing)
+                            Mỗi template chỉ hiển thị 1 thẻ outlet thôi.-->
+                            <router-outlet></router-outlet>
+
+                        </div>
+                    </div>
+                    
+
+                    
+                    
+
+                    
+
 
                     <br>
                     <br>

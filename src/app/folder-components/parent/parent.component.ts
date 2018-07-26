@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ChildComponent } from './child.component';
+import { ChildComponent } from '../child/child.component';
 
 
 @Component({

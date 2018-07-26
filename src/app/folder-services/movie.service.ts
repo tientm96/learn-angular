@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 //class model  Movie
-import { Movie } from './../folder-models/movie';
+import { Movie } from '../folder-models/movie';
 
 
 @Injectable(

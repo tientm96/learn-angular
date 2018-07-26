@@ -1,9 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 
-import { LoggingService } from "./../../folder-services/logging.service";
-import { MovieService } from './../../folder-services/movie.service';
+import { LoggingService } from "../../folder-services/logging.service";
+import { MovieService } from '../../folder-services/movie.service';
 
-import { Movie } from './../../folder-models/movie';
+import { Movie } from '../../folder-models/movie';
 
 
 @Component({

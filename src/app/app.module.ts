@@ -17,8 +17,13 @@ NÊN SẼ XÓA/CMT NHỮNG CÁI LIÊN QUAN ĐẾN ROUTER Ở ĐÂY.
 (xem giải thích sẽ cmt/xóa những chỗ nào: bên phần giải thích bên file app-routing.module.ts)
 
 XÓA XONG THÌ GỌI MODULE ROUTER ĐÃ TÁCH VÀO ĐÂY: gọi class AppRoutingModule từ file app-routing.module.ts
-VÀ ADD AppRoutingModule DƯỚI imports[] */
-import { AppRoutingModule } from './app-routing.module';
+VÀ ADD AppRoutingModule DƯỚI imports[] 
+
+
+**CHÚ Ý: module chính app.module.ts chỉ add 1 file root duy nhất, nên phải gộp hết tất cả module con vào trong 1 file app-routing.module.ts, rồi mới add vào app.module.ts.
+*/
+import { AppRoutingModule } from './folder-router/app-routing.module';
+
 
 
 
@@ -60,9 +65,9 @@ import { StructComponent } from './folder-components/struct/struct.component';
 import { WordsComponent } from './folder-components/words/words.component';
 import { PersonComponent } from './folder-components/person/person.component';
 import { ListPersonComponent } from './folder-components/list-person/list-person.component';
-import { ParentComponent } from './folder-components/parent.component';
-import { ChildComponent } from './folder-components/child.component';
-import { CardComponent } from './folder-components/card.component';
+import { ParentComponent } from './folder-components/parent/parent.component';
+import { ChildComponent } from './folder-components/child/child.component';
+import { CardComponent } from './folder-components/card/card.component';
 import { LearnPipeComponent } from './folder-components/learn-pipe/learn-pipe.component';
 import { IpComponent } from './folder-components/ip/ip.component';
 import { Ip2Component } from './folder-components/ip2/ip2.component';
@@ -84,6 +89,10 @@ import { LifecycleHooksComponent } from './folder-components/lifecycle-hooks/lif
 import { MovieListComponent } from './folder-components/movie-list/movie-list.component';
 import { MovieHandleComponent } from './folder-components/movie-handle/movie-handle.component';
 
+// import { RouterHomeComponent } from './folder-components/router-home/router-home.component';
+// import { RouterContact2Component } from './folder-components/router-contact2/router-contact2.component';
+// import { RouterAboutComponent } from './folder-components/router-about/router-about.component'
+
 
 
 
@@ -102,8 +111,8 @@ import { SortPipe } from './folder-pipes/sort.pipe';
 
 
 
-/*import IpService trong ip.service.ts vào đây app.module.ts, kéo xuống providers[] gọi nó ra: : để nhiều comp đều sử dụng đc service này.
-Còn nếu chỉ import và gọi providers trong comp nào đó thì chỉ mỗi comp đó sd đc service này.*/
+//import IpService trong ip.service.ts vào đây app.module.ts, kéo xuống providers[] gọi nó ra: để nhiều comp đều sử dụng đc service này.
+//Còn nếu chỉ import và gọi providers trong comp nào đó thì chỉ mỗi comp đó sd đc service này.
 import { IpService } from './folder-components/ip2/ip.service';
 import { LoggingService } from './folder-services/logging.service';
 import { MovieService } from './folder-services/movie.service';
@@ -156,9 +165,11 @@ và đc gọi vào bên trong declarations của file app.module.cs này.
     LifecycleHooksComponent,
     MovieListComponent,
     MovieHandleComponent,
+    // RouterHomeComponent,
+    // RouterContact2Component,
+    // RouterAboutComponent,
 
 
-    
 
     
     RoundPipe,
@@ -175,6 +186,8 @@ và đc gọi vào bên trong declarations của file app.module.cs này.
     HttpModule,
     ReactiveFormsModule,
     // RouterModule.forRoot(routesConfig)
+
+    //CHÚ Ý: module chính app.module.ts chỉ add 1 file root duy nhất, nên phải gộp hết tất cả module con vào trong 1 file app-routing.module.ts, rồi mới add vào app.module.ts.
     AppRoutingModule
   ],
   //gọi service đã import, service đc import và gọi trong file này sẽ được dùng cho tất cả comp
