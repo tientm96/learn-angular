@@ -110,9 +110,9 @@ const routesConfig: Routes = [
 
 
 
-    //để chỉnh 1 trang làm home, nghĩa là khi vào http://localhost:4200 thì nó tự động chuyển đến /contacts: http://localhost:4200/contacts ;
-    //  giống kiểu thiết lập trang mặc định trong .net MVC, ở đây thiết lập trang mặc định là contacts.
-    { path: '', redirectTo: '/contacts', pathMatch: 'full' },
+    //để chỉnh 1 trang làm home, nghĩa là khi vào http://localhost:4200 thì nó tự động chuyển đến /index: http://localhost:4200/index ;
+    //  giống kiểu thiết lập trang mặc định trong .net MVC, ở đây thiết lập trang mặc định là index.
+    { path: '', redirectTo: '/index', pathMatch: 'full' },
 
     //Nếu + vào link 1 địa chỉ lỗi thì nó sẽ chạy đến trang của comp page-not-found (tự tạo comp này): vd: http://localhost:4200/sajsaksjla là 1 địa chỉ lỗi.
     //Ở đây ta thiết lập dẫn đến trang LỖI khi chạy địa chỉ lỗi tại đây.

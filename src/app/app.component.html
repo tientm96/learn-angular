@@ -171,6 +171,42 @@
                             <h3 class="panel-title">Router</h3>
                         </div>
                         <div class="panel-body">
+                            
+                            <!-- có thể dùng navbar như menu -->
+                            <nav class="navbar navbar-default" role="navigation">
+                                <div class="container-fluid">
+                                    <div class="collapse navbar-collapse navbar-expand">
+                                        <ul class="nav navbar-nav">
+                                            <!-- Dạng navbar ban đầu sẽ chọn-tô màu(active) thẻ đầu tiên, ta cần phải điều chỉnh lại.
+                                            Để click vào 1 thẻ link nào thì link đó mới đổi màu, thì phải add một class của bs3, add 1 hoặc 2,3 class đều được, vd class active,active2. 
+
+                                            +Sd routerLinkActive: để gọi class, khi nào những router trùng khớp(link đc click) thì nó sẽ đc kích hoạt để gọi class để đổi màu thẻ menu đó.
+
+                                            +routerLinkActiveOptions: để xác nhận thẻ menu link này có phải đường link mặc định ko,
+                                            nếu phải thì nó sẽ tô màu ngay khi vừa render lên, nghĩa là ban đầu nó sẽ tự động chọn menu đó.
+                                            (ở đây bên app-routing.module.ts đã thiết lập render mặc định là /index: là menu Home, nên ban đầu link menu Home sẽ được chọn và tô màu.)-->
+                                            <li routerLinkActive="active active2" [routerLinkActiveOptions]="{ exact : true}">
+                                                <a [routerLink]="['/index']">Home</a>
+                                            </li>
+                                            <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact : true}">
+                                                <a [routerLink]="['/contact2']">Contact2</a>
+                                            </li>
+                                            <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact : true}">
+                                                <a [routerLink]="['/about']">About</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </nav>
+
+                            <!-- có thể dùng button -->
+                            <button type="button" class="btn btn-primary" [routerLink]="['/index']">Home</button>   <span>{{ ' ' }}</span>
+                            <button type="button" class="btn btn-primary" [routerLink]="['/contact2']">Contact2</button>    <span>{{ ' ' }}</span>
+                            <button type="button" class="btn btn-primary" [routerLink]="['/about']">About</button>  
+                            <br><br>
+
+
+
                             <!-- Bắt đầu phần tạo page cho app. Bài 58, 59
                             Mục tiêu: Click vào link Contacts sẽ hiện comp contact, click vào link Detail sẽ hiện comp contacts-detail -->
                             <!-- <a href="/contacts">Contacts</a> : dùng href thì sẽ refresh lại trang, nên ta đổi href thành routerLink-->
@@ -179,10 +215,6 @@
                             <br>
                             <hr>
                             
-                            <button type="button" class="btn btn-primary" [routerLink]="['/index']">Home</button>   <span>{{ ' ' }}</span>
-                            <button type="button" class="btn btn-primary" [routerLink]="['/contact2']">Contact2</button>    <span>{{ ' ' }}</span>
-                            <button type="button" class="btn btn-primary" [routerLink]="['/about']">About</button>  
-                            <br><br>
                             
 
                             <!-- Tại vị trí thẻ router-outlet này sẽ hiển thị ra các comp đc kích vào link. (giống như ng-content vậy, nhưng thẻ này dùng cho routing)
