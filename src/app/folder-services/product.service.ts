@@ -37,9 +37,33 @@ export class ProductService {
 
   constructor() { }
 
-  getAllProducts(){
-    return this.products;
+  // getAllProducts(){
+  //   return this.products;
+  // }
+
+  //tham số name?: dấu ? là tham số này có hoặc ko có cũng đc, truyền vào 1 hoặc 2, hoặc 0 tham số đều đc. 
+  //Hàm này làm luôn nhiệm vụ của hàm getAllProducts cũ rồi
+  getAllProducts(name?: string, price?: number){
+    
+    let result : Product[] = this.products;
+    
+    //nếu có ts name, price thì lọc để cho ra mảng theo các tham số đó. Sử dụng filter để lọc, trước khi lọc cho về thường hết hoặc hoa hết. 
+    //hàm A.indexOf(B) kiểm tra xem có chuỗi B trong chuỗi A hay ko, trả về vị trí, nếu ko có trả -1. 
+    if(name){
+      result = this.products.filter(x => {
+        return x.name.toLowerCase().indexOf(name.toLowerCase())  != -1;
+      });
+    }
+
+    if(price){
+      result = this.products.filter(x => {
+        return x.price === (+price); //ép về kiểu int rồi mới so sánh === đc, còn ko ép thì so sánh ==
+      });
+    }
+
+    return result;
   }
+
 
   getProductByID(id : number){
     let result = null;
@@ -51,6 +75,5 @@ export class ProductService {
     }
     return result;
   }
-
 
 }

@@ -1,3 +1,35 @@
+
+<div class="row">
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <label>Name: </label> <input type="text" class="form-control" [(ngModel)]="name"> 
+    <label>Price: </label> <input type="number" class="form-control" [(ngModel)]="price"> <br>
+    
+    <!--làm cho dạng query param, nghĩa là truyền tham số kiểu url: định dạng params truyền đi, để hiển thị lên url.
+
+      +queryParams: dạng key-value, dùng toán tử 3 ngôi, nếu ko có để rỗng: http://localhost:4200/products?name=&price= 
+    
+    Cách 1: lấy queryParams trực tiếp từ html, rồi truyền lên url theo đúng định dạng.
+  (nếu router có tham số con thì [routerLink]="['/products/id']" sẽ cho ra: http://localhost:4200/products/id?name=&price=  )-->
+    <button 
+      type="button" 
+      class="btn btn-primary"
+      [routerLink]="['/products']"
+      [queryParams]="{ name: name ? name : '', price: price ? price : '' }"
+    >Search</button>
+
+    <!--Cách 2: gọi hàm lấy queryParams trong comp. rồi truyền lên url theo đúng định dạng-->
+    <button 
+      type="button" 
+      class="btn btn-danger"
+      [routerLink]="['/products']"
+      (click)="onSearch();"
+    >Search</button>
+
+    <br><hr>
+  </div>
+</div>
+
+
 <table class="table table-bordered table-hover">
   <thead>
     <tr>

@@ -6,6 +6,7 @@ import { Subscription } from '../../../../node_modules/rxjs';
 import { ProductService } from './../../folder-services/product.service';
 import { Product } from './../../folder-models/product';
 
+
 @Component({
   selector: 'app-router-product-detail',
   templateUrl: './router-product-detail.component.html',
@@ -67,7 +68,7 @@ export class RouterProductDetailComponent implements OnInit, OnDestroy {
     this.product = this.productService.getProductByID(id);
   }
 
-  //Cách 2: lấy về đối tượng subcription từ đối tượng activatedRoute,
+  //Cách 2: lấy về đối tượng subcription từ đối tượng activatedRoute
   handleParams(){
     this.subcription = this.activatedRoute.params.subscribe(data => {
       let id = (+data.id);  // (+) để chuyển về kdl number, tránh lỗi xung đột kdl
@@ -77,6 +78,7 @@ export class RouterProductDetailComponent implements OnInit, OnDestroy {
     });
   }
 
+  
   
 
 }
