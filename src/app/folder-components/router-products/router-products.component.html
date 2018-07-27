@@ -1,0 +1,18 @@
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of products" [routerLink]="['/products', product.id]">
+      <td>{{product.id}}</td>
+      <td>{{product.name}}</td>
+      <td>{{product.price | currency:'USD':'symbol':'1.2-3'}}</td>
+      <td>{{product.status ? 'Active' : 'Deactive'}}</td>
+      </tr>
+  </tbody>
+</table>

@@ -175,7 +175,7 @@
                             <!-- có thể dùng navbar như menu -->
                             <nav class="navbar navbar-default" role="navigation">
                                 <div class="container-fluid">
-                                    <div class="collapse navbar-collapse navbar-expand">
+                                    <div class="navbar-expand">
                                         <ul class="nav navbar-nav">
                                             <!-- Dạng navbar ban đầu sẽ chọn-tô màu(active) thẻ đầu tiên, ta cần phải điều chỉnh lại.
                                             Để click vào 1 thẻ link nào thì link đó mới đổi màu, thì phải add một class của bs3, add 1 hoặc 2,3 class đều được, vd class active,active2. 
@@ -194,15 +194,19 @@
                                             <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact : true}">
                                                 <a [routerLink]="['/about']">About</a>
                                             </li>
+                                            <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact : true}">
+                                                <a [routerLink]="['/products']">Products</a>
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>
                             </nav>
 
-                            <!-- có thể dùng button -->
+                            <!-- có thể dùng button thay cho các menu trong navbar -->
                             <button type="button" class="btn btn-primary" [routerLink]="['/index']">Home</button>   <span>{{ ' ' }}</span>
                             <button type="button" class="btn btn-primary" [routerLink]="['/contact2']">Contact2</button>    <span>{{ ' ' }}</span>
-                            <button type="button" class="btn btn-primary" [routerLink]="['/about']">About</button>  
+                            <button type="button" class="btn btn-primary" [routerLink]="['/about']">About</button>  <span>{{ ' ' }}</span>  
+                            <button type="button" class="btn btn-primary" [routerLink]="['/products']">Products</button>  
                             <br><br>
 
 

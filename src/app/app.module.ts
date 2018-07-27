@@ -92,6 +92,8 @@ import { MovieHandleComponent } from './folder-components/movie-handle/movie-han
 // import { RouterHomeComponent } from './folder-components/router-home/router-home.component';
 // import { RouterContact2Component } from './folder-components/router-contact2/router-contact2.component';
 // import { RouterAboutComponent } from './folder-components/router-about/router-about.component'
+// import { RouterProductsComponent } from './folder-components/router-products/router-products.component';
+// import { RouterProductDetailComponent } from './folder-components/router-product-detail/router-product-detail.component';
 
 
 
@@ -111,11 +113,16 @@ import { SortPipe } from './folder-pipes/sort.pipe';
 
 
 
+
+
+
+
 //import IpService trong ip.service.ts vào đây app.module.ts, kéo xuống providers[] gọi nó ra: để nhiều comp đều sử dụng đc service này.
 //Còn nếu chỉ import và gọi providers trong comp nào đó thì chỉ mỗi comp đó sd đc service này.
 import { IpService } from './folder-components/ip2/ip.service';
 import { LoggingService } from './folder-services/logging.service';
 import { MovieService } from './folder-services/movie.service';
+import { ProductService } from './folder-services/product.service';
 
 
 
@@ -168,6 +175,8 @@ và đc gọi vào bên trong declarations của file app.module.cs này.
     // RouterHomeComponent,
     // RouterContact2Component,
     // RouterAboutComponent,
+    // RouterProductsComponent,
+    // RouterProductDetailComponent,
 
 
 
@@ -191,7 +200,7 @@ và đc gọi vào bên trong declarations của file app.module.cs này.
     AppRoutingModule
   ],
   //gọi service đã import, service đc import và gọi trong file này sẽ được dùng cho tất cả comp
-  providers: [IpService, LoggingService, MovieService],
+  providers: [IpService, LoggingService, MovieService, ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

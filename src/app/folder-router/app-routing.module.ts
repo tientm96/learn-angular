@@ -76,6 +76,9 @@ import { ContactsModule } from '../folder-components/contacts/contacts.module';
 import { HomeModule } from '../folder-components/router-home/router-home.module';
 import { Contact2Module } from '../folder-components/router-contact2/router-contact2.module';
 import { AboutModule } from '../folder-components/router-about/router-about.module';
+import { ProductsModule } from '../folder-components/router-products/router-products.module';
+import { ProductDetailModule } from './../folder-components/router-product-detail/router-product-detail.module';
+
 
 
 
@@ -114,6 +117,8 @@ const routesConfig: Routes = [
     //  giống kiểu thiết lập trang mặc định trong .net MVC, ở đây thiết lập trang mặc định là index.
     { path: '', redirectTo: '/index', pathMatch: 'full' },
 
+
+    
     //Nếu + vào link 1 địa chỉ lỗi thì nó sẽ chạy đến trang của comp page-not-found (tự tạo comp này): vd: http://localhost:4200/sajsaksjla là 1 địa chỉ lỗi.
     //Ở đây ta thiết lập dẫn đến trang LỖI khi chạy địa chỉ lỗi tại đây.
     { path: '**', component: PageNotFoundComponent }  //dấu ** ý là ko vào đc tất cả comp nào rồi thì mới chạy đến comp PageNotFoundComponent
@@ -124,7 +129,16 @@ const routesConfig: Routes = [
 //Đã viết tách Contact ra 1 module riêng, nên sẽ import ở trên và gọi vào import dưới đây là đủ rồi.
 @NgModule({
     //ContactsModule: nếu là Angular 4 thì phải thêm ở đầu import[ContactsModule,HomeModule,,,]
-    imports: [RouterModule.forRoot(routesConfig), CommonModule, ContactsModule, HomeModule, Contact2Module, AboutModule], 
+    imports: [
+        RouterModule.forRoot(routesConfig), 
+        CommonModule,
+        ContactsModule, 
+        HomeModule, 
+        Contact2Module, 
+        AboutModule, 
+        ProductsModule,
+        ProductDetailModule
+    ], 
     declarations: [
         // ContactsComponent,
 
