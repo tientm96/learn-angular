@@ -1,7 +1,7 @@
 
 <!-- Nếu product != null -->
 <ng-container *ngIf="product; else noProduct">
-    <h1>ID: {{ product.id }}</h1>
+  <h1>ID: {{ product.id }}</h1>
   <h1>Name: {{ product.name }}</h1>
   <h1>Price: {{ product.price | currency:'USD':'symbol':'1.2-3' }}</h1>
   <h3>Status: {{ product.status ? 'Active' : 'Deactive' }}</h3>
@@ -12,5 +12,9 @@
   <h2>This product has been deleted</h2>
 </ng-template>
 
+<br>
+<button type="button" class="btn btn-success" (click)="onEdit();">Edit</button>
+<button type="button" class="btn btn-danger" (click)="onDelete();">Delete</button>
 
-
+<hr>
+<button type="button" class="btn btn-primary" (click)="onBackToList();">Back To List</button>

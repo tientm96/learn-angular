@@ -13,11 +13,15 @@
 
       <div class="form-group">
         <label for="">Full name: </label>
+      
+        <!-- nếu sd ngModel trong class form thì phải add dòng này sau ngModel: [ngModelOptions]="{standalone: true}" -->
         <input type="text" class="form-control" [(ngModel)]="txtFullName" [ngModelOptions]="{standalone: true}">
       </div>
 
       <div class="form-group">
         <label for="">Phone number: </label>
+
+        <!-- nếu sd ngModel trong class form thì phải add dòng này sau ngModel: [ngModelOptions]="{standalone: true}" -->
         <input type="text" class="form-control" [(ngModel)]="txtphoneNumber" [ngModelOptions]="{standalone: true}">
       </div>
 

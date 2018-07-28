@@ -28,4 +28,3 @@ const routesConfig: Routes = [
 })
 
 export class ProductDetailModule {}
-

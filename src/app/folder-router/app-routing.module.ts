@@ -77,7 +77,9 @@ import { HomeModule } from '../folder-components/router-home/router-home.module'
 import { Contact2Module } from '../folder-components/router-contact2/router-contact2.module';
 import { AboutModule } from '../folder-components/router-about/router-about.module';
 import { ProductsModule } from '../folder-components/router-products/router-products.module';
-import { ProductDetailModule } from './../folder-components/router-product-detail/router-product-detail.module';
+import { ProductDetailModule } from '../folder-components/router-product-detail/router-product-detail.module';
+
+
 
 
 

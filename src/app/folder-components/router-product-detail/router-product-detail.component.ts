@@ -1,10 +1,14 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
-import { ActivatedRoute } from '../../../../node_modules/@angular/router';
-import { Subscription } from '../../../../node_modules/rxjs';
+import { Router, ActivatedRoute } from '@angular/router';
 
-import { ProductService } from './../../folder-services/product.service';
-import { Product } from './../../folder-models/product';
+//sử dụng đối tượng Subscription để lắng nghe params trên link, nên phải tạo ra và hủy nó đi.
+import { Subscription } from 'rxjs';
+
+import { ProductService } from '../../folder-services/product.service';
+import { Product } from '../../folder-models/product';
+
+
 
 
 @Component({
@@ -39,7 +43,12 @@ export class RouterProductDetailComponent implements OnInit, OnDestroy {
 
 
   //Inject vào constructor giống như 1 service
-  constructor(private activatedRoute : ActivatedRoute, private productService : ProductService) { }
+  constructor(
+    private activatedRoute : ActivatedRoute, 
+    private productService : ProductService,
+    private routerService : Router) { }
+
+
 
 
   /*mỗi lần click đúng router thì nó sẽ gọi đến comp product detail này, thì hàm ngOnInit sẽ đc gọi, lúc này ta sẽ lấy params luôn. 
@@ -78,7 +87,38 @@ export class RouterProductDetailComponent implements OnInit, OnDestroy {
     });
   }
 
+
+  //gọi hàm navigate để định hướng router muốn truyền đi.
+  //vào router-products.component.ts để hiểu rõ hơn về navigate
+  onBackToList(){
+    //Cách 1: đưa đường dẫn trực tiếp, để lùi về
+    // this.routerService.navigate(['products/list']);
+
+    //Cách 2: sd relativeTo. Gọi tới đường dẫn trước nó 1 bước, rồi + thêm đường dẫn cần +
+    //ban đầu http://localhost:4200/ khi kích vào hàng 1 của bảng thì + products/1(đúng với router của detail) thì ra  http://localhost:4200/products/1, 
+    //thì activatedRoute chính là http://localhost:4200/products/1, .parent để quay về 1 bước trước http://localhost:4200/ + products/list từ this.routerService.navigate truyền vào.
+    this.routerService.navigate(['products/list'], {
+      relativeTo : this.activatedRoute.parent //gán dạng key: value //http://localhost:4200 + /products/list
+    });
+  }
   
-  
+
+
+  //cấu hình đường link khi nhấn nút edit. 
+  //khi nhấn btn edit cho thành phần detail 1 thì thì link sẽ đc cấu hình thành: 
+  //  http://localhost:4200/products/edit/1, ta phải cấu hình để đường dẫn nó ra đc như vậy.
+  onEdit(){
+    //đang ở http://localhost:4200/products/1, bấm edit thì về http://localhost:4200/products/edit
+    // this.routerService.navigate([`products/edit/${this.product.id}`], { //vì có biến $ nên đổi thành dấu `` thay vì dấu '' như ở trên
+    this.routerService.navigate([`products/edit`, this.product.id], {  //HOẶC CÁCH KHÁC ĐỂ GỌI product.id
+      relativeTo : this.activatedRoute.parent //gán dạng key: value //http://localhost:4200 + /products/edit
+    });
+
+  }
+
+
+  onDelete(){
+
+  }
 
 }

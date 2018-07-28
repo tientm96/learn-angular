@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Product } from './../folder-models/product';
+import { Product } from '../folder-models/product';
 
 
 @Injectable(
@@ -74,6 +74,17 @@ export class ProductService {
       }
     }
     return result;
+  }
+
+
+  //Update mảng
+  updateProduct(product : Product){
+    const index = this.products.findIndex(e => e.id === product.id);
+    this.products.splice(index, 1, product); 
+
+    //SPLICE: tại vị trí index, xóa 1 phần tử, add phần tử product vào lại vị trí index đó.
+
+    //Xem rõ hơn về splice: vừa xóa vừa add: https://www.tutorialspoint.com/typescript/typescript_array_splice.htm
   }
 
 }

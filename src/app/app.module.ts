@@ -94,6 +94,10 @@ import { MovieHandleComponent } from './folder-components/movie-handle/movie-han
 // import { RouterAboutComponent } from './folder-components/router-about/router-about.component'
 // import { RouterProductsComponent } from './folder-components/router-products/router-products.component';
 // import { RouterProductDetailComponent } from './folder-components/router-product-detail/router-product-detail.component';
+// import { RouterProductListComponent } from './router-product-list/router-product-list.component';
+// import { RouterProductEditComponent } from './folder-components/router-product-edit/router-product-edit.component';
+
+
 
 
 
@@ -164,7 +168,7 @@ và đc gọi vào bên trong declarations của file app.module.cs này.
     SignUp3Component,
     // ContactsComponent,
     // ContactDetailComponent,
-    // PageNotFoundComponent,
+    // PageNotFoundCom,
     LearnPipe2Component,
     Child2Component,
     Parent2Component,
@@ -177,6 +181,9 @@ và đc gọi vào bên trong declarations của file app.module.cs này.
     // RouterAboutComponent,
     // RouterProductsComponent,
     // RouterProductDetailComponent,
+    // RouterProductListComponent,
+    // RouterProductEditComponent,
+
 
 
 
