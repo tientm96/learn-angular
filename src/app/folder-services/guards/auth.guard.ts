@@ -25,9 +25,9 @@ export class AuthGuard implements CanActivate {
       //   return false;
       // }
 
-      //cũng như else thôi. localStorage undifined thì chuyển về đường dẫn mặc định, là về index - home.
+      //cũng như else thôi. localStorage undifined, thì chuyển về login để login lại.
       //dùng navigate để định dạng lại đường link.
-      this.router.navigate(['']);
+      this.router.navigate(['login']);
       return false; //và trả về false để ko cho phép các path sd Guard này truy cập.
     }
 

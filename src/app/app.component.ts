@@ -49,11 +49,15 @@ export class AppComponent {
   logout(){
     if(localStorage.getItem('user')){
       localStorage.removeItem('user');
+      // localStorage.clear();
+
+
+      //nếu ko remove thì nó sẽ lưu lại trạng thái của localStorage sau mỗi lần F5 đều v tự login vào đc. 
+      //nên phải remove, hoặc xóa cokie của trình duyệt.
     }
 
-    //bấm btn logout thì sẽ chuyển về đường dẫn mặc định là index (home)
+    //bấm btn logout thì sẽ chuyển về đường dẫn mặc định là /index (home)
     //dùng navigate để định dạng lại đường link.
     this.router.navigate(['']);
-
   }
 }
