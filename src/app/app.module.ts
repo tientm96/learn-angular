@@ -215,6 +215,7 @@ và đc gọi vào bên trong declarations của file app.module.cs này.
     ProductService,
   ],
 
+  //bootstrap: nơi khai báo comp chạy đầu tiên, là AppComponent.
   bootstrap: [AppComponent]
 })
 export class AppModule { }
