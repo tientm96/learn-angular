@@ -96,6 +96,7 @@ import { MovieHandleComponent } from './folder-components/movie-handle/movie-han
 // import { RouterProductDetailComponent } from './folder-components/router-product-detail/router-product-detail.component';
 // import { RouterProductListComponent } from './router-product-list/router-product-list.component';
 // import { RouterProductEditComponent } from './folder-components/router-product-edit/router-product-edit.component';
+// import { RouterLoginComponent } from './folder-components/router-login/router-login.component';
 
 
 
@@ -183,7 +184,7 @@ và đc gọi vào bên trong declarations của file app.module.cs này.
     // RouterProductDetailComponent,
     // RouterProductListComponent,
     // RouterProductEditComponent,
-
+    // RouterLoginComponent
 
 
 
@@ -207,7 +208,13 @@ và đc gọi vào bên trong declarations của file app.module.cs này.
     AppRoutingModule
   ],
   //gọi service đã import, service đc import và gọi trong file này sẽ được dùng cho tất cả comp
-  providers: [IpService, LoggingService, MovieService, ProductService],
+  providers: [
+    IpService, 
+    LoggingService, 
+    MovieService, 
+    ProductService,
+  ],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

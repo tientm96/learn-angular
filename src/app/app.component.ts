@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +16,10 @@ export class AppComponent {
   public b : number;
 
   isDestroy = false;
+
+  constructor(private router: Router) { }
+
+
 
   onHandleDestroy(){
     this.isDestroy = !this.isDestroy;
@@ -39,4 +44,16 @@ export class AppComponent {
     this.total = Number(a) + parseInt(b);
   }
 
+
+  //bấm btn logout thì nó sẽ hủy biến toàn cục localStorage, nếu biến này difined với key là user.
+  logout(){
+    if(localStorage.getItem('user')){
+      localStorage.removeItem('user');
+    }
+
+    //bấm btn logout thì sẽ chuyển về đường dẫn mặc định là index (home)
+    //dùng navigate để định dạng lại đường link.
+    this.router.navigate(['']);
+
+  }
 }

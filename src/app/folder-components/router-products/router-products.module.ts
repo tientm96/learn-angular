@@ -20,7 +20,14 @@ import { CommonModule } from '@angular/common';
 import { RouterProductsComponent } from './router-products.component';
 import { RouterProductListComponent } from '../router-product-list/router-product-list.component';
 import { RouterProductEditComponent } from './../router-product-edit/router-product-edit.component';
+import { RouterLoginComponent } from './../router-login/router-login.component';
 
+
+
+
+//service
+//Guard là 1 service, làm canactive cho login.
+import { AuthGuard } from '../../folder-services/guards/auth.guard';
 
 
 
@@ -36,6 +43,12 @@ const routesConfig: Routes = [
         */
         component: RouterProductsComponent, 
 
+        /*gọi service canActivate: [AuthGuard]: cho liên kết path nào muốn bảo vệ, liên kế path trong router-products.module.ts.
+        nếu auth.guard.ts trả về true thì nó cho vào, còn false thì nó ko cho vào path đó.
+        Xem trong auth.guard.ts. Nhớ import service và gọi xuống providers.*/
+        canActivate: [AuthGuard],
+
+        
         //Thay vì /products sẽ đi thẳng tới RouterProductsComponent, thì sẽ đi vào child{} và sẽ nối các đuôi child vào, vd: /products/list
         children: [
             //cấu hình đường dẫn khi kích vào products thì sẽ chạy đường dẫn mặc định là: /products/list
@@ -53,6 +66,10 @@ const routesConfig: Routes = [
                 component: RouterProductEditComponent
             }
         ]
+    },
+    {
+        path: 'login',
+        component: RouterLoginComponent
     }
 ];
 
@@ -67,7 +84,17 @@ const routesConfig: Routes = [
     ],
 
     //declarations[] để gọi class ContactsComponent từ comp đã import vào (giống như bên app.module.ts cũng import xong thì gọi xuống declarations)
-    declarations: [RouterProductsComponent, RouterProductListComponent, RouterProductEditComponent] 
+    declarations: [
+        RouterProductsComponent, 
+        RouterProductListComponent, 
+        RouterProductEditComponent, 
+        RouterLoginComponent
+    ],
+
+    //providers: nơi import service
+    providers: [
+        AuthGuard
+    ]
 })
 
 export class ProductsModule {}

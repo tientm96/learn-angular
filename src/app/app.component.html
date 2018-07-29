@@ -197,6 +197,12 @@
                                             <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact : true}">
                                                 <a [routerLink]="['/products']">Products</a>
                                             </li>
+                                            <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact : true}">
+                                                <a [routerLink]="['/login']">Login</a>
+                                            </li>
+                                            <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact : true}">
+                                                <a (click)="logout();">Logout</a>
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>
@@ -206,7 +212,9 @@
                             <button type="button" class="btn btn-primary" [routerLink]="['/index']">Home</button>   <span>{{ ' ' }}</span>
                             <button type="button" class="btn btn-primary" [routerLink]="['/contact2']">Contact2</button>    <span>{{ ' ' }}</span>
                             <button type="button" class="btn btn-primary" [routerLink]="['/about']">About</button>  <span>{{ ' ' }}</span>  
-                            <button type="button" class="btn btn-primary" [routerLink]="['/products']">Products</button>  
+                            <button type="button" class="btn btn-primary" [routerLink]="['/products']">Products</button>  <span>{{ ' ' }}</span> 
+                            <button type="button" class="btn btn-primary" [routerLink]="['/login']">Login</button>  <span>{{ ' ' }}</span>
+                            <button type="button" class="btn btn-primary" (click)="logout();">Logout</button>  
                             <br><br>
 
 
