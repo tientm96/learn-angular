@@ -118,7 +118,8 @@ export class RouterProductDetailComponent implements OnInit, OnDestroy {
 
 
   onDelete(){
-
+    // console.log(this.product.id);
+    this.productService.deleteProduct(this.product.id);
   }
 
 }

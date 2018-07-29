@@ -14,7 +14,11 @@
 
 <br>
 <button type="button" class="btn btn-success" (click)="onEdit();">Edit</button>
-<button type="button" class="btn btn-danger" (click)="onDelete();">Delete</button>
+<button 
+  type="button" 
+  class="btn btn-danger" 
+  (click)="onDelete();" 
+  [routerLink]="['/products/list']">Delete</button>
 
 <hr>
 <button type="button" class="btn btn-primary" (click)="onBackToList();">Back To List</button>

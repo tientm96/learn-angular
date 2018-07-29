@@ -87,4 +87,9 @@ export class ProductService {
     //Xem rõ hơn về splice: vừa xóa vừa add: https://www.tutorialspoint.com/typescript/typescript_array_splice.htm
   }
 
+  deleteProduct(id: number){
+    const index = this.products.findIndex(e => e.id === id);
+    this.products.splice(index, 1); //xóa từ phần thử thứ index, xóa 1 phần tử
+  }
+
 }

@@ -70,11 +70,15 @@ export class RouterProductListComponent implements OnInit, OnDestroy {
 
     //TH router chỉ đến products, ko có tham số con: thì ko cần khai báo tham số con trong [] như TH dưới
     this.routerService.navigate(['/products/list'], { queryParams: {name: this.name ? this.name : '', price: this.price ? this.price : ''} });
-    console.log(this.name);
+    // console.log(this.name);
 
 
     //TH nếu router có tham số con thì phải khai báo trong [ , 'id']
     //http://localhost:4200/products/id?name=&price=
     // this.routerServce.navigate(['/products', 'id'], { queryParams: {name: this.name ? this.name : '', price: this.price ? this.price : ''} });
   }
+
 }
+
+
+
