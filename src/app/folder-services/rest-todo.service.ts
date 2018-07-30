@@ -54,4 +54,27 @@ export class RestTodoService {
     return this.httpClient.post<RestTodo>(this.API, resttodo); //this.API là url nhận dl post lên, resttodo là dl cần post lên.
   }
 
+
+
+  //PUT: Update
+  //Tương tự như post, put cũng trả về object sau khi update cho object đó.
+  updateRestTodo(resttodo: RestTodo) : Observable<RestTodo> {
+    return this.httpClient.put<RestTodo>(`${this.API}/${resttodo.id}` , resttodo); 
+    
+    //this.API/id là url nhận dl put lên, resttodo là dl cần put lên.
+  
+    //Chú ý: khi put để update thì url phải kèm theo 1 thuộc tính mang tính duy nhất của obj là id chẳng hạn
+    //  để phân biệt object cần update, nên sẽ có /${resttodo.id} để lấy thêm id vào url. 
+  }
+
+  //DELETE
+  //Tương tự như put,http delete cũng trả về object sau khi delete object đó trên server.
+  deleteRestTodo(id: number) : Observable<RestTodo> {
+    return this.httpClient.delete<RestTodo>(`${this.API}/${id}`); 
+    
+    //this.API/id là url nhận dl cần delete, xóa theo id(hay bất kỳ thuộc tính duy nhất nào tùy mình chọn,
+    //ở đây chỉ có mỗi id là thuộc tính duy nhất).
+  }
+
+
 }

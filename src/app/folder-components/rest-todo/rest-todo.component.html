@@ -13,6 +13,7 @@
                 <th>ID</th>
                 <th>Title</th>
                 <th>Completed</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>
@@ -20,6 +21,10 @@
                 <td>{{ resttodo.id }}</td>
                 <td>{{ resttodo.title }}</td>
                 <td>{{ resttodo.completed ? 'Completed' : 'Inprogress' }}</td>
+                <td>
+                  <button type="button" class="btn btn-primary" (click)="onEditTodo(resttodo);">Edit</button>
+                  <button type="button" class="btn btn-danger" (click)="onDeleteTodo(resttodo.id);">Delete</button>
+                </td>
               </tr>
             </tbody>
           </table>
@@ -41,6 +46,27 @@
             </select>
             
             <button type="submit" class="btn btn-primary" (click)="onAddRestTodo();">Add</button>
+          </form>
+
+          <hr>
+          <!-- Vì ban đầu bên comp, ta cho object resttodo=null, phải ktra trước, nếu =difined !=null thì mới cho hiển thị ra. 
+          Cái này dùng cho edit, nếu đã chọn 1 object để edit thì resttodo lúc đó đã !=null, lúc đó form edit này mới hiện lên.-->
+          <form *ngIf="resttodo">
+            <legend>Edit RestTodo</legend>
+          
+            <div class="form-group">
+              <label for="">Title</label>
+              <!-- nếu sd ngModel trong class form thì phải add dòng này sau ngModel: [ngModelOptions]="{standalone: true}" -->
+              <input type="text" class="form-control" [(ngModel)]="resttodo.title" [ngModelOptions]="{standalone: true}">
+            </div>
+
+            <!-- nếu sd ngModel trong class form thì phải add dòng này sau ngModel: [ngModelOptions]="{standalone: true}" -->
+            <select class="form-control" [(ngModel)]="resttodo.completed" [ngModelOptions]="{standalone: true}">
+              <option value="true">Completed</option>
+              <option value="false">Inprogress</option>
+            </select>
+            
+            <button type="submit" class="btn btn-primary" (click)="onUpdateRestTodo();">Save</button>
           </form>
 
           
