@@ -8,7 +8,7 @@ import { CanDeactivate } from '@angular/router';
 // import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 // import { Observable } from 'rxjs';
 
-import { RouterHomeComponent } from './../../folder-components/router-home/router-home.component';
+import { RouterHomeComponent } from '../../folder-components/router-home/router-home.component';
 
 
 

@@ -19,8 +19,8 @@ import { CommonModule } from '@angular/common';
 
 import { RouterProductsComponent } from './router-products.component';
 import { RouterProductListComponent } from '../router-product-list/router-product-list.component';
-import { RouterProductEditComponent } from './../router-product-edit/router-product-edit.component';
-import { RouterLoginComponent } from './../router-login/router-login.component';
+import { RouterProductEditComponent } from '../router-product-edit/router-product-edit.component';
+import { RouterLoginComponent } from '../router-login/router-login.component';
 
 
 

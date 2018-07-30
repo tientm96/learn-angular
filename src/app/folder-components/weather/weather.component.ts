@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 //import để sử dụng service trong weather.service.ts: Xem ip2.component.ts có giải thích rõ
 //import ở đây vào gọi ra trong providers[]
-import { WeatherService } from './weather.service';
+import { WeatherService } from '../../folder-services/weather.service';
 
 
 @Component({
@@ -11,6 +11,8 @@ import { WeatherService } from './weather.service';
   styleUrls: ['./weather.component.css'],
 
   //gọi service vào comp
+  //nếu import và gọi service trong comp này thì chỉ mỗi comp này đc sd service, comp khác muốn sd phải import service lại như v.
+  //Nếu import và gọi service trong app.module.ts, thì service sẽ được dùng cho mọi comp. 
   providers: [WeatherService]
 })
 

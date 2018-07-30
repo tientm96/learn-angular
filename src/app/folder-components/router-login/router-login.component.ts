@@ -54,7 +54,7 @@ export class RouterLoginComponent implements OnInit {
     // localStorage là biến toàn cục của angular, biến này dùng để kết nối với auth.guard.ts
     //  biến này nhận vào giá key: value(string), ở đây key là user.
     if(username === 'admin' && password === 'admin'){
-      localStorage.setItem('user', JSON.stringify(user)); //JSON.stringify: chuyển obj user sang kiểu string.
+      localStorage.setItem('user', JSON.stringify(user)); //JSON.stringify: chuyển obj user sang kiểu JSON (string).
 
       //nếu đúng thì set đường dẫn tới products.
       this.router.navigate(['products']);

@@ -4,8 +4,8 @@
 Còn ở đây là post nên có import thêm Headers.
 
 -Giống với get:
-+trong comp: import http; import toPromise (angular 6 thì ko cần)
-+trong app.module.ts nhớ import http và gọi xuống imports: [] (đã import trước ở phần get r thì thôi)
++trong comp: import Http; import toPromise (angular 6 thì ko cần)
++trong app.module.ts nhớ import HttpModule và gọi xuống imports: [] (đã import trước ở phần get r thì thôi)
 +trong class của comp: khai báo đối tượng http để post dl lên. angular sẽ tự động new ngầm cho đối tượng http đó.
 
 -Có các cái mới so với GET:

@@ -1,0 +1,51 @@
+<div class="panel panel-success">
+    <div class="panel-heading">
+      <h3 class="panel-title">Comp Rest-Todo</h3>
+    </div>
+    <div class="panel-body">
+      
+      <div class="row">
+        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+          
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Completed</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let resttodo of resttodos">
+                <td>{{ resttodo.id }}</td>
+                <td>{{ resttodo.title }}</td>
+                <td>{{ resttodo.completed ? 'Completed' : 'Inprogress' }}</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <hr>
+          <form>
+            <legend>Add RestTodo</legend>
+          
+            <div class="form-group">
+              <label for="">Title</label>
+              <!-- nếu sd ngModel trong class form thì phải add dòng này sau ngModel: [ngModelOptions]="{standalone: true}" -->
+              <input type="text" class="form-control" [(ngModel)]="title" [ngModelOptions]="{standalone: true}">
+            </div>
+
+            <!-- nếu sd ngModel trong class form thì phải add dòng này sau ngModel: [ngModelOptions]="{standalone: true}" -->
+            <select class="form-control" [(ngModel)]="completed" [ngModelOptions]="{standalone: true}">
+              <option value="true">Completed</option>
+              <option value="false">Inprogress</option>
+            </select>
+            
+            <button type="submit" class="btn btn-primary" (click)="onAddRestTodo();">Add</button>
+          </form>
+
+          
+        </div>
+      </div>
+
+    </div>
+</div>

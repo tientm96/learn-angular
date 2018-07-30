@@ -17,7 +17,7 @@ hàm getIp sẽ return về ip lấy từ server thông qua service.
 */ 
 
 
-export class IpService {
+export class Ip2Service {
 
     constructor(private http: Http) { } //kb biến http từ thư viện Http, angular sẽ tự động new ngầm cho nó thành đối tượng của Http. 
 

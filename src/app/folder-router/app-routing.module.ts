@@ -59,6 +59,7 @@ import { CommonModule } from '@angular/common';
 
 
 
+
 /*TÁCH RA MODULE CHILD CHO 1 COMP CONTACTS: VÌ ĐÃ TÁCH MODULE RIÊNG CHO COMP CONTACTS, NÊN SẼ CMT/XÓA NHỮNG THỨ ĐÃ TÁCH; VÀ IMPORT GỌI MODULE CHILD ĐÓ VÀO:
 
 -import ContactsModule của contacts.module.ts vào đây; kéo xuống phần import trong @NgModule để thêm ContactsModule vào:

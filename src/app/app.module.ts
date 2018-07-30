@@ -8,6 +8,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 //để lấy service từ server phải import Http, để dùng GET hoặc POST
 import { HttpModule } from '@angular/http';
 
+//Từ bài Git branch 86 trở đi, dùng GET, POST, PUT, DELETE với HttpClientModule, vì phiên bản mới đã cập nhật Http->HttpClient
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 
@@ -98,6 +101,11 @@ import { MovieHandleComponent } from './folder-components/movie-handle/movie-han
 // import { RouterProductEditComponent } from './folder-components/router-product-edit/router-product-edit.component';
 // import { RouterLoginComponent } from './folder-components/router-login/router-login.component';
 
+import { RestTodoComponent } from './folder-components/rest-todo/rest-todo.component';
+
+
+
+
 
 
 
@@ -124,11 +132,11 @@ import { SortPipe } from './folder-pipes/sort.pipe';
 
 //import IpService trong ip.service.ts vào đây app.module.ts, kéo xuống providers[] gọi nó ra: để nhiều comp đều sử dụng đc service này.
 //Còn nếu chỉ import và gọi providers trong comp nào đó thì chỉ mỗi comp đó sd đc service này.
-import { IpService } from './folder-components/ip2/ip.service';
+import { Ip2Service } from './folder-services/ip2.service';
 import { LoggingService } from './folder-services/logging.service';
 import { MovieService } from './folder-services/movie.service';
 import { ProductService } from './folder-services/product.service';
-
+import { RestTodoService } from './folder-services/rest-todo.service';
 
 
 
@@ -185,8 +193,10 @@ và đc gọi vào bên trong declarations của file app.module.cs này.
     // RouterProductListComponent,
     // RouterProductEditComponent,
     // RouterLoginComponent
+    RestTodoComponent,
 
 
+    
 
     
     RoundPipe,
@@ -201,6 +211,7 @@ và đc gọi vào bên trong declarations của file app.module.cs này.
     BrowserModule,
     FormsModule,
     HttpModule,
+    HttpClientModule,
     ReactiveFormsModule,
     // RouterModule.forRoot(routesConfig)
 
@@ -209,10 +220,11 @@ và đc gọi vào bên trong declarations của file app.module.cs này.
   ],
   //gọi service đã import, service đc import và gọi trong file này sẽ được dùng cho tất cả comp
   providers: [
-    IpService, 
+    Ip2Service, 
     LoggingService, 
     MovieService, 
     ProductService,
+    RestTodoService
   ],
 
   //bootstrap: nơi khai báo comp chạy đầu tiên, là AppComponent.

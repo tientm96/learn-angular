@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 /*Nếu như tách service post thành 1 file riêng thì ở đây ko cần import những này nữa. Mà sẽ import file service đó.
 -import ở trên, rồi gọi trong providers[]
 -Hoặc nếu muốn tất cả đều use đc service này thì phải import trong app.module.ts và thêm vào providers[] của file đó.
-   comp nào muốn sử dụng service đó thì chỉ cần import đường dẫn là đủ.
+  comp nào muốn sử dụng service đó thì chỉ cần import đường dẫn là đủ.
 */
 
 // //import để có thể tương tác với http, để gửi request post lên http
@@ -20,20 +20,17 @@ import { SignIn3Service } from './sign-in3.service';
   styleUrls: ['./sign-in3.component.css'],
 
   //Ở trên đã import rồi thì đây gọi class SignIn3Service vào trong Component, để sử dụng nó. 
+  //Nếu muốn all comp đều sd đc thì phải import và gọi trong app.module.ts...  
   providers: [SignIn3Service]
 })
 
 export class SignIn3Component {
 
-  //khởi tạo biến http từ kdl Http. Angular sẽ ngầm new, nên biến http là object.
-  /*Nếu đã tách service post ra file riêng thì bỏ dòng này đi, qua bên đó gọi rồi. 
-  Ở đây ta chỉ cần khởi tạo nó ra thôi*/
-  // constructor(private http: Http) { }
+  //Cơ chế dependences Injection sẽ Inject service vào constructor như 1 đối tượng, nhưng ko cần khởi tạo.
   constructor(private signIn3Service: SignIn3Service) { }
 
-  /*Bài 51: request dạng POST: đưa các giá trị input lên 1 url nào đó. Đó là đưa nó lên server, còn việc gộp
-  nó vào server ntn thì back-end xử lý.
-  */ 
+  /*Bài 51: request dạng POST: đưa các giá trị input lên 1 url nào đó. Đó là đưa dl lên POST api, 
+            còn việc lấy dl từ api về xử lý trong server ntn thì back-end xử lý.*/ 
   onSubmit(formSignIn){
 
     /*Đẩy input từ comp qua service thông qua gọi hàm truyền tham số vào, rồi service đẩy post request 
@@ -64,6 +61,8 @@ export class SignIn3Component {
     //  .then(res => res.json()) //ở đây gửi nguyên object lên. nên .json chứ ko .text
     //  .then(resJSON => console.log(resJSON));
 
+
+    
     /*Thay vì viết gộp chung request dạng post ở trong hàm onSubmit() thì ta tách nó ra thành 1 SERVICE riêng,
     copy hết qua bên file sign-in3.service.ts và chỉnh sửa lại thành return về, và ở đây sẽ gọi lấy dl trả về
     sau khi post request lên thành công.*/

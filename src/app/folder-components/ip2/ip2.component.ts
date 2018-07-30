@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IpService } from './ip.service'; //IpService: là class bên trong ip.service.ts
+import { Ip2Service } from '../../folder-services/ip2.service'; //IpService: là class bên trong ip.service.ts
 
 @Component({
   selector: 'app-ip2',
@@ -40,7 +40,7 @@ export class Ip2Component implements OnInit {
 
   //biến: kdl, ở đây là kb biến ipService
   //Cơ chế Dependence Injection sẽ Inject service vào constructor, mà ko cần phải khởi tạo đối tượng.
-  constructor(private ipService: IpService) { 
+  constructor(private ipService: Ip2Service) { 
     // this.ipService.getIp()  
     // .then(ip => this.ip = ip) 
     // .catch(err => console.log(err));

@@ -9,7 +9,7 @@ import { RouterHomeComponent } from './router-home.component';
 
 
 //canDeactive service
-import { AccessGuard } from './../../folder-services/guards/access.guard';
+import { AccessGuard } from '../../folder-services/guards/access.guard';
 
 
 
