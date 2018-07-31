@@ -69,6 +69,10 @@ export class RestTodoComponent implements OnInit, OnDestroy {
   onAddRestTodo(){
     console.log(`${this.title} - ${this.completed}`); //ktra các dl nhập vào từ ngModel có đc ko
 
+    // HÀM NÀY MUỐN DEBUGGER THÌ ĐẶT DÒNG debugger Ở ĐÂY. CHẠY LÊN F12>SOURCE, ĐƯA CHUỘT VÀO GIÁ TRỊ CẦN XEM, F8 ĐỂ THOÁT DEBUGGER.  
+    // debugger
+
+
     //trong constructor của class RestTodo chỉ có title và completed, id ko vì đã set trên api là tự động tăng, nên ko cần.
     //Ta chỉ cần truyền lên những thành phần khác, id sẽ đc mockapi.io tự động tăng.
     let restTodo = new RestTodo(this.title, this.completed);

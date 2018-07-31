@@ -41,8 +41,12 @@
 
             <!-- nếu sd ngModel trong class form thì phải add dòng này sau ngModel: [ngModelOptions]="{standalone: true}" -->
             <select class="form-control" [(ngModel)]="completed" [ngModelOptions]="{standalone: true}">
-              <option value="true">Completed</option>
-              <option value="false">Inprogress</option>
+              <!-- Chú ý: bản chất của select là truyền vào các giá trị string, nên muốn trả về đúng giá trị true/false boolean, thì phải sd [ngValue] -->
+              <!-- <option value="true">Completed</option> :TH NÀY SẼ TRUYỀN VỀ "true" kiểu string-->
+              
+              <!-- TH NÀY DÙNG ngValue nên trả về kiểu "true/false" boolean -->
+              <option [ngValue]="true">Completed</option> <!--  -->
+              <option [ngValue]="false">Inprogress</option>
             </select>
             
             <button type="submit" class="btn btn-primary" (click)="onAddRestTodo();">Add</button>
