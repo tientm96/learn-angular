@@ -1,0 +1,120 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">Component: Template driven form</h3>
+  </div>
+  <div class="panel-body">
+
+    <!-- Các trạng thái:
+    input đã đc click vào rồi click ra lại ng-touched, ngược lại ko đc kích vào ng-untouched;
+    input đã đc nhập vào ng-dirty, ngược lại ng-pristine;
+    input nhập vào hợp lệ ng-valid, ngược lại ng-invalid  
+  -->
+
+    <!-- 
+    -sd ngModel trong form thì phải có: [ngModelOptions]="{standalone: true},
+    Nhưng nếu form có sd ngForm thì lại ko cần dòng: [ngModelOptions]="{standalone: true} vẫn sd đc ngModel
+    -Sử dụng ngModel gán với #name để nhận thông báo validate #username="ngModel", lúc này name.className bị vô hiệu hóa.
+    -autocomplete="false" và novalidate: dùng để tắt validate của html5, ở đây ta chỉ dùng validate của angular. -->
+    <form #frmUser="ngForm" (ngSubmit)="onSubmitForm(frmUser)" autocomplete="false" novalidate>
+      <div class="form-group">
+        <label for="">Username: </label>
+        <input type="text" 
+          class="form-control" 
+          [(ngModel)]="user.username" 
+          #username="ngModel"
+          name="txtUsername"
+          minlength="3"
+          maxlength="15"
+          required="required"
+        >
+        <!-- #ten.className: hiện ra các trạng thái đang tồn tại của input đó, vd: form-control ng-untouched ng-pristine ng-valid 
+        Nếu dùng #username="ngModel" để nhận các validate, thì name.className sẽ bị vô hiệu hóa. -->
+        <!-- {{ username.className }} -->
+
+        {{ username.errors | json }}
+
+        <!-- bs3-label, với username chính là #username đó. -->
+        <span class="label label-warning" *ngIf="username.touched && username.errors?.required">Vui lòng nhập username</span>
+        <span class="label label-warning" *ngIf="username.dirty && username.errors?.minlength">Tối thiểu 3 ký tự</span>
+        <span class="label label-warning" *ngIf="username.dirty && username.touched && username.errors?.maxlength">Tối đa 15 ký tự</span>
+        
+      </div>
+
+      <div class="form-group">
+          <label for="">Password: </label>
+          <input 
+            type="password" 
+            class="form-control" 
+            [(ngModel)]="user.password" 
+            #password="ngModel"
+            name="txtPassword"
+            minlength="5"
+            required="required"
+            pattern=""
+          >
+      </div>
+
+      <div class="form-group">
+          <label for="">Fullname: </label>
+          <input 
+            type="text" 
+            class="form-control" 
+            [(ngModel)]="user.fullname" 
+            #fullname="ngModel"
+            name="txtFullname"
+            required="required"
+          >
+          <span class="label label-warning" *ngIf="fullname.touched && fullname.errors?.required">Vui lòng nhập họ tên</span>
+      </div>
+
+
+      <!-- Dùng ngModelGroup để gôm nhóm các input cùng 1 thực thể, vd: email, phone thuộc cùng 1 thực thể là địa chỉ liên lạc(contact);
+      Như vậy khi log Form ra F12 sẽ thấy object contact chứa email và phone, contact:{txtEmail: "", txtPhone: ""} -->
+      <div ngModelGroup="contact">
+          <!--Validate
+            -Vào trang https://regexr.com/ để tự custom validator.
+            -Hoặc tìm các validator có sẵn: search: "regular expression email/phonenumber/password..." 
+          Ở đây search cho email: https://www.regextester.com/93886
+                pattern="^[a-z][a-z0-9_\.]{5,32}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}$"
+
+          Dưới đây sd chuỗi thầy cho: pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
+          -->
+          <div class="form-group">
+            <label for="">Email: </label>
+            <input 
+              type="text" 
+              class="form-control" 
+              [(ngModel)]="user.email" 
+              #email="ngModel"
+              name="txtEmail"
+              required="required"
+              pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
+            >
+            {{ email.errors | json }}
+            <span class="label label-danger" *ngIf="email.touched && email.errors?.required">Vui lòng nhập email</span>
+            <span class="label label-danger" *ngIf="email.dirty && email.errors?.pattern">Không đúng định dạng email</span>
+          </div>
+
+          <div class="form-group">
+            <label for="">Phonenumber: </label>
+            <input 
+              type="text" 
+              class="form-control" 
+              [(ngModel)]="user.phone" 
+              #phone="ngModel"
+              name="txtPhone"
+              required="required"
+            >
+          </div>
+      </div>
+
+
+      <!-- chỉnh type="submit" để ngSubmit trên form sẽ nhận lệnh khi ấn btn này-->
+      <button type="submit" class="btn btn-primary">Sava</button>
+
+      <!-- hàm reset truyền vào frmUser, hàm này sẽ reset lại mọi giá trị của form -->
+      <button type="button" class="btn btn-danger" (click)="onResetForm(frmUser)">Reset</button>
+    </form>
+
+  </div>
+</div>

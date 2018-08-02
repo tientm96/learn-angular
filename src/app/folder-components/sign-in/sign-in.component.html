@@ -47,28 +47,28 @@ vd: tại email ép buộc người dùng nhập vào, nếu người dùng chư
 -thuộc tính xét lỗi required(cần thiết: thêm vào sau name): nếu ô đó chưa nhập gì thì lỗi required=true, còn nhập rồi thì lỗi required=false.
 và required nó trả về trong errors của Object (F12 ra sẽ thấy).
 
-(bên comp chỉ console.log(formSignIn): render rồi vào object form>controls>email>errors>thấy required=true nếu chưa nhập)
+(bên comp chỉ console.log(formSignIn): render F12 rồi vào object form>controls>email>errors>thấy required=true nếu chưa nhập)
 
 +Nếu formSignIn.controls.email?.errors?.required = true : có nghĩa là chưa nhập, cho hiển thị dòng thông báo.
 Dấu email? và errors?: Bởi vì lúc đầu render lên chưa thể có email hay error nếu chưa ấn btn Submit, nên để dấu ? ý là có thể ko có.
 (**render ko báo lỗi, nhưng dòng này trong vs code lại báo lỗi: nên tạm thời đóng nó lại).
 
--Ẩn btn Submit nếu chưa nhập dl ô nào đó.
+-Cho ẩn btn Submit nếu chưa nhập dl ô nào đó.
 +Sử dụng formSignIn.invalid. CHÚ Ý: invalid: Không hiệu lực >< valid: có hiệu lực
 (thuộc tính valid xem trong F12 của từng input đều có).
 
 +Khi ta đặt required cho input nào thì thuộc tính valid(có hiệu lực) sẽ phụ thuộc vào required đó. 
-Nếu chưa nhập input thì required=true, lúc đấy thuộc tính valid=false thì cho button Submit ẩn đi.
+Nếu chưa nhập input thì required=true, lúc đấy thuộc tính valid=false (invalid=true) thì cho button Submit ẩn đi.
 
 +Ở đây formSignIn.invalid là KHÔNG HIỆU LỰC, nó ngược lại với valid, nên cho formSignIn.invalid=true 
 có nghĩa valid=false thì cho ẩn btn Submit đi.
 
-+Nếu ta xét valid cho nhiều input, thì nó sẽ xét nếu valid(có hiệu lực) của tất cả == true 
-thì mới cho invalid(ko hiệu lực)=false, mới cho hiện lên.  
++Nếu ta xét valid cho nhiều input, thì nó sẽ xét nếu valid(có hiệu lực) của tất cả === true 
+thì mới cho invalid(ko hiệu lực)=false, mới cho hiện btn lên.  
 -->
 <h3>Bài 43,44: Form - sign-in.component.html</h3>
 
-<!-- nếu ngSubmit thì khi phóng ngoại lê nó sẽ đưa ra console chứ ko đưa lên link -->
+<!-- nếu ngSubmit thì khi phóng ngoại lên nó sẽ đưa ra console chứ ko đưa lên link -->
 <form (ngSubmit)="onSubmit(formSignIn);" #formSignIn="ngForm">
     <!-- Nếu dùng ngForm để lấy input thì ko cần đến biến email và password trong comp để gắn; 
         còn phần ngModel thì phải để cho có, dù ko gắn gì. -->

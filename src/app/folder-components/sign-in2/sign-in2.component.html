@@ -26,7 +26,8 @@
     <br>
 
     <!-- Bài 49: Xử lý checkbox và ngModelGroup 
-      -ngModelGroup="subjects": đặt các checkbox vào trong 1 group subjects, khi kiểm tra thì nó sẽ in ra "subjects": { "NodeJS": false, "Angular": false, "ReactJS": false } 
+      -ngModelGroup="subjects": đặt các checkbox vào trong 1 group subjects, khi kiểm tra thì nó sẽ in ra 
+      "subjects": { "NodeJS": false, "Angular": false, "ReactJS": false } 
 
       -checkbox: [ngModel]="false": ban đầu ko check
     -->
@@ -63,7 +64,7 @@ Còn khi đã kích vào thì các class lại chuyển trạng thái:       cla
 vd: ở đây ta sẽ xét nếu như ĐÃ kích chuột vào khung input email rồi lại kích chuột ra ngoài thì đó là touched (class ng-touched), 
 nhưng lại chưa thỏa lỗi email(định dạng email) và lỗi required (cả 2 lỗi này thể hiện qua class ng-invalid), thì khung đó sẽ hiện lên màu đỏ.
 
-Lúc này ta cần cấu hình lại file styles.css (file css chính chung cho all) cho 2 class ng-touched (class này chỉ xuất hiện khi trạng thái khi đã kích vào r kích ra,
+Lúc này ta cần cấu hình lại file styles.css (file css chính chung cho all) cho 2 class ng-touched (class này chỉ xuất hiện khi trạng thái đã kích vào r kích ra,
 ngược lại sẽ hiện class ng-untouched), ng-invalid (trạng thái chưa đúng format email), để khi không thỏa 1 trong 2 cái đó thì sẽ hiện lên viền màu đỏ.
 
 bên file styles.css:
