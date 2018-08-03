@@ -15,7 +15,7 @@
     Nhưng nếu form có sd ngForm thì lại ko cần dòng: [ngModelOptions]="{standalone: true} vẫn sd đc ngModel
     -Sử dụng ngModel gán với #name để nhận thông báo validate #username="ngModel", lúc này name.className bị vô hiệu hóa.
     -autocomplete="false" và novalidate: dùng để tắt validate của html5, ở đây ta chỉ dùng validate của angular. -->
-    <form #frmUser="ngForm" (ngSubmit)="onSubmitForm(frmUser)" autocomplete="false" novalidate>
+    <form #frmUser="ngForm" (ngSubmit)="onSubmitForm(frmUser)" autocomplete="false" novalidate="true">
       <div class="form-group">
         <label for="">Username: </label>
         <input type="text" 
@@ -36,7 +36,7 @@
         <!-- bs3-label, với username chính là #username đó. -->
         <span class="label label-warning" *ngIf="username.touched && username.errors?.required">Vui lòng nhập username</span>
         <span class="label label-warning" *ngIf="username.dirty && username.errors?.minlength">Tối thiểu 3 ký tự</span>
-        <span class="label label-warning" *ngIf="username.dirty && username.touched && username.errors?.maxlength">Tối đa 15 ký tự</span>
+        <span class="label label-warning" *ngIf="username.dirty && username.errors?.maxlength">Tối đa 15 ký tự</span>
         
       </div>
 

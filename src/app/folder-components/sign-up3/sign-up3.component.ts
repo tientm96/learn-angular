@@ -28,6 +28,7 @@ export class SignUp3Component implements OnInit {
 
   formSignUp: FormGroup; 
 
+  //fb là Injection dependences, ta Inject vào constructor để tạo đối tượng.
   constructor(private fb: FormBuilder) {}
 
   ngOnInit() {

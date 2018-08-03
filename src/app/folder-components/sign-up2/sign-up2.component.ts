@@ -31,7 +31,9 @@ export class SignUp2Component implements OnInit {
   // }
 
   //Bài 55: dùng FormBuilder làm formgroup.
-  constructor(private fb: FormBuilder) { //khai báo và angular sẽ tự động new ngầm (Nếu kb trong ( ))
+
+  //fb là Injection dependences, ta Inject vào constructor để tạo đối tượng.
+  constructor(private fb: FormBuilder) { 
     // this.formSignUp = fb.group({  //thay vì new FormGroup trong FormGroup
     //   email: 'tientm96@gmail.com', //thay vì new FormControl('tientm96@gmail.com') trong FormGroup
     //   password: '', //thay vì new FormControl() trong FormGroup

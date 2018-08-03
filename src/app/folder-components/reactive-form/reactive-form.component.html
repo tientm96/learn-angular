@@ -1,0 +1,101 @@
+<div class="panel panel-success">
+<div class="panel-heading">
+    <h3 class="panel-title">Component: Reactive form</h3>
+</div>
+<div class="panel-body">
+
+    <!-- Các trạng thái:
+    input đã đc click vào rồi click ra lại ng-touched, ngược lại ko đc kích vào ng-untouched;
+    input đã đc nhập vào ng-dirty, ngược lại ng-pristine;
+    input nhập vào hợp lệ ng-valid, ngược lại ng-invalid  
+    -->
+
+    <!-- 
+    -autocomplete="false" và novalidate: dùng để tắt validate của html5, ở đây ta chỉ dùng validate của angular.
+    -Lần lượt gọi form và các control bên comp vào: thông qua [formGroup], formControlName, formGroupName(nếu có).
+    -->
+    <form (ngSubmit)="onSubmitForm();" [formGroup]="formUser"
+        autocomplete="false" 
+        novalidate="true"
+    >
+        <div class="form-group">
+            <label for="">Username: </label>
+            <input type="text" 
+                class="form-control" 
+                name="txtUsername"
+                formControlName="username"
+            >
+            <!--mỗi lần ấn onSubmitForm() thì hàm sẽ log ra formUser ra F12 để thấy các thành phần đi đến validate:
+            theo thứ tự "FormGroup>controls>email>errors" sẽ thấy các validate của email, tương tự như bên sign-up3.component.html.
+        
+            Vì là reactive form nên các validator đều ở bên comp.ts-->
+        
+            <!-- bs3-label -->
+            <span class="label label-warning" *ngIf="formUser.controls.username.touched && formUser.controls.username.errors?.required">Vui lòng nhập username</span>
+            <span class="label label-warning" *ngIf="formUser.controls.username.dirty && formUser.controls.username.errors?.minlength">Tối thiểu 5 ký tự</span>
+            <span class="label label-warning" *ngIf="formUser.controls.username.dirty && formUser.controls.username.errors?.maxlength">Tối đa 20 ký tự</span>
+
+        </div>
+
+        <div class="form-group">
+            <label for="">Password: </label>
+            <input 
+                type="password" 
+                class="form-control" 
+                name="txtPassword"
+                formControlName="password"
+            >
+        </div>
+
+        <div class="form-group">
+            <label for="">Fullname: </label>      
+            <input 
+                type="text" 
+                class="form-control" 
+                name="txtFullname"
+                formControlName="fullname"
+            >
+        </div>
+
+
+        <div>
+            <div class="form-group">
+                <label for="">Email: </label>
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    name="txtEmail"
+                    formControlName="email"
+                >
+                
+                <!--Chú ý: dùng get('email') thay cho  controls.email: giúp lấy validator email nhanh gọn hơn.
+                Cách này dùng đc cho mọi control của form.
+                Nếu là param của group nào đó thì get('groupname.paramname').
+                -->
+
+                <!-- <span class="label label-warning" *ngIf="formUser.controls.email.dirty && formUser.controls.email.errors?.pattern">Email is not format</span> -->
+                <span class="label label-warning" *ngIf="formUser.get('email').dirty && formUser.get('email').errors?.pattern">Email is not format</span>
+            </div>
+
+            <div class="form-group">
+                <label for="">Phonenumber: </label>
+                <input 
+                    type="text"
+                    class="form-control" 
+                    name="txtPhone"
+                    formControlName="phone"
+                >
+            </div>
+        </div>
+
+
+        <!-- chỉnh type="submit" để ngSubmit trên form sẽ nhận lệnh khi ấn btn này.
+        -invalid=true thì ẩn btn đi.-->
+        <button [disabled]="formUser.invalid" type="submit" class="btn btn-primary">Sava</button>
+
+        <!-- hàm reset ko cần truyền vào frmUser vì frmUser đc khởi tạo trong file ts luôn rồi, nếu là template driven form thì truyền, hàm này sẽ reset lại mọi giá trị của form -->
+        <button (click)="onResetForm()" type="button" class="btn btn-danger">Reset</button>
+    </form>
+
+</div>
+</div>

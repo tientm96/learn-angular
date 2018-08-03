@@ -103,6 +103,7 @@ import { MovieHandleComponent } from './folder-components/movie-handle/movie-han
 
 import { RestTodoComponent } from './folder-components/rest-todo/rest-todo.component';
 import { TemplateDrivenFormComponent } from './folder-components/template-driven-form/template-driven-form.component';
+import { ReactiveFormComponent } from './folder-components/reactive-form/reactive-form.component';
 
 
 
@@ -185,6 +186,7 @@ và đc gọi vào bên trong declarations của file app.module.cs này.
     UserListComponent,
     LifecycleHooksComponent,
     MovieListComponent,
+    ReactiveFormComponent,
     MovieHandleComponent,
     // RouterHomeComponent,
     // RouterContact2Component,
