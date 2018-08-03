@@ -5,11 +5,11 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 
 
 @Component({
-  selector: 'app-reactive-form',
-  templateUrl: './reactive-form.component.html',
-  styleUrls: ['./reactive-form.component.css']
+  selector: 'app-reactive-form2',
+  templateUrl: './reactive-form2.component.html',
+  styleUrls: ['./reactive-form2.component.css']
 })
-export class ReactiveFormComponent implements OnInit {
+export class ReactiveForm2Component implements OnInit {
   
   public formUser: FormGroup; 
 
@@ -26,7 +26,7 @@ export class ReactiveFormComponent implements OnInit {
 
       username: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(20)] ],  
       password: ['', Validators.required ],  
-      fullname: [''],  
+      fullname: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(30)] ],  
       
       email: ['', Validators.pattern('[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}')],  
       phone: ['']
@@ -69,5 +69,7 @@ export class ReactiveFormComponent implements OnInit {
       this.formUser.reset();
     }
   
+
+
 
 }

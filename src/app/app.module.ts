@@ -104,6 +104,8 @@ import { MovieHandleComponent } from './folder-components/movie-handle/movie-han
 import { RestTodoComponent } from './folder-components/rest-todo/rest-todo.component';
 import { TemplateDrivenFormComponent } from './folder-components/template-driven-form/template-driven-form.component';
 import { ReactiveFormComponent } from './folder-components/reactive-form/reactive-form.component';
+import { ReactiveForm2Component } from './folder-components/reactive-form2/reactive-form2.component';
+import { ReactiveFormErrorValidateComponent } from './folder-components/reactive-form-error-validate/reactive-form-error-validate.component';
 
 
 
@@ -186,7 +188,6 @@ và đc gọi vào bên trong declarations của file app.module.cs này.
     UserListComponent,
     LifecycleHooksComponent,
     MovieListComponent,
-    ReactiveFormComponent,
     MovieHandleComponent,
     // RouterHomeComponent,
     // RouterContact2Component,
@@ -198,7 +199,9 @@ và đc gọi vào bên trong declarations của file app.module.cs này.
     // RouterLoginComponent
     RestTodoComponent,
     TemplateDrivenFormComponent,
-
+    ReactiveFormComponent,
+    ReactiveForm2Component,
+    ReactiveFormErrorValidateComponent,
     
 
     
